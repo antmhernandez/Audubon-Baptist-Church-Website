@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="public-page editorial-home">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <a class="skip-link" href="#mainContent">Skip to main content</a>
 
   <details class="prototype-drawer">
@@ -123,6 +124,30 @@
       </div>
     </section>
 
+    <section class="sunday-rhythm" aria-labelledby="sundayRhythmHeading">
+      <div class="rhythm-intro">
+        <p class="editorial-kicker">A Sunday rhythm</p>
+        <h2 id="sundayRhythmHeading">Gather.<br><em>Hear.</em><br>Respond.</h2>
+      </div>
+      <div class="rhythm-lines">
+        <article>
+          <span>01</span>
+          <h3>Worship</h3>
+          <p>We gather as a church family to worship God together—not as spectators, but as His people.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>The Word</h3>
+          <p>Scripture stands at the center of our life together, shaping our worship, faith, obedience, and hope.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Life together</h3>
+          <p>Sunday is part of a larger life of prayer, fellowship, service, discipleship, and mission throughout the week.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="sermon-editorial" id="sermons">
       <div class="sermon-media-panel">
         <div class="sermon-media-placeholder">
@@ -177,6 +202,19 @@
       </div>
     </section>
 
+    <section class="mission-interlude" aria-labelledby="missionHeading">
+      <div class="mission-index" aria-hidden="true">GO</div>
+      <div class="mission-heading">
+        <p class="editorial-kicker light-kicker">Mission</p>
+        <h2 id="missionHeading">Going Beyond Ourselves<br><em>with the Gospel.</em></h2>
+      </div>
+      <div class="mission-copy">
+        <p>Audubon’s existing site uses this language to describe a church looking outward rather than inward. It also highlights ministry connected with the backside community at Churchill Downs.</p>
+        <p class="mission-small">The new site can make those outward-facing ministries easier to discover without turning the homepage into a ministry directory.</p>
+        <a class="editorial-cta inverted" href="https://www.achurchinthepark.org/going-beyond/" target="_blank" rel="noopener">See the existing mission page <span>↗</span></a>
+      </div>
+    </section>
+
     <section class="belief-editorial" id="beliefs">
       <div class="belief-statement">
         <p class="editorial-kicker light-kicker">What we believe</p>
@@ -196,6 +234,7 @@
     <section class="story-editorial" id="about">
       <div class="story-heading">
         <p class="editorial-kicker">Our story</p>
+        <div class="story-year" aria-hidden="true">2017</div>
         <h2>A long history.<br><em>Renewed together.</em></h2>
       </div>
 
@@ -226,8 +265,20 @@
     <section class="give-editorial" id="give">
       <p class="editorial-kicker">Generosity</p>
       <h2>Give simply.<br><em>Serve faithfully.</em></h2>
-      <p>The production site will hand gifts to a trusted giving provider rather than storing card or bank credentials ourselves.</p>
+      <div class="give-copy">
+        <p>Giving is one part of a life offered to God in gratitude and trust. The production site will make online giving simple while keeping payment credentials in the hands of a trusted provider rather than on Audubon’s server.</p>
+        <p class="fine-print">The exact giving provider and fund choices remain a leadership/treasurer decision.</p>
+      </div>
       <button class="editorial-cta primary-cta" id="givingButton" type="button">Preview online giving <span>→</span></button>
+    </section>
+
+    <section class="visit-return">
+      <span class="visit-return-label">Thinking about Sunday?</span>
+      <div>
+        <h2>Come worship with us.</h2>
+        <p>1046 Hess Lane · Louisville, Kentucky</p>
+      </div>
+      <a class="editorial-cta primary-cta" href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Open directions <span>↗</span></a>
     </section>
   </main>
 
@@ -267,6 +318,7 @@
     </form>
   </dialog>
 
+  <button class="back-to-top hidden" id="backToTop" type="button" aria-label="Back to top">↑</button>
   <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
   <script src="app.js"></script>
 </body>
