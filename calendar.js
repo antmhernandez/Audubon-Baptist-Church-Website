@@ -74,11 +74,13 @@ function loadData() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     return {
+      ...stored,
       role: stored.role || "public",
       events: Array.isArray(stored.events) && stored.events.some(e => e.dateISO) ? stored.events : buildFallbackEvents(),
       rsvps: stored.rsvps || {},
       sermon: stored.sermon || {},
-      prayers: stored.prayers || []
+      prayers: stored.prayers || [],
+      mediaDrafts: stored.mediaDrafts || []
     };
   } catch {
     return { role: "public", events: buildFallbackEvents(), rsvps: {}, sermon: {}, prayers: [] };
