@@ -175,6 +175,59 @@ document.getElementById("audioDemoButton").addEventListener("click",function(){s
 document.getElementById("givingButton").addEventListener("click",function(){showToast("The production button will open Audubon's approved secure giving provider.");});
 document.getElementById("sermonAdminShortcut").addEventListener("click",function(){window.location.href="media-studio.html";});
 
+/* Long-page navigation: quiet, useful, and accessible. */
+const scrollProgress=document.getElementById("scrollProgress");
+const backToTop=document.getElementById("backToTop");
+const trackedSections=["visit","sermons","events","beliefs","about","give"];
+const navLinks=[...document.querySelectorAll("#mainNav a[href^='#']")];
+
+function updateScrollUI(){
+  const doc=document.documentElement;
+  const max=doc.scrollHeight-window.innerHeight;
+  const ratio=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;
+  scrollProgress.style.transform="scaleX("+ratio+")";
+  backToTop.classList.toggle("hidden",window.scrollY<720);
+}
+
+function setActiveSection(id){
+  navLinks.forEach(function(link){
+    const active=link.getAttribute("href")==="#"+id;
+    link.classList.toggle("active-section",active);
+    if(active)link.setAttribute("aria-current","location");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+if("IntersectionObserver" in window){
+  const observer=new IntersectionObserver(function(entries){
+    const visible=entries.filter(function(entry){return entry.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;});
+    if(visible[0])setActiveSection(visible[0].target.id);
+  },{rootMargin:"-26% 0px -58% 0px",threshold:[0,.15,.4,.7]});
+  trackedSections.forEach(function(id){
+    const section=document.getElementById(id);
+    if(section)observer.observe(section);
+  });
+}
+
+window.addEventListener("scroll",updateScrollUI,{passive:true});
+window.addEventListener("resize",updateScrollUI);
+updateScrollUI();
+
+backToTop.addEventListener("click",function(){
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+document.addEventListener("keydown",function(event){
+  if(event.key==="Escape"){
+    const nav=document.getElementById("mainNav");
+    if(nav.classList.contains("open")){
+      nav.classList.remove("open");
+      document.getElementById("menuButton").setAttribute("aria-expanded","false");
+      document.getElementById("menuButton").focus();
+    }
+  }
+});
+
 function renderAll(){
   document.getElementById("announcementText").textContent=data.announcement;
   renderSermon();renderArchive();renderRole();
