@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Audubon Baptist Church website leadership prototype">
-  <meta name="theme-color" content="#17324d">
-  <title>Audubon Baptist Church</title>
+  <meta name="description" content="Audubon Baptist Church — A Church in the Park, Louisville, Kentucky">
+  <meta name="theme-color" content="#8f2f35">
+  <title>Audubon Baptist Church | A Church in the Park</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="public-page">
   <a class="skip-link" href="#mainContent">Skip to main content</a>
 
-  <div class="prototype-bar" aria-label="Prototype controls">
-    <div>
-      <strong>Leadership prototype</strong>
-      <span>Sample content only — no private church data.</span>
-    </div>
+  <div class="prototype-bar" aria-label="Leadership prototype controls">
+    <div><strong>Leadership prototype</strong><span>Explore public, member, and administrator views</span></div>
     <div class="prototype-actions">
-      <label for="roleSwitcher">Preview role</label>
+      <label for="roleSwitcher">Preview</label>
       <select id="roleSwitcher">
         <option value="public">Public visitor</option>
         <option value="member">Church member</option>
@@ -25,406 +22,221 @@
         <option value="leadership">Church leadership</option>
         <option value="admin">Administrator</option>
       </select>
-      <button class="mini-button" id="copyLinkButton" type="button">Copy share link</button>
+      <button class="mini-button" id="copyLinkButton" type="button">Copy link</button>
     </div>
   </div>
 
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Audubon Baptist Church home">
       <span class="brand-mark" aria-hidden="true">A</span>
-      <span class="brand-copy">
-        <strong>Audubon Baptist Church</strong>
-        <small>A Church in the Park</small>
-      </span>
+      <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
     </a>
-
     <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
-
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-      <a href="#new-here">New here?</a>
+      <a href="#visit">Visit</a>
       <a href="#beliefs">Beliefs</a>
-      <a href="#story">Our story</a>
       <a href="#sermons">Sermons</a>
-      <a href="#events">Events</a>
-      <a href="#connect">Connect</a>
+      <a href="#events">This Week</a>
+      <a href="#about">About</a>
       <a href="#give">Give</a>
     </nav>
-
     <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
   </header>
 
+  <div class="role-tools hidden" id="roleTools" aria-label="Prototype private-area shortcuts">
+    <span id="roleToolsLabel">Member preview</span>
+    <a href="member.html">Member Home</a>
+    <a href="calendar.html">Calendar</a>
+    <a class="admin-only-tool hidden" href="media-studio.html">Media Studio</a>
+  </div>
+
   <main id="mainContent">
-    <section class="hero" id="home">
+    <section class="hero home-hero" id="home">
       <div class="hero-copy">
-        <p class="eyebrow">Welcome to Audubon Baptist Church</p>
-        <h1>Centered on Christ.<br>Rooted in Scripture.<br>Growing together.</h1>
-        <p class="hero-lead">A church family seeking to worship God faithfully, grow through His Word, love one another, and make Christ known.</p>
+        <p class="eyebrow">A Church in the Park · Louisville, Kentucky</p>
+        <h1>Worship Christ.<br>Grow in His Word.<br>Love one another.</h1>
+        <p class="hero-lead">Audubon Baptist Church is a local church family seeking to make much of Jesus Christ through worship, discipleship, fellowship, prayer, service, and gospel mission.</p>
         <div class="button-row">
-          <a class="button primary" href="#new-here">Plan your visit</a>
+          <a class="button primary" href="#visit">Plan your visit</a>
           <a class="button secondary" href="#sermons">Watch a sermon</a>
-        </div>
-        <div class="quick-facts" aria-label="Quick church information">
-          <div><span>Sunday worship</span><strong>Published: 10:30 AM*</strong></div>
-          <div><span>Location</span><strong>1046 Hess Lane</strong></div>
-          <div><span>Call the church</span><strong>(502) 635-2100</strong></div>
         </div>
       </div>
 
-      <aside class="hero-card">
-        <p class="eyebrow">For this Sunday</p>
-        <h2>Come as our guest.</h2>
-        <p>Audubon Baptist Church gathers at <strong>1046 Hess Lane, Louisville, KY 40217</strong>. Published church materials list Sunday Bible Study & Prayer at 9:30 AM and Worship at 10:30 AM.</p>
-        <div class="button-row compact"><a class="button primary" href="#new-here">Plan your visit</a><a class="button secondary" href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook</a></div>
-        <p class="microcopy">*Service times come from previously published Audubon materials and should be confirmed before the production launch.</p>
+      <aside class="sunday-card" aria-label="Sunday information">
+        <span class="sunday-label">Sunday at Audubon</span>
+        <div class="sunday-time"><strong>10:30</strong><span>AM worship*</span></div>
+        <p>1046 Hess Lane<br>Louisville, KY 40217</p>
+        <div class="stacked-actions">
+          <a class="button primary full" href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Get directions</a>
+          <a class="quiet-link" href="tel:+15026352100">(502) 635-2100</a>
+        </div>
+        <small>*Published church materials; confirm before production launch.</small>
       </aside>
+    </section>
+
+    <section class="home-actions" aria-label="Quick links">
+      <a href="#visit"><span>New here?</span><strong>Know what to expect</strong></a>
+      <a href="#events"><span>This week</span><strong>See upcoming gatherings</strong></a>
+      <a href="#sermons"><span>Sermons</span><strong>Watch or listen</strong></a>
+      <button id="memberQuickLink" type="button"><span>Church family</span><strong>Open Member Home</strong></button>
     </section>
 
     <section class="announcement-strip" aria-label="Church announcement">
       <span class="tag">This week</span>
-      <p id="announcementText">Sample announcement: Join us Wednesday evening for prayer and Bible study.</p>
+      <p id="announcementText">Welcome to Audubon Baptist Church — A Church in the Park.</p>
     </section>
 
-    <section class="section" id="new-here">
-      <div class="section-heading">
-        <p class="eyebrow">New here?</p>
-        <h2>Everything a guest needs, without hunting for it.</h2>
-        <p>Audubon Baptist Church describes itself as <strong>A Church in the Park</strong>. The information below combines current church identity and contact details with schedule information that should be confirmed before launch.</p>
+    <section class="section visit-section" id="visit">
+      <div class="section-heading centered">
+        <p class="eyebrow">Plan your visit</p>
+        <h2>We would be glad to have you with us.</h2>
+        <p>A first visit should feel simple. Here are the essentials; we can add children’s, parking, and accessibility details as leadership confirms them.</p>
       </div>
-      <div class="feature-grid three">
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">01</span>
-          <h3>When & where</h3>
-          <p><strong>1046 Hess Lane, Louisville, KY 40217.</strong> Published materials list Sunday Bible Study & Prayer at 9:30 AM, Worship at 10:30 AM, and a Wednesday Midweek Service at 6:30 PM.</p>
-          <div class="small-link-row"><a href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Directions</a><a href="tel:+15026352100">Call (502) 635-2100</a></div>
-          <span class="placeholder-note">Please confirm current gathering times</span>
+      <div class="visit-grid">
+        <article>
+          <span class="visit-symbol">1</span>
+          <h3>Come to Hess Lane</h3>
+          <p>1046 Hess Lane, Louisville, KY 40217.</p>
+          <a class="text-link-dark" href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Directions →</a>
         </article>
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">02</span>
-          <h3>What to expect</h3>
-          <p>The final visitor page will explain worship, arrival, parking, dress, children's care, and accessibility in plain language. The goal is to remove uncertainty before a guest ever reaches the parking lot.</p>
-          <span class="placeholder-note">Pastor / leadership wording still needed</span>
+        <article>
+          <span class="visit-symbol">2</span>
+          <h3>Join us Sunday</h3>
+          <p>Published materials list Bible Study & Prayer at 9:30 AM and Worship at 10:30 AM.</p>
+          <span class="prototype-detail">Schedule confirmation requested</span>
         </article>
-        <article class="feature-card">
-          <span class="feature-icon" aria-hidden="true">03</span>
-          <h3>Stay connected</h3>
-          <p>Visitors and members can use the new site alongside Audubon's existing Facebook presence while the new platform is developed.</p>
-          <div class="small-link-row"><a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Audubon on Facebook</a><a href="https://www.achurchinthepark.org/our-church/" target="_blank" rel="noopener">Legacy church site</a></div>
-          <span class="placeholder-note">Children / nursery details still needed</span>
+        <article>
+          <span class="visit-symbol">3</span>
+          <h3>Come as our guest</h3>
+          <p>Our goal is simple: welcome you warmly and worship God together.</p>
+          <a class="text-link-dark" href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Find us on Facebook →</a>
         </article>
       </div>
     </section>
 
-    <section class="section contrast" id="beliefs">
-      <div class="section-heading">
-        <p class="eyebrow">What we believe</p>
-        <h2>Brief enough to read. Clear enough to understand.</h2>
-        <p>The home page can provide a concise doctrinal introduction and link to a fuller statement approved by the church.</p>
+    <section class="belief-section" id="beliefs">
+      <div class="belief-intro">
+        <p class="eyebrow light">What we believe</p>
+        <h2>Centered on the good news of Jesus Christ.</h2>
+        <p>Audubon’s present site identifies the church as a cooperating Southern Baptist congregation and the Baptist Faith and Message 2000 as a unifying statement of belief.</p>
+        <a class="button light-button" href="https://www.achurchinthepark.org/our-church/believing/" target="_blank" rel="noopener">Read our existing beliefs page</a>
       </div>
-      <div class="belief-grid">
-        <article><h3>Scripture</h3><p>We receive the Bible as God's written Word and our final authority for faith and life.</p></article>
-        <article><h3>The Gospel</h3><p>We proclaim salvation by God's grace through faith in Jesus Christ, who died for our sins and rose again.</p></article>
-        <article><h3>The Church</h3><p>We are a local Baptist congregation committed to worship, discipleship, fellowship, the ordinances, mission, and service.</p></article>
-        <article><h3>Southern Baptist Affiliation</h3><p>Audubon Baptist Church's current site identifies the congregation as a cooperating member of the Southern Baptist Convention and the Baptist Faith and Message 2000 as a unifying statement of belief.</p></article>
-      </div>
-      <p class="contrast-note">This brief summary reflects Audubon's current published belief page; leadership should still approve the wording used on the new production site.</p>
-    </section>
-
-    <section class="section" id="story">
-      <div class="section-heading">
-        <p class="eyebrow">Our story</p>
-        <h2>A rich legacy, renewed together.</h2>
-        <p>Audubon's current church history tells of a significant 2017 renewal: Audubon Baptist Church, with a long congregational legacy, and The Church at Louisville, a younger church plant, joined together as one congregation. The church describes that season as one of prayer, counsel, revitalization, and God's gracious provision.</p>
-      </div>
-      <div class="story-layout">
-        <article class="story-card large">
-          <span class="tag">A Church in the Park</span>
-          <h3>One congregation</h3>
-          <p>The new website can preserve that story while making the church's present life easier to discover: worship, preaching, fellowship, prayer, discipleship, service, and gospel mission.</p>
-          <a class="text-button link-text-button" href="https://www.achurchinthepark.org/our-church/" target="_blank" rel="noopener">Read the existing church history →</a>
-        </article>
-        <article class="leadership-card">
-          <span class="feature-icon" aria-hidden="true">JA</span>
-          <h3>Jeff Akin</h3>
-          <p class="leadership-title">Lead Pastor</p>
-          <p>The current church site identifies Jeff Akin as Lead Pastor; he previously planted The Church at Louisville before its merger with Audubon.</p>
-        </article>
-        <article class="leadership-card">
-          <span class="feature-icon" aria-hidden="true">DH</span>
-          <h3>Dan Hatfield, Ph.D.</h3>
-          <p class="leadership-title">Pastor Emeritus</p>
-          <p>The current church site identifies Dan Hatfield as Pastor Emeritus after serving as Senior Pastor from 2010–2020 and continuing in ministry.</p>
-        </article>
-      </div>
-      <div class="mission-strip">
-        <div><p class="eyebrow">Going beyond ourselves</p><h3>Gospel mission near and far.</h3></div>
-        <p>Audubon's existing site highlights “Going Beyond Ourselves with the Gospel” and specifically features ministry connected with the backside community at Churchill Downs.</p>
+      <div class="belief-points">
+        <article><strong>Scripture</strong><p>God’s written Word is our final authority for faith and life.</p></article>
+        <article><strong>The Gospel</strong><p>Salvation is by God’s grace through faith in Jesus Christ, crucified and risen.</p></article>
+        <article><strong>The Church</strong><p>We gather for worship, discipleship, fellowship, the ordinances, mission, and service.</p></article>
       </div>
     </section>
 
     <section class="section" id="sermons">
-      <div class="section-heading inline-heading">
+      <div class="section-heading split-heading">
         <div>
           <p class="eyebrow">Sermons</p>
-          <h2>A teaching library that is easy to search.</h2>
+          <h2>Listen again during the week.</h2>
+          <p>Recent sermons can remain immediately available while the complete archive is retained locally.</p>
         </div>
-        <button class="button secondary small" type="button" id="sermonAdminShortcut">Preview publishing tools</button>
+        <button class="button secondary small hidden" id="sermonAdminShortcut" type="button">Open Media Studio</button>
       </div>
 
-      <div class="sermon-feature">
-        <div class="video-placeholder" aria-label="Sample featured sermon video">
-          <div>
-            <span class="play-mark" aria-hidden="true">▶</span>
-            <strong>Featured sermon video</strong>
-            <small>YouTube or a dedicated video service can appear here.</small>
-          </div>
+      <div class="sermon-feature compact-feature">
+        <div class="video-placeholder">
+          <div><span class="play-mark" aria-hidden="true">▶</span><strong>Latest sermon</strong><small>Video will appear here when publishing is connected.</small></div>
         </div>
         <article class="sermon-details">
-          <span class="tag">Sample featured sermon</span>
-          <h3 id="sermonTitle">The Good Shepherd</h3>
-          <p class="sermon-reference" id="sermonReference">John 10:1–18</p>
-          <p id="sermonSpeaker">Pastor · name to confirm</p>
+          <span class="tag">Featured</span>
+          <h3 id="sermonTitle">How to Be Great for God – Beyond Yourself</h3>
+          <p class="sermon-reference" id="sermonReference">Ezra 8:1–15</p>
+          <p id="sermonSpeaker">Pastor Jeff Akin</p>
           <div class="chip-row" id="sermonTags"></div>
           <div class="button-row">
             <button class="button primary" type="button" id="watchDemoButton">Watch</button>
-            <button class="button ghost-dark" type="button" id="audioDemoButton">Audio only</button>
+            <button class="button secondary" type="button" id="audioDemoButton">Audio</button>
           </div>
         </article>
       </div>
 
-      <div class="library-toolbar">
-        <label class="search-box" for="sermonSearch">
-          <span>Search sermon library</span>
-          <input id="sermonSearch" type="search" placeholder="Try a book, passage, topic, or speaker">
-        </label>
-        <div class="filter-row" id="sermonFilters" aria-label="Sermon filters">
-          <button class="filter-chip active" type="button" data-filter="all">All</button>
-          <button class="filter-chip" type="button" data-filter="ezra">Ezra</button>
-          <button class="filter-chip" type="button" data-filter="habakkuk">Habakkuk</button>
-          <button class="filter-chip" type="button" data-filter="archive">Existing archive</button>
+      <details class="sermon-library-details">
+        <summary>Browse the existing sermon archive</summary>
+        <div class="library-toolbar">
+          <label class="search-box" for="sermonSearch"><span>Search sermons</span><input id="sermonSearch" type="search" placeholder="Title, Scripture, topic, speaker"></label>
+          <div class="filter-row" id="sermonFilters">
+            <button class="filter-chip active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="ezra">Ezra</button>
+            <button class="filter-chip" type="button" data-filter="habakkuk">Habakkuk</button>
+          </div>
         </div>
-      </div>
-      <div class="sermon-grid" id="sermonGrid"></div>
-      <p class="empty-state hidden" id="sermonEmpty">No sample sermons match that search.</p>
+        <div class="sermon-grid" id="sermonGrid"></div>
+        <p class="empty-state hidden" id="sermonEmpty">No archive sermons match that search.</p>
+      </details>
     </section>
 
     <section class="section soft" id="events">
-      <div class="section-heading inline-heading">
+      <div class="section-heading split-heading">
         <div>
-          <p class="eyebrow">Church calendar</p>
-          <h2>See what is happening and respond in a few taps.</h2>
+          <p class="eyebrow">This week at Audubon</p>
+          <h2>Know what’s happening.</h2>
+          <p>A simple public summary for guests; signed-in members get the complete three-month calendar and RSVPs.</p>
         </div>
-        <div class="calendar-heading-actions"><span class="role-note" id="rsvpRoleNote">Members can RSVP after signing in.</span><a class="button primary small hidden" id="memberCalendarButton" href="calendar.html">Open 3-month member calendar</a></div>
+        <button class="button primary small" id="calendarPromoButton" type="button">Member calendar</button>
       </div>
       <div class="event-grid" id="eventGrid"></div>
-      <div class="calendar-promo" id="calendarPromo"><div><span class="tag">Member tool</span><h3>Prefer the big picture?</h3><p>Signed-in members can open a dedicated calendar showing three months at once, click any day for details, RSVP, and add events to a personal calendar.</p></div><button class="button secondary" id="calendarPromoButton" type="button">Preview member calendar</button></div>
     </section>
 
-    <section class="section" id="connect">
-      <div class="section-heading">
-        <p class="eyebrow">Connect and care</p>
-        <h2>Useful church tools, gathered into one calm place.</h2>
+    <section class="section about-section" id="about">
+      <div class="about-copy">
+        <p class="eyebrow">Our story</p>
+        <h2>A rich legacy, renewed together.</h2>
+        <p>In 2017, Audubon Baptist Church and The Church at Louisville joined together as one congregation after a season of prayer and counsel. Audubon’s current history describes that union as a gracious work of church revitalization.</p>
+        <a class="text-link-dark" href="https://www.achurchinthepark.org/our-church/" target="_blank" rel="noopener">Read the full existing history →</a>
       </div>
-      <div class="feature-grid three">
-        <article class="action-card">
-          <span class="icon-circle" aria-hidden="true">♡</span>
-          <h3>Prayer</h3>
-          <p>Submit a request and intentionally choose who may see it. Private requests should never become public by accident.</p>
-          <button class="text-button" type="button" data-open-member="prayer">Open prayer area →</button>
-        </article>
-        <article class="action-card">
-          <span class="icon-circle" aria-hidden="true">✓</span>
-          <h3>Serve</h3>
-          <p>Volunteer for meals, work days, ministry tasks, and practical needs without lengthy message threads.</p>
-          <button class="text-button" type="button" data-open-member="groups">View opportunities →</button>
-        </article>
-        <article class="action-card">
-          <span class="icon-circle" aria-hidden="true">…</span>
-          <h3>Church discussion</h3>
-          <p>Keep questions and ministry planning organized by subject so important answers remain easy to find.</p>
-          <button class="text-button" type="button" data-open-member="discussion">Open discussion preview →</button>
-        </article>
+      <div class="pastor-cards">
+        <article><span class="pastor-initials">JA</span><div><h3>Jeff Akin</h3><p>Lead Pastor</p></div></article>
+        <article><span class="pastor-initials">DH</span><div><h3>Dan Hatfield, Ph.D.</h3><p>Pastor Emeritus</p></div></article>
       </div>
     </section>
 
-    <section class="section contrast" id="give">
-      <div class="give-layout">
-        <div>
-          <p class="eyebrow">Giving</p>
-          <h2>A clear church page with a secure payment handoff.</h2>
-          <p>The church website can explain giving and designated funds while a trusted payment provider handles cards and bank information. The church application should never store raw card numbers.</p>
-        </div>
-        <div class="give-card">
-          <label for="fundSelect">Example fund</label>
-          <select id="fundSelect">
-            <option>General Fund</option>
-            <option>Missions</option>
-            <option>Benevolence</option>
-          </select>
-          <button class="button primary full" type="button" id="givingButton">Preview secure giving handoff</button>
-          <p class="microcopy">No payments are active in this leadership prototype.</p>
-        </div>
+    <section class="section connect-section">
+      <div>
+        <p class="eyebrow">Church family</p>
+        <h2>One place for the life of the church.</h2>
+        <p>Members can use a private home for the calendar, prayer requests, service opportunities, church discussion, and more.</p>
       </div>
+      <button class="button primary" id="memberHomeButton" type="button">Open Member Home</button>
     </section>
 
-    <section class="member-shell hidden" id="memberArea" aria-labelledby="memberHeading">
-      <div class="member-header">
-        <div>
-          <p class="eyebrow">Member area</p>
-          <h2 id="memberHeading">Welcome to the member area.</h2>
-          <p id="memberSubheading">The content below changes according to the role selected in the prototype controls.</p>
-        </div>
-        <span class="access-badge" id="accessBadge">Church member</span>
+    <section class="giving-section" id="give">
+      <div>
+        <p class="eyebrow light">Giving</p>
+        <h2>Simple, secure, and separate from private card data.</h2>
+        <p>The website can provide a clear giving experience while a dedicated provider handles payment credentials and receipts.</p>
       </div>
-
-      <div class="member-tool-ribbon"><div><span class="tag">Member calendar</span><h3>See the next three months at a glance.</h3><p>Open events, ministry items, RSVPs, and personal calendar downloads in one uncluttered view.</p></div><a class="button primary" href="calendar.html">Open member calendar</a></div>
-
-      <div class="dashboard-grid member-summary">
-        <article class="dashboard-card"><span class="tag">Next gathering</span><h3>Midweek Service</h3><p>Published schedule · Wednesday 6:30 PM*</p></article>
-        <article class="dashboard-card"><span class="tag">Your RSVP</span><h3>Church Work Day</h3><p id="memberRsvpSummary">Not yet answered</p></article>
-        <article class="dashboard-card"><span class="tag">Open service needs</span><h3>2 opportunities</h3><p>Sample volunteer tasks are available below.</p></article>
-      </div>
-
-      <div class="member-tabs" role="tablist" aria-label="Member area sections">
-        <button class="member-tab active" type="button" data-tab="overview">Overview</button>
-        <button class="member-tab" type="button" data-tab="prayer">Prayer</button>
-        <button class="member-tab" type="button" data-tab="groups">Groups & service</button>
-        <button class="member-tab" type="button" data-tab="discussion">Discussion</button>
-      </div>
-
-      <div class="tab-panel active" data-panel="overview">
-        <div class="member-callout">
-          <div><h3>One place for the week ahead</h3><p>Announcements, events, signups, prayer, and ministry information can be gathered here after a member signs in.</p></div>
-          <a class="button secondary small" href="#events">View calendar</a>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="prayer">
-        <div class="split-panel">
-          <div>
-            <div class="panel-heading"><div><h3>Prayer list</h3><p>Only requests permitted for the current role appear here.</p></div></div>
-            <div class="prayer-list" id="prayerList"></div>
-          </div>
-          <form class="member-form" id="prayerForm">
-            <h3>Submit a sample request</h3>
-            <label for="prayerTitleInput">Short title</label>
-            <input id="prayerTitleInput" required maxlength="80" placeholder="Example: Prayer for a family">
-            <label for="prayerTextInput">Request</label>
-            <textarea id="prayerTextInput" rows="4" required placeholder="Use sample information only in this public prototype."></textarea>
-            <label for="prayerVisibilityInput">Who may see it?</label>
-            <select id="prayerVisibilityInput">
-              <option value="member">Church members</option>
-              <option value="group">My ministry / group</option>
-              <option value="leadership">Church leadership</option>
-            </select>
-            <button class="button primary small" type="submit">Add sample request</button>
-            <p class="microcopy">Stored only in this browser. Do not enter real private information yet.</p>
-          </form>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="groups">
-        <div class="feature-grid three">
-          <article class="dashboard-card"><span class="tag">Open need</span><h3>Church Work Day</h3><p>Sample: landscaping and lunch helpers are still needed.</p><button class="text-button" type="button" id="volunteerButton">Volunteer →</button></article>
-          <article class="dashboard-card group-only"><span class="tag">Your group</span><h3>Sample Ministry Team</h3><p>Group-specific information appears only for assigned members.</p><button class="text-button" type="button">Open group →</button></article>
-          <article class="dashboard-card leadership-only"><span class="tag">Leadership</span><h3>Ministry planning</h3><p>Restricted planning items can remain separate from public or general member content.</p><button class="text-button" type="button">Open planning →</button></article>
-        </div>
-      </div>
-
-      <div class="tab-panel" data-panel="discussion">
-        <div class="panel-heading"><div><h3>Church discussion</h3><p>A simple subject-based forum can preserve decisions and answers better than scattered text chains.</p></div><button class="button secondary small" type="button" id="newPostButton">New post</button></div>
-        <div class="discussion-list">
-          <article><span class="tag">Announcement</span><h4>Sample: Fall ministry calendar</h4><p>Leadership can pin important conversations and keep replies attached to the right subject.</p><small>3 sample replies</small></article>
-          <article><span class="tag">Question</span><h4>Sample: What should I bring to the work day?</h4><p>Members can ask practical questions and later find the answer again.</p><small>2 sample replies</small></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="admin-shell hidden" id="adminArea" aria-labelledby="adminHeading">
-      <div class="admin-header">
-        <div>
-          <p class="eyebrow">Administrator preview</p>
-          <h2 id="adminHeading">Manage routine church content without editing code.</h2>
-          <p>Changes in this prototype stay only in this browser. Production administration will require secure sign-in, server-side permissions, shared database storage, and an audit trail.</p>
-        </div>
-        <button class="button admin-secondary small" type="button" id="resetDemo">Reset demo data</button>
-      </div>
-
-      <div class="admin-stats">
-        <div><span>Public content</span><strong>Ready to review</strong></div>
-        <div><span>Upcoming events</span><strong id="eventCount">—</strong></div>
-        <div><span>Sermon workflow</span><strong><a class="admin-stat-link" href="media-studio.html">Open media studio</a></strong></div>
-        <div><span>Private data</span><strong>Not connected</strong></div>
-      </div>
-
-      <div class="admin-grid">
-        <form class="admin-card" id="announcementForm">
-          <span class="admin-kicker">Homepage</span>
-          <h3>Announcement</h3>
-          <label for="announcementInput">Announcement text</label>
-          <textarea id="announcementInput" rows="4"></textarea>
-          <button class="button primary small" type="submit">Save in this browser</button>
-        </form>
-
-        <form class="admin-card" id="eventForm">
-          <span class="admin-kicker">Calendar</span>
-          <h3>Add event</h3>
-          <label for="eventTitle">Title</label>
-          <input id="eventTitle" required>
-          <div class="two-field-row">
-            <div><label for="eventDate">Date</label><input id="eventDate" type="date" required></div>
-            <div><label for="eventTime">Time</label><input id="eventTime" type="time" value="18:30"></div>
-          </div>
-          <label for="eventAudience">Audience</label>
-          <select id="eventAudience"><option value="churchwide">Churchwide</option><option value="member">Members</option><option value="group">Ministry group</option></select>
-          <button class="button primary small" type="submit">Add sample event</button>
-        </form>
-
-        <form class="admin-card wide" id="sermonForm">
-          <div class="panel-heading">
-            <div><span class="admin-kicker">Media</span><h3>Sermon publishing workflow</h3><p>Routine metadata plus simple trim and audio controls.</p></div>
-            <span class="tag">Prototype</span>
-          </div>
-          <div class="form-grid">
-            <div><label for="sermonTitleInput">Title</label><input id="sermonTitleInput"></div>
-            <div><label for="sermonReferenceInput">Scripture</label><input id="sermonReferenceInput"></div>
-            <div><label for="sermonSpeakerInput">Speaker</label><input id="sermonSpeakerInput"></div>
-            <div><label for="sermonTagsInput">Tags</label><input id="sermonTagsInput" placeholder="John, Shepherd, Gospel"></div>
-            <div><label for="trimStart">Begin at</label><input id="trimStart" value="00:08:42"></div>
-            <div><label for="trimEnd">End at</label><input id="trimEnd" value="00:51:13"></div>
-            <div><label for="audioGain">Audio gain</label><input id="audioGain" value="+1.5 dB"></div>
-            <div class="checkbox-field"><label><input id="normalizeAudio" type="checkbox" checked> Normalize speech loudness</label></div>
-          </div>
-          <div class="button-row">
-            <button class="button primary small" type="submit">Save sermon metadata</button>
-            <a class="button admin-secondary small" href="media-studio.html">Open full media studio</a><button class="button admin-secondary small" type="button" id="processPreview">Preview media job</button>
-          </div>
-          <p class="microcopy" id="mediaJobStatus">No media processing runs in the static demo.</p>
-        </form>
-      </div>
+      <button class="button light-button" id="givingButton" type="button">Preview online giving</button>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div>
-      <strong>Audubon Baptist Church</strong>
-      <p>Leadership prototype for review and planning.</p>
+    <div class="footer-brand">
+      <span class="brand-mark footer-mark" aria-hidden="true">A</span>
+      <div><strong>Audubon Baptist Church</strong><p>A Church in the Park</p></div>
+    </div>
+    <div class="footer-contact">
+      <span>1046 Hess Lane · Louisville, KY 40217</span>
+      <a href="tel:+15026352100">(502) 635-2100</a>
     </div>
     <div class="footer-links">
       <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook</a>
-      <a href="#new-here">New here?</a>
-      <a href="#beliefs">Beliefs</a>
       <a href="#sermons">Sermons</a>
-      <a href="#events">Events</a>
+      <button id="footerMemberButton" type="button">Member Home</button>
     </div>
   </footer>
 
   <dialog class="signin-dialog" id="signInDialog">
     <form method="dialog" class="dialog-card">
       <div class="dialog-heading">
-        <div><p class="eyebrow">Member sign in</p><h2>Preview the private side of the site.</h2></div>
-        <button class="dialog-close" type="submit" value="cancel" aria-label="Close sign-in preview">×</button>
+        <div><p class="eyebrow">Member access preview</p><h2>Choose an account type.</h2></div>
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
       </div>
-      <p>Real authentication is intentionally not connected yet. For the pastor demo, choose the kind of account you would like to preview.</p>
+      <p>Production will use real credentials. The prototype lets us review each private-area experience without creating accounts yet.</p>
       <label for="dialogRole">Preview account</label>
       <select id="dialogRole">
         <option value="member">Church member</option>
@@ -432,8 +244,7 @@
         <option value="leadership">Church leadership</option>
         <option value="admin">Administrator</option>
       </select>
-      <button class="button primary full" id="dialogContinue" type="button">Continue to member area</button>
-      <p class="microcopy">No password or personal information is collected in this public prototype.</p>
+      <button class="button primary full" id="dialogContinue" type="button">Continue</button>
     </form>
   </dialog>
 
