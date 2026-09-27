@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audubon Baptist Church website administration prototype">
+  <meta name="theme-color" content="#8f2f35">
+  <title>Site Administration | Audubon Baptist Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page admin-page">
+  <a class="skip-link" href="#adminMain">Skip to administration</a>
+
+  <div class="prototype-bar">
+    <div><strong>Leadership prototype</strong><span>Administrator tools · browser-local demonstration</span></div>
+    <div class="prototype-actions"><span id="adminRoleLabel">Administrator preview required</span></div>
+  </div>
+
+  <header class="site-header app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
+    </a>
+    <nav class="app-nav" aria-label="Administrator tools">
+      <a href="member.html">Member Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a class="active" href="admin.html">Site Admin</a>
+      <a href="media-studio.html">Media Studio</a>
+    </nav>
+    <a class="member-button link-button" href="index.html">Public site</a>
+  </header>
+
+  <main id="adminMain">
+    <section class="access-gate hidden" id="adminGate">
+      <div class="access-gate-card">
+        <span class="gate-icon" aria-hidden="true">+</span>
+        <p class="eyebrow">Administrator tool</p>
+        <h1>Site Administration</h1>
+        <p>Production access will require an approved administrator account. The leadership prototype can open the workspace without credentials.</p>
+        <button class="button primary" id="adminPreviewButton" type="button">Preview as administrator</button>
+        <a class="button secondary" href="index.html">Return to site</a>
+      </div>
+    </section>
+
+    <section class="admin-home hidden" id="adminHome">
+      <div class="admin-welcome">
+        <div>
+          <p class="eyebrow">Administrator</p>
+          <h1>Keep the site current.</h1>
+          <p>Routine church communication should take minutes, not require editing code.</p>
+        </div>
+        <a class="button secondary" href="media-studio.html">Open Media Studio</a>
+      </div>
+
+      <div class="admin-overview">
+        <a href="calendar.html"><span>Calendar</span><strong id="adminEventCount">— upcoming</strong></a>
+        <a href="media-studio.html"><span>Media</span><strong>Prepare Sunday sermon</strong></a>
+        <a href="member.html"><span>Members</span><strong>Preview member home</strong></a>
+        <a href="index.html"><span>Public site</span><strong>Review current presentation</strong></a>
+      </div>
+
+      <div class="admin-edit-grid">
+        <form class="clean-admin-card" id="adminAnnouncementForm">
+          <span class="admin-kicker">Homepage</span>
+          <h2>Weekly announcement</h2>
+          <p>Short text shown near the top of the public site.</p>
+          <label for="adminAnnouncement">Announcement</label>
+          <textarea id="adminAnnouncement" rows="4"></textarea>
+          <button class="button primary small" type="submit">Save announcement</button>
+        </form>
+
+        <form class="clean-admin-card" id="adminEventForm">
+          <span class="admin-kicker">Calendar</span>
+          <h2>Add an event</h2>
+          <div class="two-field-row">
+            <div><label for="adminEventDate">Date</label><input id="adminEventDate" type="date" required></div>
+            <div><label for="adminEventTime">Time</label><input id="adminEventTime" type="time" value="18:30"></div>
+          </div>
+          <label for="adminEventTitle">Title</label>
+          <input id="adminEventTitle" required>
+          <label for="adminEventAudience">Audience</label>
+          <select id="adminEventAudience">
+            <option value="churchwide">Everyone</option>
+            <option value="member">Members</option>
+            <option value="group">Ministry / group</option>
+          </select>
+          <label for="adminEventDescription">Description</label>
+          <textarea id="adminEventDescription" rows="3"></textarea>
+          <button class="button primary small" type="submit">Add event</button>
+        </form>
+
+        <form class="clean-admin-card span-two" id="adminSermonForm">
+          <span class="admin-kicker">Sermons</span>
+          <div class="admin-card-heading"><div><h2>Featured sermon</h2><p>Edit the metadata shown on the public homepage.</p></div><a class="button secondary small" href="media-studio.html">Upload & trim video</a></div>
+          <div class="studio-form-grid">
+            <label>Title<input id="adminSermonTitle"></label>
+            <label>Scripture<input id="adminSermonReference"></label>
+            <label>Speaker<input id="adminSermonSpeaker"></label>
+            <label>Tags<input id="adminSermonTags" placeholder="Ezra, Mission, Faith"></label>
+          </div>
+          <button class="button primary small" type="submit">Save sermon details</button>
+        </form>
+      </div>
+
+      <section class="member-note">
+        <strong>Production note</strong>
+        <p>These controls currently save only to this browser. The production version will write to the church database, enforce permissions, and keep an audit history.</p>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast hidden" id="adminToast" role="status" aria-live="polite"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
