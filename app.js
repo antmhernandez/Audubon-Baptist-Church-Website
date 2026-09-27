@@ -1,32 +1,4 @@
-const DEFAULT_DATA = {
-  role: "public",
-  announcement: "Sample announcement: Join us Wednesday evening for prayer and Bible study.",
-  sermon: {
-    title: "The Good Shepherd",
-    reference: "John 10:1–18",
-    speaker: "Pastor · name to confirm",
-    tags: ["John", "Shepherd", "Gospel"]
-  },
-  events: [
-    { id: "event-1", date: "Wednesday · Sample 6:30 PM", title: "Prayer & Bible Study", audience: "Churchwide", description: "A midweek gathering for prayer, fellowship, and study." },
-    { id: "event-2", date: "Saturday · Sample 9:00 AM", title: "Church Work Day", audience: "Churchwide", description: "Serve together on practical projects around the church." },
-    { id: "event-3", date: "Sunday · After Worship", title: "Fellowship Lunch", audience: "Members & guests", description: "A sample calendar item demonstrating RSVP capability." }
-  ],
-  rsvps: {},
-  prayers: [
-    { id: "prayer-1", visibility: "member", label: "Members", title: "Sample congregational prayer request", text: "A members-only request can be shared without publishing private details on the public website." },
-    { id: "prayer-2", visibility: "group", label: "Ministry group", title: "Sample ministry-team request", text: "Group-level requests are visible only to members assigned to that ministry." },
-    { id: "prayer-3", visibility: "leadership", label: "Leadership", title: "Sample leadership prayer concern", text: "Sensitive matters can be restricted to leaders rather than placed on a general list." }
-  ]
-};
-
-const SAMPLE_SERMONS = [
-  { id: 1, title: "The Good Shepherd", reference: "John 10:1–18", speaker: "Pastor · sample", group: "new", tags: ["John", "Shepherd", "Gospel"] },
-  { id: 2, title: "Grace and Peace", reference: "Romans 5:1–11", speaker: "Pastor · sample", group: "new", tags: ["Romans", "Grace", "Peace"] },
-  { id: 3, title: "The Lord Is My Shepherd", reference: "Psalm 23", speaker: "Pastor · sample", group: "old", tags: ["Psalms", "Trust", "Comfort"] },
-  { id: 4, title: "Walking in Wisdom", reference: "Proverbs 3:1–12", speaker: "Pastor · sample", group: "old", tags: ["Proverbs", "Wisdom", "Trust"] }
-];
-
+const STORAGE_KEY = "abcDemoV3";
 const ROLE_LABELS = {
   public: "Public visitor",
   member: "Church member",
@@ -34,26 +6,119 @@ const ROLE_LABELS = {
   leadership: "Church leadership",
   admin: "Administrator"
 };
-
 const ROLE_LEVEL = { public: 0, member: 1, group: 2, leadership: 3, admin: 4 };
 
-function cloneDefaultData() {
-  return JSON.parse(JSON.stringify(DEFAULT_DATA));
+function ymd(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
+
+function nextWeekday(start, weekday, offsetWeeks = 0) {
+  const date = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const delta = (weekday - date.getDay() + 7) % 7;
+  date.setDate(date.getDate() + delta + offsetWeeks * 7);
+  return date;
+}
+
+function addDays(start, count) {
+  const date = new Date(start);
+  date.setDate(date.getDate() + count);
+  return date;
+}
+
+function buildDefaultEvents() {
+  const today = new Date();
+  const events = [];
+  for (let week = 0; week < 14; week += 1) {
+    const sunday = nextWeekday(today, 0, week);
+    const wednesday = nextWeekday(today, 3, week);
+    events.push({
+      id: `worship-${ymd(sunday)}`,
+      dateISO: ymd(sunday),
+      time: "10:30",
+      title: "Sunday Worship",
+      audience: "churchwide",
+      description: "Audubon's published materials list Sunday worship at 10:30 AM. Please confirm the current schedule before production.",
+      source: "published"
+    });
+    events.push({
+      id: `midweek-${ymd(wednesday)}`,
+      dateISO: ymd(wednesday),
+      time: "18:30",
+      title: "Midweek Service",
+      audience: "churchwide",
+      description: "Audubon's published materials list a Wednesday midweek service at 6:30 PM. Please confirm the current schedule before production.",
+      source: "published"
+    });
+  }
+  const workDay = addDays(today, 12);
+  const groupMeeting = addDays(today, 31);
+  events.push({
+    id: "sample-work-day",
+    dateISO: ymd(workDay),
+    time: "09:00",
+    title: "Sample: Church Work Day",
+    audience: "member",
+    description: "Demonstration event showing member RSVP and volunteer planning.",
+    source: "sample"
+  });
+  events.push({
+    id: "sample-ministry-meeting",
+    dateISO: ymd(groupMeeting),
+    time: "18:00",
+    title: "Sample: Ministry Team Meeting",
+    audience: "group",
+    description: "Demonstration event showing ministry-specific calendar visibility.",
+    source: "sample"
+  });
+  return events;
+}
+
+function defaultData() {
+  return {
+    role: "public",
+    announcement: "Welcome to Audubon Baptist Church — A Church in the Park.",
+    sermon: {
+      title: "How to Be Great for God – Beyond Yourself",
+      reference: "Ezra 8:1–15",
+      speaker: "Pastor Jeff Akin",
+      tags: ["Ezra", "Beyond Yourself", "Mission"]
+    },
+    events: buildDefaultEvents(),
+    rsvps: {},
+    prayers: [
+      { id: "prayer-1", visibility: "member", label: "Members", title: "Sample congregational prayer request", text: "A members-only request can be shared without publishing private details on the public website." },
+      { id: "prayer-2", visibility: "group", label: "Ministry group", title: "Sample ministry-team request", text: "Group-level requests are visible only to members assigned to that ministry." },
+      { id: "prayer-3", visibility: "leadership", label: "Leadership", title: "Sample leadership prayer concern", text: "Sensitive matters can be restricted to leaders rather than placed on a general list." }
+    ],
+    mediaDrafts: []
+  };
+}
+
+const ARCHIVE_SERMONS = [
+  { id: 1, title: "How to Be Great for God – Beyond Yourself", reference: "Ezra 8:1–15", speaker: "Pastor Jeff Akin", date: "February 12, 2023", group: "ezra", tags: ["Ezra", "Mission", "Beyond Yourself"] },
+  { id: 2, title: "The Inclusivity of God", reference: "Ezra 6:16–22", speaker: "Pastor Jeff Akin", date: "January 22, 2023", group: "ezra", tags: ["Ezra", "Worship", "God"] },
+  { id: 3, title: "Bye Bye Babylon", reference: "Ezra 6:1–15", speaker: "Pastor Jeff Akin", date: "January 15, 2023", group: "ezra", tags: ["Ezra", "Providence"] },
+  { id: 4, title: "Yet I Will Quietly Wait", reference: "Habakkuk 3:3–16", speaker: "Pastor Jeff Akin", date: "August 22, 2021", group: "habakkuk", tags: ["Habakkuk", "Waiting", "Faith"] }
+];
 
 function loadData() {
   try {
-    const stored = JSON.parse(localStorage.getItem("abcDemoV2") || "{}");
+    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    const base = defaultData();
     return {
-      ...cloneDefaultData(),
+      ...base,
       ...stored,
-      sermon: { ...cloneDefaultData().sermon, ...(stored.sermon || {}) },
-      events: Array.isArray(stored.events) ? stored.events : cloneDefaultData().events,
+      sermon: { ...base.sermon, ...(stored.sermon || {}) },
+      events: Array.isArray(stored.events) && stored.events.some(event => event.dateISO) ? stored.events : base.events,
       rsvps: stored.rsvps || {},
-      prayers: Array.isArray(stored.prayers) ? stored.prayers : cloneDefaultData().prayers
+      prayers: Array.isArray(stored.prayers) && stored.prayers.length ? stored.prayers : base.prayers,
+      mediaDrafts: Array.isArray(stored.mediaDrafts) ? stored.mediaDrafts : []
     };
   } catch {
-    return cloneDefaultData();
+    return defaultData();
   }
 }
 
@@ -62,7 +127,7 @@ let activeSermonFilter = "all";
 
 function saveData() {
   try {
-    localStorage.setItem("abcDemoV2", JSON.stringify(data));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
     showToast("This browser is not allowing local demo storage.");
   }
@@ -78,8 +143,8 @@ function showToast(message) {
   const toast = document.getElementById("toast");
   toast.textContent = message;
   toast.classList.remove("hidden");
-  window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => toast.classList.add("hidden"), 3200);
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.add("hidden"), 3200);
 }
 
 function openDialog(dialog) {
@@ -90,6 +155,36 @@ function openDialog(dialog) {
 function closeDialog(dialog) {
   if (typeof dialog.close === "function") dialog.close();
   else dialog.removeAttribute("open");
+}
+
+function formatTime(time) {
+  if (!time) return "Time TBD";
+  const [hours, minutes] = time.split(":").map(Number);
+  return new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(new Date(2000, 0, 1, hours, minutes));
+}
+
+function formatEventDate(event) {
+  const [year, month, day] = event.dateISO.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+  const formatted = new Intl.DateTimeFormat("en-US", { weekday: "short", month: "short", day: "numeric" }).format(date);
+  return `${formatted} · ${formatTime(event.time)}`;
+}
+
+function allowedEvents() {
+  const level = ROLE_LEVEL[data.role];
+  return data.events.filter(event => {
+    if (event.audience === "group" && level < ROLE_LEVEL.group) return false;
+    if (event.audience === "member" && level < ROLE_LEVEL.member) return false;
+    return true;
+  });
+}
+
+function upcomingEvents(limit = 3) {
+  const today = ymd(new Date());
+  return allowedEvents()
+    .filter(event => event.dateISO >= today)
+    .sort((a, b) => (a.dateISO + (a.time || "")).localeCompare(b.dateISO + (b.time || "")))
+    .slice(0, limit);
 }
 
 function renderAnnouncement() {
@@ -111,24 +206,21 @@ function renderSermon() {
 
 function renderSermonLibrary() {
   const query = document.getElementById("sermonSearch").value.trim().toLowerCase();
-  const matches = SAMPLE_SERMONS.filter(item => {
-    const text = [item.title, item.reference, item.speaker, ...item.tags].join(" ").toLowerCase();
+  const matches = ARCHIVE_SERMONS.filter(item => {
+    const text = [item.title, item.reference, item.speaker, item.date, ...item.tags].join(" ").toLowerCase();
     const matchesQuery = !query || text.includes(query);
-    const matchesFilter =
-      activeSermonFilter === "all" ||
-      item.group === activeSermonFilter ||
-      (activeSermonFilter === "topic" && item.tags.length > 0);
+    const matchesFilter = activeSermonFilter === "all" || item.group === activeSermonFilter || (activeSermonFilter === "archive");
     return matchesQuery && matchesFilter;
   });
 
   document.getElementById("sermonGrid").innerHTML = matches.map(item => `
     <article class="sermon-card">
-      <span class="tag">Sample archive entry</span>
+      <span class="tag">Existing archive</span>
       <h3>${escapeHtml(item.title)}</h3>
       <span class="sermon-ref">${escapeHtml(item.reference)}</span>
-      <p>${escapeHtml(item.speaker)}</p>
+      <p>${escapeHtml(item.date)} · ${escapeHtml(item.speaker)}</p>
       <div class="chip-row">${item.tags.map(tag => `<span class="chip">${escapeHtml(tag)}</span>`).join("")}</div>
-      <button class="text-button sermon-open" type="button" data-sermon-id="${item.id}">Open sermon →</button>
+      <button class="text-button sermon-open" type="button" data-sermon-id="${item.id}">Feature this sermon →</button>
     </article>
   `).join("");
 
@@ -136,13 +228,13 @@ function renderSermonLibrary() {
 
   document.querySelectorAll(".sermon-open").forEach(button => {
     button.addEventListener("click", () => {
-      const item = SAMPLE_SERMONS.find(sermon => String(sermon.id) === button.dataset.sermonId);
+      const item = ARCHIVE_SERMONS.find(sermon => String(sermon.id) === button.dataset.sermonId);
       if (!item) return;
       data.sermon = { title: item.title, reference: item.reference, speaker: item.speaker, tags: item.tags };
       saveData();
       renderSermon();
       document.getElementById("sermons").scrollIntoView({ behavior: "smooth" });
-      showToast("Loaded a sample sermon into the featured area.");
+      showToast("Loaded an existing Audubon archive entry into the featured-sermon prototype.");
     });
   });
 }
@@ -150,14 +242,17 @@ function renderSermonLibrary() {
 function renderEvents() {
   const isMember = ROLE_LEVEL[data.role] >= ROLE_LEVEL.member;
   const grid = document.getElementById("eventGrid");
-  grid.innerHTML = data.events.map(event => {
+  const events = upcomingEvents(3);
+
+  grid.innerHTML = events.map(event => {
     const current = data.rsvps[event.id] || "";
+    const sourceLabel = event.source === "sample" ? "Sample event" : event.source === "published" ? "Published schedule*" : "Calendar";
     return `
       <article class="event-card">
-        <span class="event-date">${escapeHtml(event.date)}</span>
+        <span class="event-date">${escapeHtml(formatEventDate(event))}</span>
         <h3>${escapeHtml(event.title)}</h3>
         <p>${escapeHtml(event.description)}</p>
-        <div class="event-meta"><span class="chip">${escapeHtml(event.audience)}</span></div>
+        <div class="event-meta"><span class="chip">${escapeHtml(sourceLabel)}</span><span class="chip">${escapeHtml(event.audience)}</span></div>
         <div class="rsvp-actions" aria-label="RSVP for ${escapeHtml(event.title)}">
           <button class="rsvp-choice ${current === "going" ? "selected" : ""}" type="button" data-rsvp-id="${escapeHtml(event.id)}" data-rsvp-value="going" ${isMember ? "" : "disabled"}>${isMember ? "Going" : "Sign in to RSVP"}</button>
           <button class="rsvp-choice ${current === "maybe" ? "selected" : ""}" type="button" data-rsvp-id="${escapeHtml(event.id)}" data-rsvp-value="maybe" ${isMember ? "" : "disabled"}>${isMember ? "Maybe" : "Member only"}</button>
@@ -166,7 +261,8 @@ function renderEvents() {
     `;
   }).join("");
 
-  document.getElementById("eventCount").textContent = String(data.events.length);
+  const today = ymd(new Date());
+  document.getElementById("eventCount").textContent = String(data.events.filter(event => event.dateISO >= today).length);
 
   grid.querySelectorAll("[data-rsvp-id]").forEach(button => {
     button.addEventListener("click", () => {
@@ -186,11 +282,14 @@ function renderEvents() {
 }
 
 function renderMemberSummary() {
-  const workDay = data.events.find(event => event.title.toLowerCase().includes("work day"));
-  if (!workDay) return;
+  const workDay = data.events.find(event => event.id === "sample-work-day");
+  const summary = document.getElementById("memberRsvpSummary");
+  if (!workDay) {
+    summary.textContent = "Open calendar";
+    return;
+  }
   const answer = data.rsvps[workDay.id];
-  document.getElementById("memberRsvpSummary").textContent =
-    answer === "going" ? "Going ✓" : answer === "maybe" ? "Maybe" : "Not yet answered";
+  summary.textContent = answer === "going" ? "Going ✓" : answer === "maybe" ? "Maybe" : "Not yet answered";
 }
 
 function renderPrayers() {
@@ -225,6 +324,8 @@ function renderRole() {
   document.getElementById("memberHeading").textContent = isAdmin ? "Administrator workspace and member view." : "Welcome to the member area.";
   document.getElementById("rsvpRoleNote").textContent = isMember ? "RSVPs are enabled in this preview." : "Members can RSVP after signing in.";
   document.getElementById("memberSignInButton").textContent = isMember ? ROLE_LABELS[role] : "Member sign in";
+  document.getElementById("memberCalendarButton").classList.toggle("hidden", !isMember);
+  document.getElementById("calendarPromoButton").textContent = isMember ? "Open 3-month calendar" : "Preview member calendar";
 
   document.querySelectorAll(".group-only").forEach(element => element.classList.toggle("hidden", !isGroup));
   document.querySelectorAll(".leadership-only").forEach(element => element.classList.toggle("hidden", !isLeadership));
@@ -244,9 +345,7 @@ function activateRole(role, scrollToMember = false) {
   saveData();
   renderRole();
   if (role !== "public") showToast(`Previewing as ${ROLE_LABELS[role]}. This is a design demo, not real authentication.`);
-  if (scrollToMember && role !== "public") {
-    document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
-  }
+  if (scrollToMember && role !== "public") document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
 }
 
 document.getElementById("roleSwitcher").addEventListener("change", event => activateRole(event.target.value));
@@ -275,17 +374,23 @@ document.querySelectorAll("#mainNav a").forEach(link => {
 });
 
 document.getElementById("memberSignInButton").addEventListener("click", () => {
-  if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) {
-    document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
-  } else {
-    openDialog(document.getElementById("signInDialog"));
-  }
+  if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
+  else openDialog(document.getElementById("signInDialog"));
 });
 
 document.getElementById("dialogContinue").addEventListener("click", () => {
   const role = document.getElementById("dialogRole").value;
   closeDialog(document.getElementById("signInDialog"));
   activateRole(role, true);
+});
+
+document.getElementById("calendarPromoButton").addEventListener("click", () => {
+  if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) {
+    window.location.href = "calendar.html";
+  } else {
+    openDialog(document.getElementById("signInDialog"));
+    showToast("Choose a member role, then open the member calendar.");
+  }
 });
 
 document.querySelectorAll(".member-tab").forEach(button => {
@@ -313,8 +418,8 @@ document.querySelectorAll("[data-filter]").forEach(button => {
   });
 });
 
-document.getElementById("watchDemoButton").addEventListener("click", () => showToast("A real sermon video will play here after the media provider is connected."));
-document.getElementById("audioDemoButton").addEventListener("click", () => showToast("An audio-only sermon option can be generated during media processing."));
+document.getElementById("watchDemoButton").addEventListener("click", () => showToast("The production site will play the published sermon video here."));
+document.getElementById("audioDemoButton").addEventListener("click", () => showToast("The media workflow can create an audio-only sermon copy automatically."));
 document.getElementById("givingButton").addEventListener("click", () => showToast("Production will hand off securely to the church's approved giving provider."));
 document.getElementById("volunteerButton").addEventListener("click", () => showToast("Sample volunteer signup recorded conceptually; real shared signups require the database phase."));
 document.getElementById("newPostButton").addEventListener("click", () => showToast("A production forum will open a new-post composer here."));
@@ -341,7 +446,7 @@ document.getElementById("prayerForm").addEventListener("submit", event => {
 
 document.getElementById("announcementForm").addEventListener("submit", event => {
   event.preventDefault();
-  data.announcement = document.getElementById("announcementInput").value.trim() || DEFAULT_DATA.announcement;
+  data.announcement = document.getElementById("announcementInput").value.trim() || defaultData().announcement;
   saveData();
   renderAnnouncement();
   showToast("Homepage announcement updated in this browser.");
@@ -352,14 +457,17 @@ document.getElementById("eventForm").addEventListener("submit", event => {
   data.events.push({
     id: `event-${Date.now()}`,
     title: document.getElementById("eventTitle").value.trim(),
-    date: document.getElementById("eventDate").value.trim(),
+    dateISO: document.getElementById("eventDate").value,
+    time: document.getElementById("eventTime").value,
     audience: document.getElementById("eventAudience").value,
-    description: "Administrator-created sample event."
+    description: "Administrator-created prototype event.",
+    source: "admin-demo"
   });
   saveData();
   event.target.reset();
+  document.getElementById("eventTime").value = "18:30";
   renderEvents();
-  showToast("Sample calendar item added.");
+  showToast("Calendar item added to the shared browser prototype data.");
 });
 
 document.getElementById("sermonForm").addEventListener("submit", event => {
@@ -381,17 +489,17 @@ document.getElementById("processPreview").addEventListener("click", () => {
   const gain = document.getElementById("audioGain").value.trim();
   const normalized = document.getElementById("normalizeAudio").checked;
   document.getElementById("mediaJobStatus").textContent =
-    `Future media job: trim ${start || "start"}–${end || "end"}, gain ${gain || "unchanged"}, speech normalization ${normalized ? "on" : "off"}. A production worker would run this with FFmpeg or a video API.`;
+    `Future media job: trim ${start || "start"}–${end || "end"}, gain ${gain || "unchanged"}, speech normalization ${normalized ? "on" : "off"}. The dedicated Media Studio now demonstrates the full upload-and-trim workflow.`;
 });
 
 document.getElementById("sermonAdminShortcut").addEventListener("click", () => {
   activateRole("admin");
-  document.getElementById("adminArea").scrollIntoView({ behavior: "smooth" });
+  window.location.href = "media-studio.html";
 });
 
 document.getElementById("resetDemo").addEventListener("click", () => {
-  localStorage.removeItem("abcDemoV2");
-  data = cloneDefaultData();
+  localStorage.removeItem(STORAGE_KEY);
+  data = defaultData();
   activeSermonFilter = "all";
   document.getElementById("sermonSearch").value = "";
   document.querySelectorAll("[data-filter]").forEach(button => button.classList.toggle("active", button.dataset.filter === "all"));
