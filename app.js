@@ -124,6 +124,7 @@ function loadData() {
 
 let data = loadData();
 let activeSermonFilter = "all";
+let navigateToCalendarAfterSignIn = false;
 
 function saveData() {
   try {
@@ -374,22 +375,31 @@ document.querySelectorAll("#mainNav a").forEach(link => {
 });
 
 document.getElementById("memberSignInButton").addEventListener("click", () => {
-  if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
-  else openDialog(document.getElementById("signInDialog"));
+  if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) {
+    document.getElementById("memberArea").scrollIntoView({ behavior: "smooth" });
+  } else {
+    navigateToCalendarAfterSignIn = false;
+    openDialog(document.getElementById("signInDialog"));
+  }
 });
 
 document.getElementById("dialogContinue").addEventListener("click", () => {
   const role = document.getElementById("dialogRole").value;
   closeDialog(document.getElementById("signInDialog"));
-  activateRole(role, true);
+  activateRole(role, !navigateToCalendarAfterSignIn);
+  if (navigateToCalendarAfterSignIn) {
+    navigateToCalendarAfterSignIn = false;
+    window.location.href = "calendar.html";
+  }
 });
 
 document.getElementById("calendarPromoButton").addEventListener("click", () => {
   if (ROLE_LEVEL[data.role] >= ROLE_LEVEL.member) {
     window.location.href = "calendar.html";
   } else {
+    navigateToCalendarAfterSignIn = true;
     openDialog(document.getElementById("signInDialog"));
-    showToast("Choose a member role, then open the member calendar.");
+    showToast("Choose a member role to continue directly to the calendar.");
   }
 });
 
