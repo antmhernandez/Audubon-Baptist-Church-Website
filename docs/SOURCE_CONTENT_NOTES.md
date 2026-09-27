@@ -108,3 +108,10 @@ Before replacing the current church website, confirm:
 - current giving provider;
 - whether Facebook remains the primary livestream destination;
 - recent sermon video/archive strategy.
+
+
+## Visual identity note
+
+Archived Audubon newsletter material exposes a **red cross-like church mark**. The refined prototype therefore uses a deep red as its primary accent, warm cream/paper neutrals, charcoal typography, and a restrained park green secondary accent. This is an interpreted prototype palette rather than a claim that exact historical brand color values have been recovered.
+
+Before production, leadership should confirm whether an original logo/vector file and exact brand colors are available.
