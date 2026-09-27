@@ -432,3 +432,312 @@ h3{font-size:1.45rem;margin-bottom:10px}
   .mission-strip,.calendar-promo,.member-tool-ribbon{flex-direction:column;align-items:flex-start}
   .calendar-heading-actions{justify-content:flex-start}
 }
+
+
+/* =========================================================
+   Audubon visual refinement — 2026-09-27
+   Draws on the church's historic red cross-like identity,
+   "A Church in the Park" language, and restrained print style.
+   ========================================================= */
+:root{
+  --audubon-red:#8f2f35;
+  --audubon-red-dark:#74252a;
+  --audubon-green:#526957;
+  --audubon-green-dark:#3f5545;
+  --audubon-charcoal:#28343a;
+  --audubon-ink:#20292d;
+  --audubon-cream:#f4efe5;
+  --audubon-paper:#fffdf9;
+  --audubon-soft:#f5f6f3;
+  --audubon-line:#dfe2dd;
+  --ink:var(--audubon-ink);
+  --muted:#687278;
+  --navy:var(--audubon-charcoal);
+  --navy-2:#3b494f;
+  --navy-3:#1f292e;
+  --cream:var(--audubon-cream);
+  --paper:var(--audubon-paper);
+  --gold:var(--audubon-red);
+  --gold-soft:#f2e0e1;
+  --line:var(--audubon-line);
+  --soft:var(--audubon-soft);
+  --success:var(--audubon-green);
+  --shadow:0 18px 46px rgba(32,41,45,.08);
+}
+body{background:var(--audubon-paper);color:var(--audubon-ink)}
+h1,h2,h3{color:var(--audubon-charcoal)}
+.eyebrow{color:var(--audubon-red)}
+.button.primary,.member-button{background:var(--audubon-red);border-color:var(--audubon-red);color:white}
+.button.primary:hover,.member-button:hover{background:var(--audubon-red-dark);border-color:var(--audubon-red-dark)}
+.button.secondary{background:white;border-color:var(--audubon-line);color:var(--audubon-charcoal)}
+.text-button,.text-link-dark,.quiet-link{color:var(--audubon-red)}
+.filter-chip.active,.member-tab.active,.access-badge,.primary-transport{background:var(--audubon-red);border-color:var(--audubon-red);color:white}
+.prototype-bar{background:#242d31}
+.prototype-bar span{color:#c8d0d2}
+.prototype-actions select{background:#303a3f;border-color:#556168}
+.site-header{background:rgba(255,253,249,.97);border-bottom-color:rgba(40,52,58,.10)}
+.main-nav a,.app-nav a{color:#3f4a4f}
+.main-nav a:hover,.app-nav a:hover,.app-nav a.active{color:var(--audubon-red)}
+
+/* Historic red-cross-inspired mark */
+.brand-mark{
+  position:relative;
+  overflow:hidden;
+  background:var(--audubon-red);
+  border-radius:6px;
+  color:transparent!important;
+  font-size:0!important;
+  box-shadow:0 4px 14px rgba(143,47,53,.16);
+}
+.brand-mark::before,.brand-mark::after{
+  content:"";
+  position:absolute;
+  display:block;
+  background:#fff;
+  border-radius:1px;
+}
+.brand-mark::before{width:7px;height:28px;left:50%;top:8px;transform:translateX(-50%)}
+.brand-mark::after{width:24px;height:7px;left:10px;top:15px}
+.brand-copy strong{letter-spacing:-.01em}
+.brand-copy small{color:var(--audubon-green-dark);font-style:italic}
+
+/* Public home */
+.public-page .site-header{min-height:74px}
+.role-tools{
+  position:sticky;
+  top:74px;
+  z-index:18;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:8px 18px;
+  background:#f7eeee;
+  border-bottom:1px solid #ead2d4;
+  font-size:.82rem;
+}
+.role-tools span{font-weight:850;color:var(--audubon-red-dark)}
+.role-tools a{color:var(--audubon-charcoal);font-weight:800;text-decoration:none}
+.role-tools a:hover{text-decoration:underline}
+.home-hero{padding-top:78px;padding-bottom:58px;grid-template-columns:1.25fr .62fr}
+.home-hero h1{max-width:780px}
+.sunday-card{
+  background:var(--audubon-cream);
+  border:1px solid #e2d7c5;
+  border-top:5px solid var(--audubon-red);
+  border-radius:var(--radius);
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+.sunday-label{display:block;color:var(--audubon-red);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900}
+.sunday-time{display:flex;align-items:baseline;gap:10px;margin:14px 0 7px}
+.sunday-time strong{font-family:Georgia,"Times New Roman",serif;font-size:3.1rem;line-height:1;color:var(--audubon-charcoal)}
+.sunday-time span{font-weight:800;color:var(--muted)}
+.sunday-card p{font-size:1.02rem;color:#505b5f}
+.sunday-card small{display:block;color:var(--muted);font-size:.75rem;margin-top:15px}
+.stacked-actions{display:grid;gap:10px;margin-top:22px}
+.quiet-link{text-align:center;font-weight:800;text-decoration:none}
+.quiet-link:hover{text-decoration:underline}
+
+.home-actions{
+  max-width:var(--max);
+  margin:0 auto 12px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.home-actions a,.home-actions button{
+  appearance:none;
+  border:1px solid var(--audubon-line);
+  background:white;
+  border-radius:13px;
+  padding:16px 18px;
+  text-align:left;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .15s ease,border-color .15s ease,box-shadow .15s ease;
+}
+.home-actions a:hover,.home-actions button:hover{transform:translateY(-2px);border-color:#cdbfc0;box-shadow:0 10px 24px rgba(32,41,45,.06)}
+.home-actions span{display:block;color:var(--audubon-red);font-size:.69rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.home-actions strong{display:block;color:var(--audubon-charcoal);margin-top:3px;font-size:.9rem}
+
+.announcement-strip{background:#fbf8f2;border-radius:12px;border:1px solid #e8e0d3;margin-top:22px}
+.section-heading.centered{text-align:center;margin-left:auto;margin-right:auto}
+.visit-section{padding-top:78px;padding-bottom:78px}
+.visit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.visit-grid article{padding:28px;border-top:3px solid var(--audubon-red);background:white;border-radius:0 0 var(--radius-sm) var(--radius-sm);box-shadow:0 8px 24px rgba(32,41,45,.045)}
+.visit-symbol{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#f4e5e6;color:var(--audubon-red);font-weight:900;margin-bottom:20px}
+.visit-grid p{color:var(--muted)}
+.prototype-detail{display:block;color:#806d61;font-size:.74rem;font-weight:800;margin-top:15px}
+
+.belief-section{
+  max-width:none;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.95fr);
+  gap:70px;
+  align-items:center;
+  padding:82px max(24px,calc((100vw - var(--max))/2));
+  background:var(--audubon-red);
+  color:white;
+}
+.belief-section h2{color:white}
+.belief-section p{color:#f6e9ea}
+.eyebrow.light{color:#f3d2d5}
+.light-button{background:white!important;color:var(--audubon-red)!important;border-color:white!important}
+.light-button:hover{background:#f7eeee!important}
+.belief-points{display:grid;gap:1px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.22);border-radius:14px;overflow:hidden}
+.belief-points article{padding:21px 23px;background:rgba(116,37,42,.65)}
+.belief-points strong{font-family:Georgia,"Times New Roman",serif;font-size:1.2rem}
+.belief-points p{margin:5px 0 0;font-size:.93rem}
+
+.split-heading{max-width:none;display:flex;align-items:flex-end;justify-content:space-between;gap:34px}
+.split-heading>div{max-width:760px}
+.compact-feature .video-placeholder{min-height:330px;background:linear-gradient(145deg,#2b373c,#526957)}
+.compact-feature{box-shadow:none}
+.play-mark{border-color:rgba(255,255,255,.72)}
+.sermon-library-details{margin-top:22px;border:1px solid var(--audubon-line);border-radius:13px;background:white}
+.sermon-library-details summary{cursor:pointer;padding:16px 19px;color:var(--audubon-charcoal);font-weight:850}
+.sermon-library-details[open] summary{border-bottom:1px solid var(--audubon-line)}
+.sermon-library-details .library-toolbar{padding:20px 20px 0}
+.sermon-library-details .sermon-grid{padding:0 20px 20px}
+.sermon-library-details .empty-state{margin:0 20px 20px}
+.sermon-grid{grid-template-columns:repeat(2,1fr)}
+.sermon-card{box-shadow:none}
+
+.clean-event-card{border-top:3px solid var(--audubon-green);box-shadow:none}
+.clean-event-card .event-date{color:var(--audubon-red)}
+.event-card-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:auto;padding-top:16px}
+.event-card-footer .text-link-dark{font-size:.8rem;font-weight:850;text-decoration:none}
+
+.about-section{display:grid;grid-template-columns:1.15fr .85fr;gap:70px;align-items:center}
+.about-copy p{color:var(--muted)}
+.pastor-cards{display:grid;gap:12px}
+.pastor-cards article{display:flex;align-items:center;gap:15px;padding:17px 19px;background:white;border:1px solid var(--audubon-line);border-radius:12px}
+.pastor-initials{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:#f2e0e1;color:var(--audubon-red);font-weight:900}
+.pastor-cards h3{margin:0 0 3px;font-size:1.16rem}
+.pastor-cards p{margin:0;color:var(--muted)}
+
+.connect-section{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:45px;
+  background:var(--audubon-cream);
+  border-radius:var(--radius);
+  margin-bottom:80px;
+  padding:38px 42px;
+}
+.connect-section>div{max-width:720px}
+.connect-section h2{font-size:clamp(1.9rem,3vw,2.8rem)}
+.connect-section p:last-child{color:var(--muted);margin-bottom:0}
+
+.giving-section{
+  max-width:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:50px;
+  padding:62px max(24px,calc((100vw - var(--max))/2));
+  background:var(--audubon-green-dark);
+  color:white;
+}
+.giving-section h2{color:white;font-size:clamp(2rem,3.5vw,3.2rem)}
+.giving-section p:not(.eyebrow){max-width:760px;color:#e2e9e3}
+
+.site-footer{background:#20292d;align-items:center}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-brand p{margin:2px 0 0}
+.footer-mark{width:38px;height:38px}
+.footer-mark::before{height:24px;top:7px}
+.footer-mark::after{width:21px;left:8px;top:14px}
+.footer-contact{display:flex;flex-direction:column;color:#b8c3c6;font-size:.86rem}
+.footer-contact a{color:white;text-decoration:none}
+.footer-links{align-items:center}
+.footer-links button{appearance:none;border:0;background:none;color:#dce6ee;padding:0;cursor:pointer;font:inherit}
+.footer-links button:hover{text-decoration:underline}
+
+/* Dedicated Member Home */
+.member-home{max-width:var(--max);margin:0 auto;padding:58px 24px 90px}
+.member-welcome{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;margin-bottom:34px}
+.member-welcome h1{font-size:clamp(2.6rem,5vw,4.8rem);margin-bottom:12px}
+.member-welcome p:last-child{color:var(--muted);font-size:1.06rem;max-width:730px}
+.member-next{background:var(--audubon-cream);border:1px solid #e4dac9;border-radius:var(--radius);padding:28px;margin-bottom:20px}
+.section-mini-heading h2{font-size:1.75rem;margin-bottom:15px}
+.member-event-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.member-event-card{background:white;border-radius:11px;padding:17px;border:1px solid #e5ddd0}
+.member-event-card h3{font-size:1.05rem;margin:5px 0}
+.member-event-card p{font-size:.85rem;color:var(--muted);margin-bottom:10px}
+.member-tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.member-tool-card{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  width:100%;
+  appearance:none;
+  border:1px solid var(--audubon-line);
+  background:white;
+  border-radius:13px;
+  padding:20px;
+  text-align:left;
+  text-decoration:none;
+  cursor:pointer;
+  color:inherit;
+}
+.member-tool-card:hover{border-color:#c9bbbc;box-shadow:0 9px 24px rgba(32,41,45,.06)}
+.tool-symbol{display:grid;place-items:center;width:38px;height:38px;border-radius:9px;background:#f3e4e5;color:var(--audubon-red);font-weight:900}
+.member-tool-card h3{font-size:1.08rem;margin:0 0 3px}
+.member-tool-card p{font-size:.82rem;color:var(--muted);margin:0}
+.tool-arrow{color:var(--audubon-red);font-size:1.25rem}
+.member-panel{margin-top:24px;padding:26px;background:white;border:1px solid var(--audubon-line);border-radius:var(--radius)}
+.panel-close{border:1px solid var(--audubon-line);background:white;border-radius:9px;padding:7px 11px;color:var(--audubon-charcoal);font-weight:800;cursor:pointer}
+.member-note{display:flex;gap:14px;align-items:flex-start;margin-top:22px;padding:15px 18px;border-radius:11px;background:#f8f5ef;color:#675f58;font-size:.83rem}
+.member-note p{margin:0}
+
+/* Calendar refinements */
+.calendar-hero h1,.studio-hero h1{color:var(--audubon-charcoal)}
+.calendar-summary-card{box-shadow:none}
+.calendar-day.today{box-shadow:inset 0 0 0 2px var(--audubon-red)}
+.calendar-day.selected{background:#f7eeee;border-color:#d7abad}
+.calendar-event-pill{background:#edf1ed;color:var(--audubon-green-dark)}
+.calendar-event-pill.member{background:#f4e5e6;color:var(--audubon-red-dark)}
+.calendar-event-pill.group{background:#e8efe9;color:var(--audubon-green-dark)}
+.agenda-time,.upcoming-date{color:var(--audubon-red)}
+.mini-action.selected{background:var(--audubon-red);border-color:var(--audubon-red)}
+.calendar-note{background:#f8f4eb;border-color:#e5dac5;color:#665d51}
+
+/* Media Studio refinements */
+.step-number{background:var(--audubon-red)}
+.studio-steps span.active{background:var(--audubon-red);border-color:var(--audubon-red)}
+.drop-zone:hover,.drop-zone.dragging{border-color:var(--audubon-red);background:#fbf4f4}
+.drop-icon{color:var(--audubon-red)}
+.media-scrubber,.trim-control-card input[type=range]{accent-color:var(--audubon-red)}
+.trim-included{background:var(--audubon-red)}
+.trim-playhead{background:var(--audubon-charcoal)}
+.publish-job{border-color:#bdd0c1;background:#f2f7f3}
+
+/* Tighter responsive presentation */
+@media (max-width:1040px){
+  .home-actions{grid-template-columns:repeat(2,1fr)}
+  .belief-section{grid-template-columns:1fr;gap:35px}
+  .about-section{grid-template-columns:1fr;gap:35px}
+  .member-tool-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  .role-tools{top:111px;overflow:auto;justify-content:flex-start}
+  .home-hero{padding-top:44px}
+  .home-actions{grid-template-columns:1fr 1fr;padding:0 18px}
+  .visit-grid,.member-event-row,.member-tool-grid{grid-template-columns:1fr}
+  .split-heading,.member-welcome,.giving-section{flex-direction:column;align-items:flex-start}
+  .belief-section{padding-top:62px;padding-bottom:62px}
+  .connect-section{margin:0 18px 60px;padding:26px;flex-direction:column;align-items:flex-start}
+  .giving-section{padding-top:48px;padding-bottom:48px}
+  .sermon-grid{grid-template-columns:1fr}
+  .event-card-footer{align-items:flex-start;flex-direction:column}
+  .site-footer{align-items:flex-start}
+}
+@media (max-width:480px){
+  .home-actions{grid-template-columns:1fr}
+  .sunday-time strong{font-size:2.7rem}
+}
