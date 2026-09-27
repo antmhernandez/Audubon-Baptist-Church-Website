@@ -370,10 +370,12 @@
           <h3>Add event</h3>
           <label for="eventTitle">Title</label>
           <input id="eventTitle" required>
-          <label for="eventDate">Date / time label</label>
-          <input id="eventDate" placeholder="Saturday · 9:00 AM" required>
+          <div class="two-field-row">
+            <div><label for="eventDate">Date</label><input id="eventDate" type="date" required></div>
+            <div><label for="eventTime">Time</label><input id="eventTime" type="time" value="18:30"></div>
+          </div>
           <label for="eventAudience">Audience</label>
-          <select id="eventAudience"><option>Churchwide</option><option>Members</option><option>Ministry group</option></select>
+          <select id="eventAudience"><option value="churchwide">Churchwide</option><option value="member">Members</option><option value="group">Ministry group</option></select>
           <button class="button primary small" type="submit">Add sample event</button>
         </form>
 
