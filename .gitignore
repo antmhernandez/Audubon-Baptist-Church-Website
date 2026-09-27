@@ -1,0 +1,25 @@
+# Dependencies / builds
+node_modules/
+.next/
+dist/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local media and exports
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.zip
+backups/
+exports/
