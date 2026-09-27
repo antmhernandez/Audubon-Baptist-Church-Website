@@ -42,8 +42,15 @@ function renderAccess() {
   document.getElementById("mediaStudio").classList.toggle("hidden",!isAdmin);
   document.getElementById("mediaRoleLabel").textContent=isAdmin ? "Administrator preview" : "Administrator preview required";
 }
+function setStudioStep(step) {
+  document.querySelectorAll("[data-studio-step]").forEach(element => {
+    const value=Number(element.dataset.studioStep);
+    element.classList.toggle("active", value===step);
+    element.classList.toggle("complete", value<step);
+  });
+}
 function activateAdmin() {
-  data.role="admin"; saveData(); renderAccess(); showToast("Administrator media preview opened.");
+  data.role="admin"; saveData(); renderAccess(); setStudioStep(sourceFile ? 2 : 1); showToast("Administrator media preview opened.");
 }
 document.getElementById("mediaAdminPreview").addEventListener("click",activateAdmin);
 
@@ -71,6 +78,7 @@ function loadVideo(file) {
     document.getElementById("trimEndSlider").value=duration;
     document.getElementById("durationTime").textContent=formatTime(duration);
     document.getElementById("fileStatus").textContent="Ready to trim";
+    setStudioStep(2);
     renderTrim();
     renderPublishSummary();
     document.getElementById("editorCard").scrollIntoView({behavior:"smooth",block:"start"});
@@ -126,8 +134,8 @@ function renderTrim() {
 }
 
 ["mediaTitle","mediaScripture","mediaSpeaker","mediaSeries","mediaTags","mediaGain","mediaNormalize","mediaFade","mediaAudioOnly"].forEach(id=>{
-  document.getElementById(id).addEventListener("input",renderPublishSummary);
-  document.getElementById(id).addEventListener("change",renderPublishSummary);
+  document.getElementById(id).addEventListener("input",()=>{ setStudioStep(3); renderPublishSummary(); });
+  document.getElementById(id).addEventListener("change",()=>{ setStudioStep(3); renderPublishSummary(); });
 });
 
 function currentSettings() {
@@ -171,6 +179,7 @@ document.getElementById("preparePublish").addEventListener("click",()=>{
   if(!sourceFile){showToast("Choose a video first.");return;}
   const s=currentSettings();
   if(!s.title || !s.scripture){showToast("Add a sermon title and Scripture reference before preparing publication.");return;}
+  setStudioStep(4);
   const job=document.getElementById("publishJob");
   job.classList.remove("hidden");
   job.innerHTML=`<span class="status-pill ready">Ready for production worker</span><h3>${escapeHtml(s.title)}</h3><p>Trim <strong>${formatTime(s.trimStart)}</strong> to <strong>${formatTime(s.trimEnd)}</strong>, ${s.normalize?"normalize speech":"leave loudness unchanged"}${s.fade?", add short fades":""}, create the web video${s.audioOnly?" and audio-only copy":""}, upload to the configured provider, and publish the sermon metadata.</p><code>ffmpeg -ss ${s.trimStart.toFixed(2)} -to ${s.trimEnd.toFixed(2)} -i INPUT ... OUTPUT</code>`;
@@ -179,4 +188,5 @@ document.getElementById("preparePublish").addEventListener("click",()=>{
 });
 
 renderAccess();
+setStudioStep(1);
 renderPublishSummary();
