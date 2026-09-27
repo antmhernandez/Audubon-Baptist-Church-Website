@@ -4,33 +4,60 @@ A public website and emerging member platform for Audubon Baptist Church.
 
 ## Current status
 
-This repository currently contains a **pastor/demo prototype** designed to be hosted directly with GitHub Pages. The prototype demonstrates:
+This repository contains a **leadership / pastor prototype** designed to run directly on GitHub Pages with no paid infrastructure.
+
+The current prototype demonstrates:
 
 - a welcoming public church website;
+- a clearer "New here?" / visit pathway;
 - beliefs and Southern Baptist affiliation content;
-- sermon-library and media-management concepts;
-- church events and RSVP concepts;
-- prayer-list privacy levels;
-- a giving-integration concept;
-- a member area;
-- role-based views for Public, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
-- a browser-based administration concept.
+- featured sermon presentation plus a searchable sample sermon library;
+- church events with member RSVP states;
+- a member sign-in experience for demonstrating private features;
+- prayer-list privacy levels and browser-local sample submissions;
+- ministry / service concepts;
+- structured church discussion concepts;
+- a giving-provider handoff concept;
+- role-based views for Public Visitor, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
+- browser-based administration for announcements, events, and sermon metadata;
+- a sermon processing concept with trim, gain, and speech-normalization controls;
+- a responsive interface designed to remain comfortable on phones and for less-technical users.
 
-> **Important:** the first prototype uses browser-local demo data only. Its role selector is a design demonstration, not secure authentication. Do not place private prayer requests, member data, financial information, or confidential church records into this version.
+> **Important:** this is a public design prototype. The role switcher and "member sign in" flow are demonstrations, not secure authentication. Browser edits are not shared with other users. Do not place real private prayer requests, member data, financial information, pastoral information, credentials, or confidential church records into this version.
 
 ## View it on the web
 
-After GitHub Pages is enabled for this repository, the prototype can be published at:
+GitHub Pages is configured to publish the repository's `main` branch from `/(root)`.
+
+Expected public address:
 
 `https://antmhernandez.github.io/Audubon-Baptist-Church-Website/`
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the exact setup.
+GitHub Pages may take a short time to rebuild after a new commit. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for details.
+
+## Quick prototype tour
+
+1. Open the site as a **Public visitor**.
+2. Use **Member sign in** to preview the private member experience.
+3. Use the dark prototype bar at the top to switch among:
+   - Public visitor
+   - Church member
+   - Ministry / group member
+   - Church leadership
+   - Administrator
+4. Try sermon search and filtering.
+5. As a member, RSVP to an event and add a sample prayer request.
+6. As Administrator, edit the homepage announcement, add an event, edit featured sermon metadata, and preview a future media-processing job.
+7. Use **Copy share link** in the prototype bar to copy the public URL.
+
+All demo changes remain only in the current browser.
 
 ## Repository map
 
 - `index.html` — public/member/admin prototype
-- `styles.css` — responsive visual system
+- `styles.css` — responsive visual and interaction system
 - `app.js` — interactive demo behavior and browser-local sample data
+- `AGENTS.md` — governing development instructions
 - `docs/PROJECT_VISION.md` — product purpose and principles
 - `docs/ARCHITECTURE.md` — recommended technical architecture
 - `docs/ROLE_AND_PERMISSION_MODEL.md` — public/member/leadership/admin access model
@@ -38,29 +65,29 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the exact setup.
 - `docs/SECURITY_AND_PRIVACY.md` — privacy and security boundaries
 - `docs/MEDIA_WORKFLOW.md` — sermon/video workflow
 - `docs/DEPLOYMENT.md` — GitHub Pages instructions and future hosting
-- `docs/PASTOR_DEMO_GUIDE.md` — suggested walkthrough for the prototype
+- `docs/PASTOR_DEMO_GUIDE.md` — suggested walkthrough for church leadership
 
 ## Development philosophy
 
-1. **Simple for visitors.** A prospective attendee should immediately be able to understand who the church is, when it gathers, what it believes, and how to visit.
-2. **Comfortable for all ages.** Typography, contrast, navigation, forms, and touch targets should be clear for both younger and older members.
+1. **Simple for visitors.** A prospective attendee should immediately understand who the church is, how to visit, what it believes, and where to find sermons.
+2. **Comfortable for all ages.** Typography, contrast, navigation, forms, and touch targets should be clear for younger and older members alike.
 3. **Private by design.** Public content, member content, leadership content, and administration must be intentionally separated.
 4. **Own the architecture.** Keep the project in GitHub and avoid unnecessary vendor lock-in.
-5. **Use specialists for sensitive infrastructure.** Payment processors, authentication providers, and video-delivery services should handle the responsibilities they are best equipped to secure.
+5. **Use specialists for sensitive infrastructure.** Authentication, payments, and large-scale video delivery should use mature services rather than custom sensitive infrastructure.
 6. **Build in phases.** Prove usefulness before adding complexity or recurring expenses.
 
-## Proposed production stack
+## Proposed production evolution
 
-The current demo is dependency-free HTML/CSS/JavaScript so it can be published immediately with GitHub Pages. The recommended production evolution is:
+The prototype intentionally uses dependency-free HTML/CSS/JavaScript so it can be shared immediately. The recommended secure production evolution remains:
 
 - Next.js + TypeScript
 - PostgreSQL / Supabase for application data and authentication
-- Cloudflare or similar managed hosting/CDN
+- Cloudflare or another managed application host/CDN
 - YouTube or Bunny Stream initially for sermon video delivery
 - FFmpeg on a church media workstation or server-side worker for sermon trimming/audio processing
-- a dedicated giving provider such as Tithely/Stripe-backed church giving
-- Progressive Web App first; native mobile apps only if later justified
+- a dedicated giving provider
+- Progressive Web App first; native apps only if later justified
 
 ## Content note
 
-Some visible text and events in the prototype are intentionally marked as examples or placeholders. They must be confirmed by church leadership before a public production launch.
+Visible service times, event information, sermon entries, ministry descriptions, and doctrinal/affiliation language that is marked as sample or unconfirmed must be reviewed by church leadership before the site becomes the church's public production website.
