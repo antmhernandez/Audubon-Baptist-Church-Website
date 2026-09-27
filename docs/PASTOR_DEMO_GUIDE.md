@@ -1,86 +1,104 @@
 # Pastor / Leadership Demo Guide
 
-This prototype is meant to provoke useful decisions rather than pretend that every detail is final.
+This prototype is meant to make the proposed church platform concrete enough to evaluate. It is not intended to imply that every visible detail has already been approved.
 
-## Suggested five-minute walkthrough
+## Suggested seven-minute walkthrough
 
-### 1. Begin as Public
+### 1. Begin as a public visitor
+
+Leave **Preview role** set to **Public visitor**.
 
 Show:
-- first impression;
-- service/visit card;
-- beliefs;
-- sermon presentation;
+- the simplified public navigation;
+- the main welcome and "Plan your visit" pathway;
+- the "New here?" information structure;
+- concise beliefs and affiliation presentation;
+- featured sermon and searchable sermon library;
 - events;
-- prayer/service/discussion concepts;
-- giving handoff.
+- prayer / service / discussion concepts;
+- giving-provider handoff.
 
 Questions:
-- Does this feel like Audubon?
-- What should a first-time visitor see first?
-- Which wording should change?
-- What should be more or less prominent?
+- Does the first screen feel like Audubon?
+- What should a first-time visitor learn before anything else?
+- What would make an older visitor more comfortable using the site?
+- What wording or visual tone should change?
 
-### 2. Switch to Church Member
+### 2. Demonstrate a realistic member entry point
 
-Use the **Preview as** selector in the header.
+Click **Member sign in** in the church header.
+
+The prototype intentionally presents a role chooser instead of asking for credentials. In production this would become real authentication.
+
+Choose **Church member** and continue.
 
 Show:
 - member dashboard;
-- RSVP interaction;
-- member prayer list;
+- event RSVP choices;
+- members-only prayer list;
+- sample prayer submission with visibility;
 - service opportunities;
 - discussion area.
 
 Question:
-- Which of these would members actually use weekly?
+- Which of these functions would members actually use every week?
 
-### 3. Switch to Ministry / Group Member
+### 3. Preview ministry / group membership
 
-Show that group-specific information appears without exposing every ministry's material to every member.
+Use **Preview role** in the dark prototype bar and select **Ministry / group member**.
 
-Question:
-- Which ministries need private group areas?
-
-### 4. Switch to Church Leadership
-
-Show leadership-only prayer/planning concepts.
+Show how group-specific material can appear without exposing every ministry's private content to every church member.
 
 Question:
-- What information should be available to deacons, ministry leaders, pastors, or staff, and where should those groups differ?
+- Which ministries would benefit from their own group area?
 
-### 5. Switch to Administrator
+### 4. Preview leadership
+
+Select **Church leadership**.
+
+Show the additional leadership-only prayer/planning concept.
+
+Question:
+- Which roles should be distinct in the final system: pastor, deacon, ministry leader, staff, moderator?
+
+### 5. Preview administration
+
+Select **Administrator**, or use **Preview publishing tools** in the Sermons section.
 
 Show:
 - homepage announcement editing;
-- calendar item creation;
-- sermon metadata editing;
-- sermon start/end and audio-processing concept.
-
-Edits in this demo are stored only in the current browser.
+- event creation;
+- featured sermon metadata;
+- trim start/end;
+- audio gain;
+- speech normalization;
+- media-job preview.
 
 Questions:
-- Who should be allowed to edit each kind of content?
 - Who currently handles sermon files?
-- What steps are repeated every week?
-- Which steps should the website automate?
+- What repeated steps happen after every Sunday service?
+- Who should be allowed to edit public pages, calendar items, sermons, prayer requests, users, and giving information?
+
+### 6. Demonstrate low-friction sharing
+
+At the top of the page, use **Copy share link**. The same public prototype can be opened on a phone, tablet, or another computer without installing anything.
 
 ## Decisions to collect before Phase 1
 
-- approved church name styling;
-- logo availability;
-- colors/visual preferences;
-- church address;
-- service times;
-- pastor/staff names and titles;
+- approved church name styling and logo;
+- colors / visual identity preferences;
+- exact address and parking instructions;
+- confirmed service times;
+- children / nursery / accessibility details;
+- pastor and staff names and titles;
 - approved short statement of faith;
 - exact Southern Baptist affiliation wording;
 - ministry list;
-- existing sermon/video location;
-- current giving provider;
+- existing sermon/video location and workflow;
+- current giving provider, if any;
 - desired church domain;
-- people who should administer content.
+- administrators and their responsibilities.
 
-## Do not enter private data yet
+## Do not enter real private data yet
 
-The current site is publicly hosted static software. The role selector is for demonstration only.
+The current site is publicly hosted static software. The role selector and sign-in dialog are for demonstration only. Browser-local prayer requests, RSVPs, events, and edits are not secure shared church records.
