@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Audubon Baptist Church — A Church in the Park, Louisville, Kentucky">
-  <meta name="theme-color" content="#8f2f35">
+  <meta name="theme-color" content="#7f2d32">
   <title>Audubon Baptist Church | A Church in the Park</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="public-page">
+<body class="public-page editorial-home">
   <a class="skip-link" href="#mainContent">Skip to main content</a>
 
-  <div class="prototype-bar" aria-label="Leadership prototype controls">
-    <div><strong>Leadership prototype</strong><span>Explore public, member, and administrator views</span></div>
-    <div class="prototype-actions">
-      <label for="roleSwitcher">Preview</label>
+  <details class="prototype-drawer">
+    <summary>Leadership prototype</summary>
+    <div class="prototype-drawer-inner">
+      <span>Preview private roles and prototype tools</span>
+      <label for="roleSwitcher">View as</label>
       <select id="roleSwitcher">
         <option value="public">Public visitor</option>
         <option value="member">Church member</option>
@@ -22,24 +23,27 @@
         <option value="leadership">Church leadership</option>
         <option value="admin">Administrator</option>
       </select>
-      <button class="mini-button" id="copyLinkButton" type="button">Copy link</button>
+      <button class="mini-button" id="copyLinkButton" type="button">Copy share link</button>
     </div>
-  </div>
+  </details>
 
-  <header class="site-header">
+  <header class="site-header editorial-header">
     <a class="brand" href="#home" aria-label="Audubon Baptist Church home">
       <span class="brand-mark" aria-hidden="true">A</span>
       <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
     </a>
+
     <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
+
     <nav class="main-nav" id="mainNav" aria-label="Main navigation">
       <a href="#visit">Visit</a>
-      <a href="#beliefs">Beliefs</a>
       <a href="#sermons">Sermons</a>
       <a href="#events">This Week</a>
-      <a href="#about">About</a>
+      <a href="#beliefs">Beliefs</a>
+      <a href="#about">Our Story</a>
       <a href="#give">Give</a>
     </nav>
+
     <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
   </header>
 
@@ -47,196 +51,211 @@
     <span id="roleToolsLabel">Member preview</span>
     <a href="member.html">Member Home</a>
     <a href="calendar.html">Calendar</a>
-    <a class="admin-only-tool hidden" href="admin.html">Site Admin</a><a class="admin-only-tool hidden" href="media-studio.html">Media Studio</a>
+    <a class="admin-only-tool hidden" href="admin.html">Site Admin</a>
+    <a class="admin-only-tool hidden" href="media-studio.html">Media Studio</a>
   </div>
 
   <main id="mainContent">
-    <section class="hero home-hero" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow">A Church in the Park · Louisville, Kentucky</p>
-        <h1>Worship Christ.<br>Grow in His Word.<br>Love one another.</h1>
-        <p class="hero-lead">Audubon Baptist Church is a local church family seeking to make much of Jesus Christ through worship, discipleship, fellowship, prayer, service, and gospel mission.</p>
-        <div class="button-row">
-          <a class="button primary" href="#visit">Plan your visit</a>
-          <a class="button secondary" href="#sermons">Watch a sermon</a>
+    <section class="editorial-hero" id="home">
+      <div class="hero-ghost" aria-hidden="true">AUDUBON</div>
+
+      <div class="hero-primary">
+        <p class="editorial-kicker">Louisville, Kentucky · Since 1896</p>
+        <h1><span>A Church</span><em>in the Park.</em></h1>
+        <p class="hero-statement">Worship Christ. Grow in His Word. Love one another.</p>
+        <div class="hero-links">
+          <a class="editorial-cta primary-cta" href="#visit">Plan your visit <span>→</span></a>
+          <a class="editorial-cta" href="#sermons">Latest sermon <span>→</span></a>
         </div>
       </div>
 
-      <aside class="sunday-card" aria-label="Sunday information">
-        <span class="sunday-label">Sunday at Audubon</span>
-        <div class="sunday-time"><strong>10:30</strong><span>AM worship*</span></div>
-        <p>1046 Hess Lane<br>Louisville, KY 40217</p>
-        <div class="stacked-actions">
-          <a class="button primary full" href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Get directions</a>
-          <a class="quiet-link" href="tel:+15026352100">(502) 635-2100</a>
-        </div>
-        <small>*Published church materials; confirm before production launch.</small>
+      <aside class="hero-sunday">
+        <div class="hero-sunday-rule"></div>
+        <p>Sunday at Audubon</p>
+        <strong>10:30 <small>AM</small></strong>
+        <span>Worship*</span>
+        <address>1046 Hess Lane<br>Louisville, KY 40217</address>
+        <a href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Directions ↗</a>
+        <small class="schedule-note">*Published church materials; confirm before production launch.</small>
       </aside>
+
+      <div class="hero-scroll-cue" aria-hidden="true"><span></span>Scroll</div>
     </section>
 
-    <section class="home-actions" aria-label="Quick links">
-      <a href="#visit"><span>New here?</span><strong>Know what to expect</strong></a>
-      <a href="#events"><span>This week</span><strong>See upcoming gatherings</strong></a>
-      <a href="#sermons"><span>Sermons</span><strong>Watch or listen</strong></a>
-      <button id="memberQuickLink" type="button"><span>Church family</span><strong>Open Member Home</strong></button>
-    </section>
+    <nav class="journey-nav" aria-label="Start here">
+      <a href="#visit"><span>01</span><strong>New here?</strong><small>Plan a first Sunday</small></a>
+      <a href="#sermons"><span>02</span><strong>Hear the Word</strong><small>Watch the latest sermon</small></a>
+      <a href="#events"><span>03</span><strong>Life together</strong><small>See what is happening</small></a>
+      <button id="memberQuickLink" type="button"><span>04</span><strong>Church family</strong><small>Open Member Home</small></button>
+    </nav>
 
-    <section class="announcement-strip" aria-label="Church announcement">
-      <span class="tag">This week</span>
+    <section class="announcement-line" aria-label="Church announcement">
+      <span>This week</span>
       <p id="announcementText">Welcome to Audubon Baptist Church — A Church in the Park.</p>
     </section>
 
-    <section class="section visit-section" id="visit">
-      <div class="section-heading centered">
-        <p class="eyebrow">Plan your visit</p>
-        <h2>We would be glad to have you with us.</h2>
-        <p>A first visit should feel simple. Here are the essentials; we can add children’s, parking, and accessibility details as leadership confirms them.</p>
+    <section class="editorial-section visit-editorial" id="visit">
+      <div class="section-number">01</div>
+      <div class="section-aside">
+        <p class="editorial-kicker">Plan your visit</p>
+        <h2>You do not need to know your way around before you come.</h2>
       </div>
-      <div class="visit-grid">
-        <article>
-          <span class="visit-symbol">1</span>
-          <h3>Come to Hess Lane</h3>
-          <p>1046 Hess Lane, Louisville, KY 40217.</p>
-          <a class="text-link-dark" href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Directions →</a>
-        </article>
-        <article>
-          <span class="visit-symbol">2</span>
-          <h3>Join us Sunday</h3>
-          <p>Published materials list Bible Study & Prayer at 9:30 AM and Worship at 10:30 AM.</p>
-          <span class="prototype-detail">Schedule confirmation requested</span>
-        </article>
-        <article>
-          <span class="visit-symbol">3</span>
-          <h3>Come as our guest</h3>
-          <p>Our goal is simple: welcome you warmly and worship God together.</p>
-          <a class="text-link-dark" href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Find us on Facebook →</a>
-        </article>
-      </div>
-    </section>
+      <div class="section-body">
+        <p class="lead-copy">We would be glad to have you worship with us. Here are the few things that matter most before a first visit.</p>
 
-    <section class="belief-section" id="beliefs">
-      <div class="belief-intro">
-        <p class="eyebrow light">What we believe</p>
-        <h2>Centered on the good news of Jesus Christ.</h2>
-        <p>Audubon’s present site identifies the church as a cooperating Southern Baptist congregation and the Baptist Faith and Message 2000 as a unifying statement of belief.</p>
-        <a class="button light-button" href="https://www.achurchinthepark.org/our-church/believing/" target="_blank" rel="noopener">Read our existing beliefs page</a>
-      </div>
-      <div class="belief-points">
-        <article><strong>Scripture</strong><p>God’s written Word is our final authority for faith and life.</p></article>
-        <article><strong>The Gospel</strong><p>Salvation is by God’s grace through faith in Jesus Christ, crucified and risen.</p></article>
-        <article><strong>The Church</strong><p>We gather for worship, discipleship, fellowship, the ordinances, mission, and service.</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="sermons">
-      <div class="section-heading split-heading">
-        <div>
-          <p class="eyebrow">Sermons</p>
-          <h2>Listen again during the week.</h2>
-          <p>Recent sermons can remain immediately available while the complete archive is retained locally.</p>
-        </div>
-        <button class="button secondary small hidden" id="sermonAdminShortcut" type="button">Open Media Studio</button>
-      </div>
-
-      <div class="sermon-feature compact-feature">
-        <div class="video-placeholder">
-          <div><span class="play-mark" aria-hidden="true">▶</span><strong>Latest sermon</strong><small>Video will appear here when publishing is connected.</small></div>
-        </div>
-        <article class="sermon-details">
-          <span class="tag">Featured</span>
-          <h3 id="sermonTitle">How to Be Great for God – Beyond Yourself</h3>
-          <p class="sermon-reference" id="sermonReference">Ezra 8:1–15</p>
-          <p id="sermonSpeaker">Pastor Jeff Akin</p>
-          <div class="chip-row" id="sermonTags"></div>
-          <div class="button-row">
-            <button class="button primary" type="button" id="watchDemoButton">Watch</button>
-            <button class="button secondary" type="button" id="audioDemoButton">Audio</button>
+        <dl class="visit-facts">
+          <div>
+            <dt>Where</dt>
+            <dd>1046 Hess Lane<br>Louisville, KY 40217</dd>
+            <a href="https://www.google.com/maps/search/?api=1&query=1046+Hess+Lane+Louisville+KY+40217" target="_blank" rel="noopener">Open directions ↗</a>
           </div>
-        </article>
-      </div>
-
-      <details class="sermon-library-details">
-        <summary>Browse the existing sermon archive</summary>
-        <div class="library-toolbar">
-          <label class="search-box" for="sermonSearch"><span>Search sermons</span><input id="sermonSearch" type="search" placeholder="Title, Scripture, topic, speaker"></label>
-          <div class="filter-row" id="sermonFilters">
-            <button class="filter-chip active" type="button" data-filter="all">All</button>
-            <button class="filter-chip" type="button" data-filter="ezra">Ezra</button>
-            <button class="filter-chip" type="button" data-filter="habakkuk">Habakkuk</button>
+          <div>
+            <dt>Sunday</dt>
+            <dd>Bible Study & Prayer · 9:30 AM*<br>Worship · 10:30 AM*</dd>
+            <small>*Previously published schedule; current times to be confirmed.</small>
           </div>
+          <div>
+            <dt>Questions?</dt>
+            <dd><a href="tel:+15026352100">(502) 635-2100</a></dd>
+            <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Audubon on Facebook ↗</a>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sermon-editorial" id="sermons">
+      <div class="sermon-media-panel">
+        <div class="sermon-media-placeholder">
+          <button type="button" id="watchDemoButton" aria-label="Play latest sermon">
+            <span>▶</span>
+          </button>
+          <p>Latest sermon video</p>
         </div>
-        <div class="sermon-grid" id="sermonGrid"></div>
-        <p class="empty-state hidden" id="sermonEmpty">No archive sermons match that search.</p>
-      </details>
-    </section>
+        <span class="sermon-side-label">Sunday teaching</span>
+      </div>
 
-    <section class="section soft" id="events">
-      <div class="section-heading split-heading">
-        <div>
-          <p class="eyebrow">This week at Audubon</p>
-          <h2>Know what’s happening.</h2>
-          <p>A simple public summary for guests; signed-in members get the complete three-month calendar and RSVPs.</p>
+      <div class="sermon-copy-panel">
+        <p class="editorial-kicker light-kicker">Latest sermon</p>
+        <p class="sermon-scripture" id="sermonReference">Ezra 8:1–15</p>
+        <h2 id="sermonTitle">How to Be Great for God – Beyond Yourself</h2>
+        <p class="sermon-speaker" id="sermonSpeaker">Pastor Jeff Akin</p>
+        <div class="chip-row editorial-tags" id="sermonTags"></div>
+
+        <div class="sermon-actions">
+          <button class="editorial-cta inverted" type="button" id="audioDemoButton">Listen to audio <span>→</span></button>
+          <button class="editorial-cta inverted hidden" type="button" id="sermonAdminShortcut">Open Media Studio <span>→</span></button>
         </div>
-        <button class="button primary small" id="calendarPromoButton" type="button">Member calendar</button>
+
+        <details class="sermon-library-details editorial-library">
+          <summary>Browse the existing sermon archive</summary>
+          <div class="library-toolbar">
+            <label class="search-box" for="sermonSearch">
+              <span>Search sermons</span>
+              <input id="sermonSearch" type="search" placeholder="Title, Scripture, topic, speaker">
+            </label>
+            <div class="filter-row" id="sermonFilters">
+              <button class="filter-chip active" type="button" data-filter="all">All</button>
+              <button class="filter-chip" type="button" data-filter="ezra">Ezra</button>
+              <button class="filter-chip" type="button" data-filter="habakkuk">Habakkuk</button>
+            </div>
+          </div>
+          <div class="sermon-grid" id="sermonGrid"></div>
+          <p class="empty-state hidden" id="sermonEmpty">No archive sermons match that search.</p>
+        </details>
       </div>
-      <div class="event-grid" id="eventGrid"></div>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="about-copy">
-        <p class="eyebrow">Our story</p>
-        <h2>A rich legacy, renewed together.</h2>
-        <p>In 2017, Audubon Baptist Church and The Church at Louisville joined together as one congregation after a season of prayer and counsel. Audubon’s current history describes that union as a gracious work of church revitalization.</p>
-        <a class="text-link-dark" href="https://www.achurchinthepark.org/our-church/" target="_blank" rel="noopener">Read the full existing history →</a>
+    <section class="editorial-section events-editorial" id="events">
+      <div class="section-number">02</div>
+      <div class="section-aside">
+        <p class="editorial-kicker">This week at Audubon</p>
+        <h2>Church life should be easy to find.</h2>
+        <button class="editorial-cta text-cta" id="calendarPromoButton" type="button">Open member calendar <span>→</span></button>
       </div>
-      <div class="pastor-cards">
-        <article><span class="pastor-initials">JA</span><div><h3>Jeff Akin</h3><p>Lead Pastor</p></div></article>
-        <article><span class="pastor-initials">DH</span><div><h3>Dan Hatfield, Ph.D.</h3><p>Pastor Emeritus</p></div></article>
+      <div class="section-body">
+        <div class="event-grid event-list-editorial" id="eventGrid"></div>
       </div>
     </section>
 
-    <section class="section connect-section">
-      <div>
-        <p class="eyebrow">Church family</p>
-        <h2>One place for the life of the church.</h2>
-        <p>Members can use a private home for the calendar, prayer requests, service opportunities, church discussion, and more.</p>
+    <section class="belief-editorial" id="beliefs">
+      <div class="belief-statement">
+        <p class="editorial-kicker light-kicker">What we believe</p>
+        <h2>Jesus Christ is the center of our hope and the Scriptures are our final authority for faith and life.</h2>
       </div>
-      <button class="button primary" id="memberHomeButton" type="button">Open Member Home</button>
+      <div class="belief-detail">
+        <p>Audubon’s current site identifies the congregation as a cooperating member of the Southern Baptist Convention and the Baptist Faith and Message 2000 as a unifying statement of belief.</p>
+        <ul>
+          <li><strong>Scripture</strong><span>God’s written Word shapes what we believe and how we live.</span></li>
+          <li><strong>The Gospel</strong><span>Salvation is by God’s grace through faith in Jesus Christ, crucified and risen.</span></li>
+          <li><strong>The Church</strong><span>We gather for worship, discipleship, fellowship, the ordinances, mission, and service.</span></li>
+        </ul>
+        <a class="editorial-cta inverted" href="https://www.achurchinthepark.org/our-church/believing/" target="_blank" rel="noopener">Read our existing beliefs page <span>↗</span></a>
+      </div>
     </section>
 
-    <section class="giving-section" id="give">
-      <div>
-        <p class="eyebrow light">Giving</p>
-        <h2>Simple, secure, and separate from private card data.</h2>
-        <p>The website can provide a clear giving experience while a dedicated provider handles payment credentials and receipts.</p>
+    <section class="story-editorial" id="about">
+      <div class="story-heading">
+        <p class="editorial-kicker">Our story</p>
+        <h2>A long history.<br><em>Renewed together.</em></h2>
       </div>
-      <button class="button light-button" id="givingButton" type="button">Preview online giving</button>
+
+      <div class="story-copy">
+        <p class="story-lead">In 2017, Audubon Baptist Church and The Church at Louisville joined together as one congregation after a season of prayer and counsel.</p>
+        <p>Audubon’s current history describes that union as a gracious work of church revitalization. The new site can honor that history without living in the past: worship, preaching, fellowship, prayer, service, and gospel mission remain the center.</p>
+        <a class="text-link-dark" href="https://www.achurchinthepark.org/our-church/" target="_blank" rel="noopener">Read the full existing history ↗</a>
+      </div>
+
+      <div class="pastor-list">
+        <div><span>Lead Pastor</span><strong>Jeff Akin</strong></div>
+        <div><span>Pastor Emeritus</span><strong>Dan Hatfield, Ph.D.</strong></div>
+      </div>
+    </section>
+
+    <section class="church-family-editorial">
+      <div class="family-copy">
+        <p class="editorial-kicker light-kicker">For the church family</p>
+        <h2>The week ahead,<br>without the message-thread maze.</h2>
+        <p>Calendar, prayer requests, service opportunities, church discussion, sermons, and member information can live in one quiet place.</p>
+      </div>
+      <div class="family-actions">
+        <button class="large-text-link" id="memberHomeButton" type="button">Member Home <span>→</span></button>
+        <a class="large-text-link" href="calendar.html">3-Month Calendar <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="give-editorial" id="give">
+      <p class="editorial-kicker">Generosity</p>
+      <h2>Give simply.<br><em>Serve faithfully.</em></h2>
+      <p>The production site will hand gifts to a trusted giving provider rather than storing card or bank credentials ourselves.</p>
+      <button class="editorial-cta primary-cta" id="givingButton" type="button">Preview online giving <span>→</span></button>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-brand">
-      <span class="brand-mark footer-mark" aria-hidden="true">A</span>
-      <div><strong>Audubon Baptist Church</strong><p>A Church in the Park</p></div>
-    </div>
-    <div class="footer-contact">
-      <span>1046 Hess Lane · Louisville, KY 40217</span>
-      <a href="tel:+15026352100">(502) 635-2100</a>
-    </div>
-    <div class="footer-links">
-      <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook</a>
-      <a href="#sermons">Sermons</a>
-      <button id="footerMemberButton" type="button">Member Home</button>
+  <footer class="editorial-footer">
+    <div class="footer-wordmark">AUDUBON</div>
+    <div class="footer-main">
+      <div>
+        <span class="brand-mark footer-mark" aria-hidden="true">A</span>
+        <p><strong>Audubon Baptist Church</strong><br>A Church in the Park</p>
+      </div>
+      <address>1046 Hess Lane<br>Louisville, KY 40217<br><a href="tel:+15026352100">(502) 635-2100</a></address>
+      <nav>
+        <a href="#visit">Visit</a>
+        <a href="#sermons">Sermons</a>
+        <a href="#beliefs">Beliefs</a>
+        <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook ↗</a>
+        <button id="footerMemberButton" type="button">Member Home</button>
+      </nav>
     </div>
   </footer>
 
   <dialog class="signin-dialog" id="signInDialog">
     <form method="dialog" class="dialog-card">
       <div class="dialog-heading">
-        <div><p class="eyebrow">Member access preview</p><h2>Choose an account type.</h2></div>
+        <div><p class="editorial-kicker">Member access preview</p><h2>Choose an account type.</h2></div>
         <button class="dialog-close" value="cancel" aria-label="Close">×</button>
       </div>
-      <p>Production will use real credentials. The prototype lets us review each private-area experience without creating accounts yet.</p>
+      <p>Production will use real credentials. This chooser lets leadership review the private-area experience now.</p>
       <label for="dialogRole">Preview account</label>
       <select id="dialogRole">
         <option value="member">Church member</option>
