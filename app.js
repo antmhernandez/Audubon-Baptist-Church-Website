@@ -10,8 +10,8 @@ function buildDefaultEvents(){
   const today=new Date(),events=[];
   for(let week=0;week<14;week+=1){
     const sunday=nextWeekday(today,0,week),wednesday=nextWeekday(today,3,week);
-    events.push({id:"worship-"+ymd(sunday),dateISO:ymd(sunday),time:"10:30",title:"Sunday Worship",audience:"churchwide",description:"Gather with us for worship and the preaching of God's Word.",source:"published"});
-    events.push({id:"midweek-"+ymd(wednesday),dateISO:ymd(wednesday),time:"18:30",title:"Midweek Service",audience:"churchwide",description:"A midweek gathering for prayer and Bible study.",source:"published"});
+    events.push({id:"worship-"+ymd(sunday),dateISO:ymd(sunday),time:"10:30",title:"Sunday Worship",audience:"churchwide",description:"Published Audubon materials list this gathering at 10:30 AM; please confirm the current schedule before production.",source:"published"});
+    events.push({id:"midweek-"+ymd(wednesday),dateISO:ymd(wednesday),time:"18:30",title:"Midweek Service",audience:"churchwide",description:"Published Audubon materials list the Midweek Service at 6:30 PM; please confirm the current schedule before production.",source:"published"});
   }
   events.push({id:"sample-work-day",dateISO:ymd(addDays(today,12)),time:"09:00",title:"Sample: Church Work Day",audience:"member",description:"Demonstration event showing member RSVP and volunteer planning.",source:"sample"});
   events.push({id:"sample-ministry-meeting",dateISO:ymd(addDays(today,31)),time:"18:00",title:"Sample: Ministry Team Meeting",audience:"group",description:"Demonstration group-only event.",source:"sample"});
