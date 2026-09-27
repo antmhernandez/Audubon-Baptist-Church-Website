@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audubon Baptist Church sermon media studio prototype">
+  <meta name="theme-color" content="#17324d">
+  <title>Sermon Media Studio | Audubon Baptist Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page media-page">
+  <a class="skip-link" href="#mediaMain">Skip to media studio</a>
+
+  <div class="prototype-bar">
+    <div><strong>Leadership prototype</strong><span>Media studio · no file is uploaded to the internet in this demo</span></div>
+    <div class="prototype-actions">
+      <span id="mediaRoleLabel">Administrator preview required</span>
+    </div>
+  </div>
+
+  <header class="site-header app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
+    </a>
+    <nav class="app-nav" aria-label="Administrator tools">
+      <a href="calendar.html">Calendar</a>
+      <a class="active" href="media-studio.html">Media studio</a>
+      <a href="index.html#adminArea">Site administration</a>
+    </nav>
+    <a class="member-button link-button" href="index.html">Public site</a>
+  </header>
+
+  <main id="mediaMain">
+    <section class="access-gate hidden" id="mediaGate">
+      <div class="access-gate-card">
+        <span class="gate-icon" aria-hidden="true">▶</span>
+        <p class="eyebrow">Administrator tool</p>
+        <h1>Sermon media studio</h1>
+        <p>Production access will be limited to approved media administrators. This prototype can switch you into an administrator preview without a password.</p>
+        <button class="button primary" id="mediaAdminPreview" type="button">Preview as administrator</button>
+        <a class="button secondary" href="index.html">Return to site</a>
+      </div>
+    </section>
+
+    <section class="media-studio hidden" id="mediaStudio">
+      <div class="studio-hero">
+        <div>
+          <p class="eyebrow">Sermon media studio</p>
+          <h1>Upload. Find the sermon. Trim. Publish.</h1>
+          <p>The aim is a weekly workflow simple enough for a volunteer: select the recording, move through it quickly, mark the beginning and end, add details, and hand the job to the publishing system.</p>
+        </div>
+        <div class="studio-steps" aria-label="Media workflow">
+          <span class="active">1 Upload</span><span>2 Trim</span><span>3 Details</span><span>4 Review</span>
+        </div>
+      </div>
+
+      <section class="studio-card upload-card">
+        <div class="studio-card-heading">
+          <div><span class="step-number">1</span><div><h2>Choose the service recording</h2><p>The file stays on this computer in the static prototype.</p></div></div>
+          <span class="status-pill" id="fileStatus">No video selected</span>
+        </div>
+        <label class="drop-zone" id="dropZone" for="videoFileInput">
+          <span class="drop-icon" aria-hidden="true">↑</span>
+          <strong>Drop a video here</strong>
+          <span>or choose a file from this computer</span>
+          <input id="videoFileInput" type="file" accept="video/*">
+        </label>
+        <div class="file-summary hidden" id="fileSummary"></div>
+      </section>
+
+      <section class="studio-card hidden" id="editorCard">
+        <div class="studio-card-heading">
+          <div><span class="step-number">2</span><div><h2>Find the sermon and trim it</h2><p>Scrub through the service, make quick jumps, then mark the exact start and end.</p></div></div>
+          <span class="status-pill" id="clipDurationBadge">Clip —</span>
+        </div>
+
+        <div class="video-stage">
+          <video id="videoPreview" controls preload="metadata"></video>
+        </div>
+
+        <div class="transport-row">
+          <button class="transport-button" id="jumpBack" type="button">−5 sec</button>
+          <button class="transport-button primary-transport" id="playPause" type="button">Play / pause</button>
+          <button class="transport-button" id="jumpForward" type="button">+5 sec</button>
+          <span class="time-readout"><strong id="playheadTime">00:00</strong> / <span id="durationTime">00:00</span></span>
+        </div>
+
+        <label class="scrubber-label" for="playheadSlider">Move through recording</label>
+        <input class="media-scrubber" id="playheadSlider" type="range" min="0" max="100" value="0" step="0.1">
+
+        <div class="trim-track" aria-hidden="true">
+          <div class="trim-included" id="trimIncluded"></div>
+          <span class="trim-playhead" id="trimPlayhead"></span>
+        </div>
+
+        <div class="trim-controls">
+          <div class="trim-control-card">
+            <span class="trim-label">Start</span>
+            <strong id="trimStartDisplay">00:00</strong>
+            <button class="button secondary small" id="setStartHere" type="button">Set start here</button>
+            <input id="trimStartSlider" type="range" min="0" max="100" value="0" step="0.1" aria-label="Trim start">
+          </div>
+          <div class="trim-control-card">
+            <span class="trim-label">End</span>
+            <strong id="trimEndDisplay">00:00</strong>
+            <button class="button secondary small" id="setEndHere" type="button">Set end here</button>
+            <input id="trimEndSlider" type="range" min="0" max="100" value="100" step="0.1" aria-label="Trim end">
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button class="button primary" id="previewSelection" type="button">Preview selected clip</button>
+          <button class="button secondary" id="resetTrim" type="button">Use full video</button>
+        </div>
+      </section>
+
+      <section class="studio-card hidden" id="detailsCard">
+        <div class="studio-card-heading">
+          <div><span class="step-number">3</span><div><h2>Add sermon details</h2><p>These become searchable metadata in the sermon library.</p></div></div>
+        </div>
+        <div class="studio-form-grid">
+          <label>Title<input id="mediaTitle" placeholder="Sermon title"></label>
+          <label>Scripture<input id="mediaScripture" placeholder="Example: Ezra 8:1–15"></label>
+          <label>Speaker<input id="mediaSpeaker" value="Pastor Jeff Akin"></label>
+          <label>Series<input id="mediaSeries" placeholder="Series or book"></label>
+          <label class="span-two">Tags<input id="mediaTags" placeholder="Missions, faith, Ezra"></label>
+          <label>Audio gain
+            <select id="mediaGain"><option value="0">No change</option><option value="3">+3 dB</option><option value="6">+6 dB</option><option value="-3">−3 dB</option></select>
+          </label>
+          <div class="studio-checkboxes">
+            <label><input id="mediaNormalize" type="checkbox" checked> Normalize speech loudness</label>
+            <label><input id="mediaFade" type="checkbox" checked> Short fade in / out</label>
+            <label><input id="mediaAudioOnly" type="checkbox" checked> Create audio-only copy</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="studio-card hidden" id="reviewCard">
+        <div class="studio-card-heading">
+          <div><span class="step-number">4</span><div><h2>Review and prepare publication</h2><p>The production system will pass these choices to FFmpeg and the selected video provider.</p></div></div>
+        </div>
+        <div class="publish-summary" id="publishSummary"></div>
+        <div class="button-row">
+          <button class="button secondary" id="saveMediaDraft" type="button">Save draft settings</button>
+          <button class="button primary" id="preparePublish" type="button">Prepare & post (prototype)</button>
+        </div>
+        <div class="publish-job hidden" id="publishJob"></div>
+        <p class="microcopy">The prototype does not upload or re-encode your recording. In production, this final action will create a processing job, clip the selected range, normalize audio, create derivatives, upload them, and publish the sermon record.</p>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast hidden" id="mediaToast" role="status" aria-live="polite"></div>
+  <script src="media-studio.js"></script>
+</body>
+</html>
