@@ -6,7 +6,7 @@ A public website and emerging member platform for Audubon Baptist Church.
 
 This repository contains a **leadership / pastor prototype** designed to run directly on GitHub Pages with no paid infrastructure.
 
-The current prototype demonstrates:
+The current prototype demonstrates a calmer, connected set of public and private church experiences:
 
 - a welcoming public church website;
 - a clearer "New here?" / visit pathway;
@@ -55,7 +55,9 @@ All demo changes remain only in the current browser.
 
 ## Repository map
 
-- `index.html` — public/member/admin prototype
+- `index.html` — focused public church website prototype
+- `member.html` + `member.js` — dedicated member home
+- `admin.html` + `admin.js` — dedicated site administration workspace
 - `calendar.html` + `calendar.js` — member-only three-month calendar prototype
 - `media-studio.html` + `media-studio.js` — administrator sermon upload/trim/publish workflow prototype
 - `styles.css` — responsive visual and interaction system
