@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audubon Baptist Church member calendar prototype">
+  <meta name="theme-color" content="#17324d">
+  <title>Member Calendar | Audubon Baptist Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#calendarMain">Skip to calendar</a>
+
+  <div class="prototype-bar">
+    <div><strong>Leadership prototype</strong><span>Member calendar · browser-local demo data</span></div>
+    <div class="prototype-actions">
+      <label for="calendarRoleSwitcher">Preview role</label>
+      <select id="calendarRoleSwitcher">
+        <option value="public">Public visitor</option>
+        <option value="member">Church member</option>
+        <option value="group">Ministry / group member</option>
+        <option value="leadership">Church leadership</option>
+        <option value="admin">Administrator</option>
+      </select>
+    </div>
+  </div>
+
+  <header class="site-header app-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
+    </a>
+    <nav class="app-nav" aria-label="Member tools">
+      <a class="active" href="calendar.html">Calendar</a>
+      <a href="index.html#memberArea">Member home</a>
+      <a href="index.html#sermons">Sermons</a>
+      <a class="admin-tool-link hidden" id="mediaStudioNav" href="media-studio.html">Media studio</a>
+    </nav>
+    <a class="member-button link-button" href="index.html">Public site</a>
+  </header>
+
+  <main id="calendarMain">
+    <section class="access-gate hidden" id="calendarGate">
+      <div class="access-gate-card">
+        <span class="gate-icon" aria-hidden="true">▦</span>
+        <p class="eyebrow">Members only</p>
+        <h1>Your church calendar lives here.</h1>
+        <p>The production calendar will require a church member account. For this leadership prototype, choose a member role to preview it without credentials.</p>
+        <button class="button primary" id="calendarDemoSignIn" type="button">Preview member sign in</button>
+        <a class="button secondary" href="index.html">Return to public site</a>
+      </div>
+    </section>
+
+    <section class="calendar-app hidden" id="calendarApp">
+      <div class="calendar-hero">
+        <div>
+          <p class="eyebrow">Member calendar</p>
+          <h1>Three months at a glance.</h1>
+          <p>See church gatherings, ministry items, signups, and your RSVPs without digging through announcements.</p>
+        </div>
+        <div class="calendar-actions">
+          <button class="button secondary small" id="previousQuarter" type="button">← Previous 3 months</button>
+          <button class="button secondary small" id="todayQuarter" type="button">Current quarter</button>
+          <button class="button secondary small" id="nextQuarter" type="button">Next 3 months →</button>
+        </div>
+      </div>
+
+      <div class="calendar-summary-row">
+        <div class="calendar-summary-card">
+          <span>Viewing</span>
+          <strong id="quarterLabel">—</strong>
+        </div>
+        <div class="calendar-summary-card">
+          <span>Upcoming</span>
+          <strong id="upcomingCount">0 events</strong>
+        </div>
+        <div class="calendar-summary-card">
+          <span>Your RSVPs</span>
+          <strong id="rsvpCount">0 answered</strong>
+        </div>
+        <div class="calendar-summary-card">
+          <span>Access</span>
+          <strong id="calendarAccessLabel">Church member</strong>
+        </div>
+      </div>
+
+      <div class="calendar-toolbar">
+        <div class="calendar-filter-group" aria-label="Calendar filters">
+          <button class="filter-chip active" type="button" data-calendar-filter="all">All events</button>
+          <button class="filter-chip" type="button" data-calendar-filter="churchwide">Churchwide</button>
+          <button class="filter-chip" type="button" data-calendar-filter="member">Members</button>
+          <button class="filter-chip" type="button" data-calendar-filter="group">My ministry</button>
+        </div>
+        <button class="button primary small admin-tool-link hidden" id="openEventComposer" type="button">+ Add event</button>
+      </div>
+
+      <section class="quarter-grid" id="quarterGrid" aria-label="Three month calendar"></section>
+
+      <div class="calendar-lower-grid">
+        <section class="agenda-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Selected day</p>
+              <h2 id="selectedDayTitle">Choose a date</h2>
+            </div>
+          </div>
+          <div id="selectedDayAgenda" class="agenda-list">
+            <p class="empty-state">Select a day in the calendar to see its events here.</p>
+          </div>
+        </section>
+
+        <aside class="upcoming-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Coming up</p>
+              <h2>Next on the calendar</h2>
+            </div>
+          </div>
+          <div id="upcomingList" class="upcoming-list"></div>
+        </aside>
+      </div>
+
+      <section class="calendar-note">
+        <strong>Prototype note</strong>
+        <p>The recurring Sunday and Wednesday schedule shown here is based on previously published Audubon materials and should be confirmed before production. Other clearly labeled items are demonstration events.</p>
+      </section>
+    </section>
+  </main>
+
+  <dialog class="signin-dialog" id="calendarSignInDialog">
+    <form method="dialog" class="dialog-card">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">Member access preview</p><h2>Choose an account type.</h2></div>
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      </div>
+      <label for="calendarDialogRole">Preview account</label>
+      <select id="calendarDialogRole">
+        <option value="member">Church member</option>
+        <option value="group">Ministry / group member</option>
+        <option value="leadership">Church leadership</option>
+        <option value="admin">Administrator</option>
+      </select>
+      <button class="button primary full" id="calendarDialogContinue" type="button">Open calendar</button>
+      <p class="microcopy">Production will use real credentials and server-enforced permissions.</p>
+    </form>
+  </dialog>
+
+  <dialog class="signin-dialog" id="eventComposerDialog">
+    <form method="dialog" class="dialog-card" id="calendarEventForm">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">Administrator</p><h2>Add a calendar event.</h2></div>
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      </div>
+      <label for="calendarEventTitle">Event title</label>
+      <input id="calendarEventTitle" required>
+      <div class="two-field-row">
+        <div><label for="calendarEventDate">Date</label><input id="calendarEventDate" type="date" required></div>
+        <div><label for="calendarEventTime">Time</label><input id="calendarEventTime" type="time" value="18:30"></div>
+      </div>
+      <label for="calendarEventAudience">Audience</label>
+      <select id="calendarEventAudience">
+        <option value="churchwide">Churchwide</option>
+        <option value="member">Members</option>
+        <option value="group">Ministry / group</option>
+      </select>
+      <label for="calendarEventDescription">Short description</label>
+      <textarea id="calendarEventDescription" rows="3" placeholder="What should members know?"></textarea>
+      <button class="button primary full" type="submit">Add event to prototype</button>
+    </form>
+  </dialog>
+
+  <div class="toast hidden" id="calendarToast" role="status" aria-live="polite"></div>
+  <script src="calendar.js"></script>
+</body>
+</html>
