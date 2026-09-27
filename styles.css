@@ -1479,3 +1479,300 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   .member-tool-grid{grid-template-columns:1fr}
   .member-tool-card{border-right:0}
 }
+
+
+/* =========================================================
+   Artistic variation pass — 2026-09-27
+   More varied pacing, richer text hierarchy, and improved
+   long-page navigation without sacrificing clarity.
+   ========================================================= */
+.scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:3px;
+  z-index:120;
+  transform:scaleX(0);
+  transform-origin:left center;
+  background:var(--audubon-red);
+  pointer-events:none;
+}
+.editorial-header .main-nav a{
+  position:relative;
+}
+.editorial-header .main-nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-9px;
+  height:1px;
+  background:var(--audubon-red);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .2s ease;
+}
+.editorial-header .main-nav a:hover::after,
+.editorial-header .main-nav a.active-section::after{
+  transform:scaleX(1);
+}
+.editorial-header .main-nav a.active-section{color:var(--audubon-red)}
+.back-to-top{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:75;
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(127,45,50,.35);
+  border-radius:50%;
+  background:rgba(251,248,242,.93);
+  color:var(--audubon-red);
+  box-shadow:0 8px 26px rgba(34,41,44,.12);
+  cursor:pointer;
+  font-size:1.1rem;
+  backdrop-filter:blur(10px);
+}
+.back-to-top:hover{background:var(--audubon-red);color:white}
+
+/* A deliberately quieter explanatory beat between Visit and Sermons. */
+.sunday-rhythm{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:clamp(80px,10vw,135px) 0;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:90px;
+  border-bottom:1px solid var(--audubon-rule);
+}
+.rhythm-intro h2{
+  margin:0;
+  font-size:clamp(4rem,7vw,7rem);
+  line-height:.83;
+  letter-spacing:-.06em;
+}
+.rhythm-intro h2 em{
+  display:block;
+  color:var(--audubon-red);
+  font-weight:400;
+}
+.rhythm-lines{
+  align-self:end;
+  border-top:1px solid var(--audubon-rule);
+}
+.rhythm-lines article{
+  display:grid;
+  grid-template-columns:54px 125px 1fr;
+  gap:18px;
+  align-items:start;
+  padding:20px 0;
+  border-bottom:1px solid var(--audubon-rule);
+}
+.rhythm-lines article>span{
+  color:var(--audubon-red);
+  font-size:.61rem;
+  font-weight:800;
+  letter-spacing:.11em;
+}
+.rhythm-lines h3{
+  margin:0;
+  font-family:var(--display);
+  font-size:1.35rem;
+  font-weight:500;
+}
+.rhythm-lines p{
+  margin:0;
+  color:var(--audubon-muted);
+  font-size:.84rem;
+  line-height:1.68;
+}
+
+/* Mission interlude: a visual reset rather than another information block. */
+.mission-interlude{
+  position:relative;
+  max-width:1600px;
+  margin:0 auto;
+  padding:clamp(100px,11vw,155px) max(24px,calc((100vw - var(--max))/2));
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:90px;
+  overflow:hidden;
+  background:#20282b;
+  color:white;
+}
+.mission-index{
+  position:absolute;
+  right:-.02em;
+  bottom:-.22em;
+  font-family:var(--sans);
+  font-size:clamp(12rem,27vw,28rem);
+  line-height:.72;
+  font-weight:800;
+  letter-spacing:-.1em;
+  color:rgba(255,255,255,.035);
+  user-select:none;
+  pointer-events:none;
+}
+.mission-heading,.mission-copy{position:relative;z-index:2}
+.mission-heading h2{
+  margin:0;
+  max-width:820px;
+  color:white;
+  font-size:clamp(3.9rem,6.5vw,7rem);
+  line-height:.88;
+  letter-spacing:-.06em;
+}
+.mission-heading h2 em{
+  display:block;
+  font-weight:400;
+  color:#dba5a8;
+}
+.mission-copy{
+  align-self:end;
+  padding-bottom:9px;
+}
+.mission-copy>p:first-child{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(1.25rem,1.9vw,1.7rem);
+  line-height:1.45;
+  color:#eef2ef;
+}
+.mission-small{
+  margin:22px 0 31px;
+  color:#adb9b4;
+  font-size:.83rem;
+  line-height:1.65;
+}
+
+/* Give the history section a graphic anchor without inventing imagery. */
+.story-heading{position:relative}
+.story-year{
+  margin:0 0 -18px -6px;
+  font-size:clamp(5rem,12vw,11rem);
+  line-height:.75;
+  font-weight:800;
+  letter-spacing:-.075em;
+  color:rgba(127,45,50,.08);
+  font-family:var(--sans);
+}
+
+/* More prose variation in the giving section. */
+.give-copy{
+  max-width:590px;
+  align-self:center;
+}
+.give-copy>p:first-child{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(1.2rem,1.8vw,1.55rem);
+  line-height:1.48;
+  color:#454f52;
+}
+.fine-print{
+  margin:18px 0 0;
+  color:#8a8983;
+  font-size:.7rem;
+}
+.give-editorial>.give-copy{grid-column:2}
+.give-editorial>.editorial-cta{grid-column:2}
+
+/* Final invitation: a compact, horizontal endnote before the footer. */
+.visit-return{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:36px 0 44px;
+  display:grid;
+  grid-template-columns:150px 1fr auto;
+  gap:35px;
+  align-items:center;
+  border-top:1px solid var(--audubon-rule);
+}
+.visit-return-label{
+  color:var(--audubon-red);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:.62rem;
+  font-weight:800;
+}
+.visit-return h2{
+  margin:0;
+  font-size:clamp(2rem,3.3vw,3.5rem);
+  line-height:1;
+}
+.visit-return p{
+  margin:7px 0 0;
+  color:var(--audubon-muted);
+  font-size:.8rem;
+}
+
+/* Make the application's role labels and mini headings feel related to the editorial site. */
+.app-page .eyebrow,
+.app-page .admin-kicker{
+  letter-spacing:.15em;
+}
+.app-page .member-welcome>div>p:last-child,
+.app-page .calendar-hero>div>p:last-child,
+.app-page .studio-hero>div>p:last-child,
+.app-page .admin-welcome>div>p:last-child{
+  max-width:720px;
+  font-family:var(--display);
+  font-size:1.1rem;
+  line-height:1.48;
+}
+
+/* More tactile, but still restrained, hover behavior on list-style interactions. */
+.event-list-editorial .clean-event-card,
+.rhythm-lines article,
+.pastor-list>div{
+  transition:padding-left .18s ease,background-color .18s ease;
+}
+.event-list-editorial .clean-event-card:hover,
+.rhythm-lines article:hover,
+.pastor-list>div:hover{
+  padding-left:10px;
+  background:rgba(127,45,50,.025);
+}
+
+/* Typography details that make long prose feel more editorial. */
+.story-copy>p:not(.story-lead),
+.belief-detail>p,
+.mission-copy p,
+.give-copy p{
+  text-wrap:pretty;
+}
+.hero-statement,.section-aside h2,.belief-statement h2,.family-copy h2,.mission-heading h2{
+  text-wrap:balance;
+}
+
+@media (max-width:1050px){
+  .sunday-rhythm{grid-template-columns:1fr;gap:45px;padding-left:24px;padding-right:24px}
+  .rhythm-lines{max-width:760px}
+  .mission-interlude{grid-template-columns:1fr;gap:55px}
+  .mission-copy{max-width:730px}
+  .visit-return{margin-left:24px;margin-right:24px}
+}
+@media (max-width:760px){
+  .sunday-rhythm{padding:80px 18px}
+  .rhythm-lines article{grid-template-columns:42px 95px 1fr}
+  .mission-interlude{padding:80px 24px}
+  .give-editorial>.give-copy,.give-editorial>.editorial-cta{grid-column:auto}
+  .give-copy{margin-top:30px}
+  .visit-return{
+    margin:0 18px;
+    grid-template-columns:1fr;
+    gap:15px;
+    padding:32px 0 38px;
+  }
+}
+@media (max-width:560px){
+  .rhythm-lines article{display:block}
+  .rhythm-lines article>span{display:block;margin-bottom:5px}
+  .rhythm-lines h3{margin-bottom:6px}
+  .mission-heading h2{font-size:3.55rem}
+  .story-year{font-size:5rem;margin-bottom:-5px}
+  .back-to-top{right:15px;bottom:70px}
+}
