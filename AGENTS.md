@@ -11,6 +11,7 @@ Before making substantial changes, read:
 5. `docs/SECURITY_AND_PRIVACY.md`
 6. `docs/ROADMAP.md`
 7. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
+8. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
 
 For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also read `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md`.
 
