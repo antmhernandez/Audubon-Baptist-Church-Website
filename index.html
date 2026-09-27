@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Audubon Baptist Church website prototype">
+  <title>Audubon Baptist Church</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="demo-banner">
+    <strong>Pastor / leadership prototype.</strong>
+    Sample times, events, sermons, and member information are for design review only.
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Audubon Baptist Church home">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span><strong>Audubon Baptist Church</strong><small>Louisville, Kentucky</small></span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#beliefs">Beliefs</a>
+      <a href="#sermons">Sermons</a>
+      <a href="#events">Events</a>
+      <a href="#connect">Connect</a>
+      <a href="#give">Give</a>
+    </nav>
+    <div class="role-preview">
+      <label for="roleSwitcher">Preview as</label>
+      <select id="roleSwitcher" aria-label="Preview site role">
+        <option value="public">Public</option>
+        <option value="member">Church member</option>
+        <option value="group">Ministry / group member</option>
+        <option value="leadership">Church leadership</option>
+        <option value="admin">Administrator</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">Welcome to Audubon Baptist Church</p>
+        <h1>Centered on Christ.<br>Rooted in Scripture.<br>Growing together.</h1>
+        <p class="hero-lead">A church family seeking to worship God faithfully, grow through His Word, love one another, and make Christ known.</p>
+        <div class="button-row">
+          <a class="button primary" href="#visit">Plan your visit</a>
+          <a class="button secondary" href="#sermons">Watch a sermon</a>
+        </div>
+      </div>
+      <aside class="hero-card" id="visit">
+        <p class="eyebrow">This Sunday</p>
+        <h2>Come worship with us</h2>
+        <dl class="visit-list">
+          <div><dt>Sunday School</dt><dd>Sample · 9:30 AM</dd></div>
+          <div><dt>Worship</dt><dd>Sample · 10:30 AM</dd></div>
+          <div><dt>Location</dt><dd>Church address to confirm</dd></div>
+        </dl>
+        <p class="microcopy">Service times and address are placeholders until church leadership confirms them.</p>
+      </aside>
+    </section>
+
+    <section class="announcement-strip" aria-label="Church announcement">
+      <span class="tag">This week</span>
+      <p id="announcementText">Sample announcement: Join us Wednesday evening for prayer and Bible study.</p>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">Who we are</p>
+        <h2>A church family for worship, discipleship, fellowship, and mission.</h2>
+        <p>Our public website should make it easy for a newcomer to understand who we are and for members to find the things they need without searching through clutter.</p>
+      </div>
+      <div class="feature-grid three">
+        <article class="feature-card">
+          <span class="feature-number">01</span>
+          <h3>Worship</h3>
+          <p>Gathering around Scripture, prayer, song, fellowship, the ordinances, and the proclamation of the gospel.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">02</span>
+          <h3>Grow</h3>
+          <p>Helping children, students, adults, and families know God's Word and follow Christ together.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">03</span>
+          <h3>Serve</h3>
+          <p>Using our gifts to care for one another, love our neighbors, and participate in Christ's mission.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contrast" id="beliefs">
+      <div class="section-heading">
+        <p class="eyebrow">What we believe</p>
+        <h2>Brief, clear, and anchored in Scripture.</h2>
+        <p>This prototype uses concise language for review. Final wording should be approved by church leadership and linked to a fuller statement of faith.</p>
+      </div>
+      <div class="belief-grid">
+        <article><h3>Scripture</h3><p>We receive the Bible as God's written Word and our final authority for faith and life.</p></article>
+        <article><h3>The Gospel</h3><p>We proclaim salvation by God's grace through faith in Jesus Christ, who died for our sins and rose again.</p></article>
+        <article><h3>The Church</h3><p>We are a local Baptist congregation committed to worship, discipleship, fellowship, the ordinances, mission, and service.</p></article>
+        <article><h3>Southern Baptist Affiliation</h3><p>Audubon Baptist Church identifies with the Southern Baptist tradition and cooperative mission. Exact affiliation language should be confirmed before launch.</p></article>
+      </div>
+      <a class="text-link" href="#" aria-disabled="true">Full statement of faith · coming in a later phase</a>
+    </section>
+
+    <section class="section" id="sermons">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Sermons</p>
+          <h2>Teaching that remains useful after Sunday.</h2>
+        </div>
+        <button class="button secondary small" type="button" id="sermonAdminShortcut">Media workflow preview</button>
+      </div>
+
+      <div class="sermon-layout">
+        <div class="video-placeholder" aria-label="Sample sermon video area">
+          <div>
+            <span class="play-mark" aria-hidden="true">▶</span>
+            <p>Video provider placeholder</p>
+            <small>YouTube or Bunny Stream can be embedded here.</small>
+          </div>
+        </div>
+        <article class="sermon-details">
+          <span class="tag">Sample sermon</span>
+          <h3 id="sermonTitle">The Good Shepherd</h3>
+          <p class="sermon-reference" id="sermonReference">John 10:1–18</p>
+          <p id="sermonSpeaker">Pastor · name to confirm</p>
+          <div class="chip-row" id="sermonTags"></div>
+          <div class="button-row">
+            <button class="button primary" type="button">Watch</button>
+            <button class="button ghost" type="button">Audio only</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="filter-row" aria-label="Sample sermon filters">
+        <button class="filter-chip active" type="button">Latest</button>
+        <button class="filter-chip" type="button">Book of the Bible</button>
+        <button class="filter-chip" type="button">Series</button>
+        <button class="filter-chip" type="button">Speaker</button>
+        <button class="filter-chip" type="button">Topic</button>
+      </div>
+    </section>
+
+    <section class="section soft" id="events">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Church calendar</p>
+          <h2>Know what is happening. Join in easily.</h2>
+        </div>
+        <span class="role-note" id="rsvpRoleNote">Members can RSVP after signing in.</span>
+      </div>
+      <div class="event-grid" id="eventGrid"></div>
+    </section>
+
+    <section class="section" id="connect">
+      <div class="section-heading">
+        <p class="eyebrow">Connect and care</p>
+        <h2>Useful church tools, gathered into one calm place.</h2>
+      </div>
+      <div class="feature-grid three">
+        <article class="action-card">
+          <span class="icon-circle" aria-hidden="true">♡</span>
+          <h3>Prayer</h3>
+          <p>Submit a request and choose whether it is public, members-only, leadership-only, or pastoral.</p>
+          <button class="text-button" type="button" data-open-member="prayer">Open prayer area →</button>
+        </article>
+        <article class="action-card">
+          <span class="icon-circle" aria-hidden="true">✓</span>
+          <h3>Serve</h3>
+          <p>Volunteer for meals, work days, ministry tasks, event needs, and other opportunities.</p>
+          <button class="text-button" type="button" data-open-member="groups">View opportunities →</button>
+        </article>
+        <article class="action-card">
+          <span class="icon-circle" aria-hidden="true">…</span>
+          <h3>Church discussion</h3>
+          <p>Keep ministry questions and planning conversations organized instead of scattered across message threads.</p>
+          <button class="text-button" type="button" data-open-member="discussion">Open discussion preview →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contrast" id="give">
+      <div class="give-layout">
+        <div>
+          <p class="eyebrow">Giving</p>
+          <h2>Simple to use. Secure by design.</h2>
+          <p>The church site should explain giving clearly while an established payment provider securely handles card and bank information. The website itself should never store card numbers.</p>
+        </div>
+        <div class="give-card">
+          <label for="fundSelect">Example fund</label>
+          <select id="fundSelect">
+            <option>General Fund</option>
+            <option>Missions</option>
+            <option>Benevolence</option>
+          </select>
+          <button class="button primary" type="button" id="givingButton">Preview secure giving handoff</button>
+          <p class="microcopy">No payment processing is active in this prototype.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="member-shell hidden" id="memberArea">
+      <div class="member-header">
+        <div>
+          <p class="eyebrow">Member area</p>
+          <h2 id="memberHeading">Welcome back.</h2>
+          <p id="memberSubheading">Content below changes according to the role selected in the prototype header.</p>
+        </div>
+        <span class="access-badge" id="accessBadge">Church member</span>
+      </div>
+
+      <div class="member-tabs" role="tablist" aria-label="Member area sections">
+        <button class="member-tab active" type="button" data-tab="overview">Overview</button>
+        <button class="member-tab" type="button" data-tab="prayer">Prayer</button>
+        <button class="member-tab" type="button" data-tab="groups">Groups & service</button>
+        <button class="member-tab" type="button" data-tab="discussion">Discussion</button>
+      </div>
+
+      <div class="tab-panel active" data-panel="overview">
+        <div class="dashboard-grid">
+          <article class="dashboard-card"><span class="tag">Next gathering</span><h3>Wednesday Bible Study</h3><p>Sample · 6:30 PM</p></article>
+          <article class="dashboard-card"><span class="tag">Your RSVP</span><h3>Church Work Day</h3><p id="memberRsvpSummary">Not yet answered</p></article>
+          <article class="dashboard-card"><span class="tag">Ministry</span><h3>Ways to help</h3><p>2 sample opportunities are currently open.</p></article>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="prayer">
+        <div class="panel-heading"><div><h3>Prayer list</h3><p>Visibility is enforced according to the selected role.</p></div><button class="button secondary small" type="button">Submit request</button></div>
+        <div class="prayer-list" id="prayerList"></div>
+      </div>
+
+      <div class="tab-panel" data-panel="groups">
+        <div class="panel-heading"><div><h3>Groups & service</h3><p>Members can join ministry conversations and volunteer for needs.</p></div></div>
+        <div class="feature-grid three">
+          <article class="dashboard-card"><span class="tag">Open need</span><h3>Church Work Day</h3><p>3 landscaping helpers and 1 lunch helper still needed.</p><button class="text-button" type="button">Volunteer →</button></article>
+          <article class="dashboard-card group-only"><span class="tag">Your group</span><h3>Sample Ministry Team</h3><p>Group-specific material appears only for assigned members.</p><button class="text-button" type="button">Open group →</button></article>
+          <article class="dashboard-card leadership-only"><span class="tag">Leadership</span><h3>Ministry planning</h3><p>Restricted planning items can be shared with leaders without making them public.</p><button class="text-button" type="button">Open planning →</button></article>
+        </div>
+      </div>
+
+      <div class="tab-panel" data-panel="discussion">
+        <div class="panel-heading"><div><h3>Church discussion</h3><p>A structured forum is often easier to follow than an endless group chat.</p></div><button class="button secondary small" type="button">New post</button></div>
+        <div class="discussion-list">
+          <article><span class="tag">Announcement</span><h4>Sample: Fall ministry calendar</h4><p>Leadership can pin important conversations and keep replies attached to the right subject.</p><small>3 replies · sample data</small></article>
+          <article><span class="tag">Question</span><h4>Sample: What should I bring to the work day?</h4><p>Members can ask practical questions without losing answers in a text-message chain.</p><small>2 replies · sample data</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-shell hidden" id="adminArea">
+      <div class="admin-header">
+        <div>
+          <p class="eyebrow">Administrator preview</p>
+          <h2>Edit the church site without editing code.</h2>
+          <p>This prototype saves changes only in this browser. A production version will save through authenticated database APIs with an audit trail.</p>
+        </div>
+        <button class="button ghost" type="button" id="resetDemo">Reset demo data</button>
+      </div>
+
+      <div class="admin-grid">
+        <form class="admin-card" id="announcementForm">
+          <h3>Homepage announcement</h3>
+          <label for="announcementInput">Announcement text</label>
+          <textarea id="announcementInput" rows="4"></textarea>
+          <button class="button primary small" type="submit">Save announcement</button>
+        </form>
+
+        <form class="admin-card" id="eventForm">
+          <h3>Add calendar item</h3>
+          <label for="eventTitle">Title</label>
+          <input id="eventTitle" required>
+          <label for="eventDate">Date / time label</label>
+          <input id="eventDate" placeholder="Saturday · 9:00 AM" required>
+          <label for="eventAudience">Audience</label>
+          <select id="eventAudience"><option>Churchwide</option><option>Members</option><option>Ministry group</option></select>
+          <button class="button primary small" type="submit">Add event</button>
+        </form>
+
+        <form class="admin-card wide" id="sermonForm">
+          <div class="panel-heading"><div><h3>Sermon publishing workflow</h3><p>Metadata and simple trim/audio controls for a future FFmpeg or media-service workflow.</p></div><span class="tag">Prototype</span></div>
+          <div class="form-grid">
+            <div><label for="sermonTitleInput">Title</label><input id="sermonTitleInput"></div>
+            <div><label for="sermonReferenceInput">Scripture</label><input id="sermonReferenceInput"></div>
+            <div><label for="sermonSpeakerInput">Speaker</label><input id="sermonSpeakerInput"></div>
+            <div><label for="sermonTagsInput">Tags</label><input id="sermonTagsInput" placeholder="John, Shepherd, Gospel"></div>
+            <div><label for="trimStart">Begin at</label><input id="trimStart" value="00:08:42"></div>
+            <div><label for="trimEnd">End at</label><input id="trimEnd" value="00:51:13"></div>
+            <div><label for="audioGain">Audio gain</label><input id="audioGain" value="+1.5 dB"></div>
+            <div class="checkbox-field"><label><input id="normalizeAudio" type="checkbox" checked> Normalize speech loudness</label></div>
+          </div>
+          <div class="button-row">
+            <button class="button primary small" type="submit">Save sermon metadata</button>
+            <button class="button secondary small" type="button" id="processPreview">Preview media job</button>
+          </div>
+          <p class="microcopy" id="mediaJobStatus">No media processing runs in the static demo.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>Audubon Baptist Church</strong><p>Prototype website for church leadership review.</p></div>
+    <div><p>Public site · Member area · Sermons · Events · Prayer · Giving</p><small>Built to grow into a secure church communications platform.</small></div>
+  </footer>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
