@@ -741,3 +741,35 @@ h1,h2,h3{color:var(--audubon-charcoal)}
   .home-actions{grid-template-columns:1fr}
   .sunday-time strong{font-size:2.7rem}
 }
+
+
+/* Dedicated Site Administration */
+.admin-home{max-width:var(--max);margin:0 auto;padding:58px 24px 90px}
+.admin-welcome{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:28px}
+.admin-welcome h1{font-size:clamp(2.6rem,5vw,4.6rem);margin-bottom:10px}
+.admin-welcome p:last-child{color:var(--muted);max-width:700px}
+.admin-overview{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
+.admin-overview a{display:flex;flex-direction:column;padding:16px 17px;border:1px solid var(--audubon-line);background:white;border-radius:11px;text-decoration:none}
+.admin-overview span{color:var(--audubon-red);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+.admin-overview strong{color:var(--audubon-charcoal);font-size:.88rem;margin-top:4px}
+.admin-overview a:hover{border-color:#cbbdbf;box-shadow:0 8px 22px rgba(32,41,45,.05)}
+.admin-edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.clean-admin-card{background:white;border:1px solid var(--audubon-line);border-radius:var(--radius-sm);padding:24px}
+.clean-admin-card.span-two{grid-column:1/-1}
+.clean-admin-card h2{font-size:1.7rem;margin:4px 0 7px}
+.clean-admin-card>p,.admin-card-heading p{color:var(--muted)}
+.clean-admin-card label{display:block;color:var(--audubon-charcoal);font-size:.8rem;font-weight:850;margin:12px 0 6px}
+.clean-admin-card input,.clean-admin-card textarea,.clean-admin-card select{width:100%;border:1px solid var(--audubon-line);background:white;border-radius:9px;padding:10px 11px}
+.clean-admin-card .button{margin-top:15px}
+.admin-card-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.admin-kicker{color:var(--audubon-red);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}
+
+@media (max-width:900px){
+  .admin-overview{grid-template-columns:1fr 1fr}
+  .admin-edit-grid{grid-template-columns:1fr}
+  .clean-admin-card.span-two{grid-column:auto}
+}
+@media (max-width:760px){
+  .admin-welcome,.admin-card-heading{flex-direction:column;align-items:flex-start}
+  .admin-overview{grid-template-columns:1fr}
+}
