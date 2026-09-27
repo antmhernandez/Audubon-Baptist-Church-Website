@@ -10,8 +10,9 @@ Before making substantial changes, read:
 4. `docs/ROLE_AND_PERMISSION_MODEL.md`
 5. `docs/SECURITY_AND_PRIVACY.md`
 6. `docs/ROADMAP.md`
+7. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
 
-For media work also read `docs/MEDIA_WORKFLOW.md`.
+For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also read `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md`.
 
 ## Governing principles
 
@@ -41,7 +42,7 @@ Do not invent church facts such as:
 - ministry names;
 - giving-provider relationships.
 
-Clearly label unconfirmed material as sample or placeholder content until church leadership supplies it.
+Clearly label unconfirmed material as sample or placeholder content until church leadership supplies it. Preserve the verified-vs-needs-confirmation distinctions in `docs/SOURCE_CONTENT_NOTES.md`; do not silently promote an older published schedule into a current fact.
 
 ## Change quality
 
