@@ -12,7 +12,8 @@ The current prototype demonstrates:
 - a clearer "New here?" / visit pathway;
 - beliefs and Southern Baptist affiliation content;
 - featured sermon presentation plus a searchable sample sermon library;
-- church events with member RSVP states;
+- a dedicated member-only three-month calendar with day details, filters, RSVPs, and personal-calendar downloads;
+- a public upcoming-events summary with a prominent member-calendar pathway;
 - a member sign-in experience for demonstrating private features;
 - prayer-list privacy levels and browser-local sample submissions;
 - ministry / service concepts;
@@ -20,7 +21,7 @@ The current prototype demonstrates:
 - a giving-provider handoff concept;
 - role-based views for Public Visitor, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
 - browser-based administration for announcements, events, and sermon metadata;
-- a sermon processing concept with trim, gain, and speech-normalization controls;
+- a dedicated sermon Media Studio with local video selection, scrubbing, ±5-second navigation, start/end trim markers, clip preview, metadata, audio options, saved draft settings, and a production-job preview;
 - a responsive interface designed to remain comfortable on phones and for less-technical users.
 
 > **Important:** this is a public design prototype. The role switcher and "member sign in" flow are demonstrations, not secure authentication. Browser edits are not shared with other users. Do not place real private prayer requests, member data, financial information, pastoral information, credentials, or confidential church records into this version.
@@ -55,6 +56,8 @@ All demo changes remain only in the current browser.
 ## Repository map
 
 - `index.html` — public/member/admin prototype
+- `calendar.html` + `calendar.js` — member-only three-month calendar prototype
+- `media-studio.html` + `media-studio.js` — administrator sermon upload/trim/publish workflow prototype
 - `styles.css` — responsive visual and interaction system
 - `app.js` — interactive demo behavior and browser-local sample data
 - `AGENTS.md` — governing development instructions
@@ -66,6 +69,8 @@ All demo changes remain only in the current browser.
 - `docs/MEDIA_WORKFLOW.md` — sermon/video workflow
 - `docs/DEPLOYMENT.md` — GitHub Pages instructions and future hosting
 - `docs/PASTOR_DEMO_GUIDE.md` — suggested walkthrough for church leadership
+- `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md` — calendar/member interaction model
+- `docs/SOURCE_CONTENT_NOTES.md` — public church facts, sources, and items still needing confirmation
 
 ## Development philosophy
 
