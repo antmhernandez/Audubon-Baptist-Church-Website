@@ -151,3 +151,23 @@ Do not make the public home page look like an application dashboard.
 - keep mobile navigation simple;
 - avoid horizontal dependence for core functionality;
 - do not hide critical visit information behind animation or hover.
+
+
+## Second artistic pass
+
+The follow-up refinement intentionally adds variation without returning to card-heavy composition.
+
+Implemented patterns:
+
+- a short Sunday-rhythm section using large display type plus ruled editorial rows;
+- a mission interlude built around Audubon's existing “Going Beyond Ourselves with the Gospel” language;
+- a large 2017 typographic anchor in the church-history section;
+- more developed giving copy and a final visit invitation before the footer;
+- active-section navigation for long-page orientation;
+- a subtle scroll-progress indicator;
+- a back-to-top control that appears only after meaningful scrolling;
+- Escape-key handling for the mobile menu;
+- shared weekly-announcement content on Member Home;
+- a Media Studio step indicator that now advances as the administrator uploads, trims, enters metadata, and prepares publication.
+
+The goal remains variety through typography, proportion, pacing, rules, and color fields—not through visual clutter.
