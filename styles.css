@@ -396,3 +396,39 @@ h3{font-size:1.45rem;margin-bottom:10px}
   .video-stage{min-height:220px}
   .file-summary{flex-direction:column;gap:4px}
 }
+
+
+/* Main-page content refinements */
+.button-row.compact{margin-top:18px}
+.small-link-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.small-link-row a{color:var(--navy);font-weight:800;font-size:.86rem}
+.story-layout{display:grid;grid-template-columns:1.3fr .85fr .85fr;gap:18px}
+.story-card,.leadership-card{border:1px solid var(--line);border-radius:var(--radius-sm);padding:27px;background:white}
+.story-card.large{background:var(--cream);border-color:#eadfc9}
+.story-card h3,.leadership-card h3{margin-top:16px}
+.story-card p,.leadership-card p{color:var(--muted)}
+.leadership-title{color:var(--gold)!important;font-weight:850;margin-top:-3px}
+.link-text-button{text-decoration:none;display:inline-block}
+.mission-strip{display:flex;align-items:center;justify-content:space-between;gap:34px;margin-top:20px;padding:24px 26px;border-radius:var(--radius-sm);background:var(--navy);color:white}
+.mission-strip h3{color:white;margin-bottom:0}
+.mission-strip p:last-child{max-width:650px;color:#d0dce6;margin:0}
+.calendar-heading-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.calendar-promo{display:flex;align-items:center;justify-content:space-between;gap:34px;margin-top:20px;padding:24px 26px;background:white;border:1px solid var(--line);border-radius:var(--radius-sm)}
+.calendar-promo h3{margin:10px 0 6px}
+.calendar-promo p{margin:0;color:var(--muted);max-width:780px}
+.member-tool-ribbon{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:26px;padding:24px 26px;border-radius:var(--radius-sm);background:var(--cream);border:1px solid #eadfc9}
+.member-tool-ribbon h3{margin:10px 0 5px}
+.member-tool-ribbon p{margin:0;color:var(--muted)}
+.admin-stat-link{color:white;text-decoration:none}
+.admin-stat-link:hover{text-decoration:underline}
+
+@media (max-width:1040px){
+  .story-layout{grid-template-columns:1fr 1fr}
+  .story-card.large{grid-column:1/-1}
+}
+@media (max-width:760px){
+  .story-layout{grid-template-columns:1fr}
+  .story-card.large{grid-column:auto}
+  .mission-strip,.calendar-promo,.member-tool-ribbon{flex-direction:column;align-items:flex-start}
+  .calendar-heading-actions{justify-content:flex-start}
+}
