@@ -1776,3 +1776,40 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   .story-year{font-size:5rem;margin-bottom:-5px}
   .back-to-top{right:15px;bottom:70px}
 }
+
+
+/* Shared-content and workflow refinements */
+.member-announcement{
+  display:grid;
+  grid-template-columns:110px 1fr;
+  gap:22px;
+  align-items:start;
+  margin:0 0 28px;
+  padding:17px 0;
+  border-top:1px solid var(--audubon-rule);
+  border-bottom:1px solid var(--audubon-rule);
+}
+.member-announcement span{
+  color:var(--audubon-red);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:.64rem;
+  font-weight:800;
+}
+.member-announcement p{
+  margin:0;
+  font-family:var(--display);
+  font-size:1.14rem;
+  line-height:1.4;
+}
+.studio-steps span.complete{
+  border-color:#b7c4ba;
+  background:#edf2ee;
+  color:var(--audubon-green-deep);
+}
+.studio-steps span.complete::before{
+  content:"✓ ";
+}
+@media (max-width:560px){
+  .member-announcement{grid-template-columns:1fr;gap:5px}
+}
