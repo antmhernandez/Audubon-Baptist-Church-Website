@@ -44,6 +44,7 @@ function renderAccess(){
   document.getElementById("memberGate").classList.toggle("hidden",isMember);
   document.getElementById("memberHome").classList.toggle("hidden",!isMember);
   document.getElementById("memberAccessLabel").textContent=ROLE_LABELS[data.role];
+  document.getElementById("memberAnnouncement").textContent=data.announcement||"Welcome to Audubon Baptist Church — A Church in the Park.";
   document.querySelectorAll(".group-only").forEach(el=>el.classList.toggle("hidden",!isGroup));
   document.querySelectorAll(".leadership-only").forEach(el=>el.classList.toggle("hidden",!isLeadership));
   document.querySelectorAll(".admin-tool-link").forEach(el=>el.classList.toggle("hidden",!isAdmin));
