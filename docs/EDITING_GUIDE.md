@@ -168,7 +168,9 @@ The prominent **Get the App!** control appears in the site/application headers. 
 - provides platform-aware fallback instructions;
 - asks the service worker to check for updates when a page opens.
 
-`sw.js` uses **network first** for known app-shell pages/assets. When online, the deployed website is preferred; the cache is used as an offline fallback.
+`sw.js` uses **network first** for the public/static app shell. When online, the deployed website is preferred; the cache is used as an offline fallback.
+
+Member Home, Calendar, Site Admin, and Media Studio are deliberately excluded from the general offline cache so future personalized/private responses do not become a caching footgun.
 
 Never add uploaded sermon video or future authenticated/private API responses to the general service-worker cache.
 
