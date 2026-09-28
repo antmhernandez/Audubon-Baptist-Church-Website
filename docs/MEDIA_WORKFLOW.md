@@ -210,15 +210,53 @@ The future NAS worker can consume this job beside the original service recording
 
 ### PWA / mobile testing
 
-The Media Studio now includes:
+The whole church site now includes:
 
 - `manifest.webmanifest`;
 - `pwa.js`;
 - `sw.js`;
 - a simple Audubon app icon.
 
-The service worker caches only the application shell.
+The service worker uses a network-first application shell: current deployed files are preferred when online and cached files are only a fallback.
 
 It must never cache selected sermon videos or private uploaded media.
 
 See `docs/SERMON_STUDIO_TEST_PLAN.md` for the current desktop and mobile test procedure.
+
+
+## Public video and audio playback
+
+Published sermons should expose two delivery choices when both derivatives exist:
+
+1. **Watch video** — the normal web-video derivative.
+2. **Listen only** — an audio-only derivative intended to use substantially less data and work well while driving or on slower connections.
+
+The public Sermons page now contains both modes.
+
+Prototype sermon records reserve:
+
+- `videoUrl`
+- `audioUrl`
+
+The production worker should populate those fields only after the corresponding derivative has been successfully created and uploaded.
+
+The Media Studio defaults **Create audio-only copy** to enabled so the lower-data option is part of the ordinary weekly workflow rather than an extra task.
+
+## Facebook as a possible source
+
+A future administrator workflow may offer **Import from Audubon Facebook** as an optional source.
+
+Do not implement this as public-page scraping.
+
+Preferred future approach:
+
+1. Audubon authorizes a Meta integration for the Facebook Page.
+2. A server-side integration (not browser JavaScript) requests only media that the church account is permitted to access.
+3. The source is copied temporarily into the controlled media-ingest area.
+4. The ordinary Sermon Studio trim/metadata workflow runs against that source.
+5. The NAS retains the church-owned master/processed copy according to policy.
+6. Temporary imported material is removed after successful processing.
+
+Meta permissions and video-access fields have changed over time. Re-verify the current Meta Graph API and Page permissions immediately before implementing this integration.
+
+The preferred source remains Audubon's original local service recording whenever it is available: it is more reliable, higher quality, and independent of a social-media platform.
