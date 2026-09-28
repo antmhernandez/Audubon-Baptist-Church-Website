@@ -7,13 +7,14 @@ Before making substantial changes, read:
 1. `README.md`
 2. `docs/EDITING_GUIDE.md`
 3. `docs/CODE_MAP.md`
-4. `docs/PROJECT_VISION.md`
-5. `docs/ARCHITECTURE.md`
-6. `docs/ROLE_AND_PERMISSION_MODEL.md`
-7. `docs/SECURITY_AND_PRIVACY.md`
-8. `docs/ROADMAP.md`
-9. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
-10. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
+4. `docs/HUMAN_MAINTAINABILITY_STANDARD.md`
+5. `docs/PROJECT_VISION.md`
+6. `docs/ARCHITECTURE.md`
+7. `docs/ROLE_AND_PERMISSION_MODEL.md`
+8. `docs/SECURITY_AND_PRIVACY.md`
+9. `docs/ROADMAP.md`
+10. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
+11. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
 
 For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also read `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md`.
 
@@ -29,7 +30,8 @@ For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also
 - Keep sermon media out of Git. Store metadata in the application and media with an appropriate video/storage provider.
 - Use mature providers for authentication and payments rather than implementing sensitive primitives from scratch.
 - Prefer replaceable integrations and financially modest infrastructure.
-- Keep the application capable of becoming an installable PWA before considering separate native apps.
+- Keep the whole application installable as one PWA before considering separate native apps.
+- The PWA app shell must prefer current network files when online and must never cache uploaded sermon video or future private API responses.
 
 ## Current prototype status
 
