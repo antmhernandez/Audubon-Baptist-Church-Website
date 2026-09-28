@@ -5,13 +5,15 @@
 Before making substantial changes, read:
 
 1. `README.md`
-2. `docs/PROJECT_VISION.md`
-3. `docs/ARCHITECTURE.md`
-4. `docs/ROLE_AND_PERMISSION_MODEL.md`
-5. `docs/SECURITY_AND_PRIVACY.md`
-6. `docs/ROADMAP.md`
-7. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
-8. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
+2. `docs/EDITING_GUIDE.md`
+3. `docs/CODE_MAP.md`
+4. `docs/PROJECT_VISION.md`
+5. `docs/ARCHITECTURE.md`
+6. `docs/ROLE_AND_PERMISSION_MODEL.md`
+7. `docs/SECURITY_AND_PRIVACY.md`
+8. `docs/ROADMAP.md`
+9. `docs/SOURCE_CONTENT_NOTES.md` when changing factual church copy.
+10. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
 
 For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also read `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md`.
 
@@ -53,4 +55,5 @@ When modifying the prototype:
 - avoid unnecessary dependencies;
 - test JavaScript syntax;
 - verify that referenced DOM IDs exist;
-- update documentation when architecture or privacy assumptions change.
+- update documentation when architecture or privacy assumptions change;
+- preserve readable formatting and maintainer comments; prefer small named functions over dense one-line logic.
