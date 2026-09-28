@@ -1,14 +1,17 @@
 /**
  * Audubon Baptist Church — application service worker
  * ------------------------------------------------------------
- * Prefer the live network version whenever online.
- * Cache only the known static app shell as an offline fallback.
- * Never cache uploaded sermon video or future private API responses here.
+ * PUBLIC APP-SHELL POLICY
+ * - Prefer the live network version whenever online.
+ * - Cache only public/static app-shell resources as an offline fallback.
+ * - Member/admin/media-studio navigations are deliberately NOT cached.
+ * - Never cache uploaded sermon video, private API responses, credentials,
+ *   prayer data, giving data, or future personalized server responses.
  */
 
-const CACHE_NAME = "audubon-church-shell-v3";
+const CACHE_NAME = "audubon-church-shell-v4";
 
-const APP_SHELL = [
+const PUBLIC_APP_SHELL = [
   "./index.html",
   "./visit.html",
   "./sermons.html",
@@ -16,18 +19,10 @@ const APP_SHELL = [
   "./about.html",
   "./give.html",
   "./app.html",
-  "./member.html",
-  "./calendar.html",
-  "./admin.html",
-  "./media-studio.html",
   "./styles.css",
   "./site.js",
   "./app.js",
   "./sermons.js",
-  "./member.js",
-  "./calendar.js",
-  "./admin.js",
-  "./media-studio.js",
   "./pwa.js",
   "./manifest.webmanifest",
   "./audubon-app-icon.svg",
@@ -38,13 +33,13 @@ const APP_SHELL = [
 ];
 
 const CACHEABLE_PATHS = new Set(
-  APP_SHELL.map(item => new URL(item, self.location.href).pathname)
+  PUBLIC_APP_SHELL.map(item => new URL(item, self.location.href).pathname)
 );
 
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(APP_SHELL))
+      .then(cache => cache.addAll(PUBLIC_APP_SHELL))
       .then(() => self.skipWaiting())
   );
 });
@@ -69,18 +64,17 @@ self.addEventListener("fetch", event => {
   const url = new URL(request.url);
 
   if (url.origin !== self.location.origin) return;
-
-  const isNavigation = request.mode === "navigate";
-  const isKnownShellFile = CACHEABLE_PATHS.has(url.pathname);
-
-  if (!isNavigation && !isKnownShellFile) return;
+  if (!CACHEABLE_PATHS.has(url.pathname)) return;
 
   event.respondWith(
     fetch(request, { cache: "no-store" })
       .then(response => {
         if (response && response.ok) {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, copy));
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, copy);
+          });
         }
 
         return response;
@@ -89,9 +83,7 @@ self.addEventListener("fetch", event => {
         const cached = await caches.match(request, { ignoreSearch: true });
         if (cached) return cached;
 
-        if (isNavigation) return caches.match("./index.html");
-
-        throw new Error("Offline resource unavailable");
+        throw new Error("Offline public resource unavailable");
       })
   );
 });
