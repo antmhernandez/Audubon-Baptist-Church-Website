@@ -2,18 +2,36 @@
  * Member Home application behavior.
  * Controls role-aware panels: Overview, Prayer, Groups, Conversations, Lists, and Serve.
  * Browser-local data is prototype-only; production permissions must be server-enforced.
- */
-
-const STORAGE_KEY="abcDemoV3";
-const ROLE_LEVEL={public:0,member:1,group:2,leadership:3,admin:4};
-const ROLE_LABELS={public:"Public visitor",member:"Church member",group:"Ministry / group member",leadership:"Church leadership",admin:"Administrator"};
-
-function ymd(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");}
-function loadData(){try{return {role:"public",events:[],rsvps:{},prayers:[],announcement:"",...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")};}catch{return {role:"public",events:[],rsvps:{},prayers:[],announcement:""};}}
+ */ const STORAGE_KEY="abcDemoV3";
+const ROLE_LEVEL= {
+  public:0, member:1, group:2, leadership:3, admin:4
+};
+const ROLE_LABELS= {
+  public:"Public visitor", member:"Church member", group:"Ministry / group member", leadership:"Church leadership", admin:"Administrator"
+};
+function ymd(date) {
+  return [date.getFullYear(), String(date.getMonth()+1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
+}
+function loadData() {
+  try {
+    return {
+      role:"public", events:[], rsvps: {
+      }, prayers:[], announcement:"", ...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")
+    };
+  }
+  catch {
+    return {
+      role:"public", events:[], rsvps: {
+      }, prayers:[], announcement:""
+    };
+  }
+}
 let data=loadData();
-
-function saveData(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}
-function escapeHtml(v){return String(v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c];});}
+function saveData() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+function escapeHtml(v) {
+  return String(v).replace(/[&<>"']/g,function(c){return {"&":"&amp; ","<":"&lt; ",">":"&gt; ",'"':"&quot;","'":"&#039; "}[c];});}
 function showToast(message){const el=document.getElementById("memberToast");el.textContent=message;el.classList.remove("hidden");clearTimeout(showToast.timer);showToast.timer=setTimeout(function(){el.classList.add("hidden");},2800);}
 function openDialog(dialog){if(dialog.showModal)dialog.showModal();else dialog.setAttribute("open","");}
 function closeDialog(dialog){if(dialog.close)dialog.close();else dialog.removeAttribute("open");}
