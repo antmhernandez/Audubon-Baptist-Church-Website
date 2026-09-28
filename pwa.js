@@ -141,6 +141,12 @@ function updateInstallButtons() {
       button.disabled = false;
     }
   });
+
+  document.querySelectorAll("[data-install-status]").forEach(element => {
+    element.textContent = installed
+      ? "You are viewing Audubon in its installed app. When online, it checks the live deployment for current files."
+      : "The app uses the same website and checks for current deployed files whenever it opens online.";
+  });
 }
 
 async function requestInstall() {
@@ -166,6 +172,43 @@ function wireInstallButtons() {
   });
 
   updateInstallButtons();
+}
+
+async function shareAudubon() {
+  const shareData = {
+    title: "Audubon Baptist Church",
+    text: "Audubon Baptist Church — A Church in the Park",
+    url: new URL("index.html", window.location.href).href
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      return;
+    } catch (error) {
+      if (error && error.name === "AbortError") return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(shareData.url);
+
+    document.querySelectorAll("[data-share-app]").forEach(button => {
+      const original = button.textContent;
+      button.textContent = "Link copied";
+      setTimeout(() => {
+        button.textContent = original;
+      }, 1800);
+    });
+  } catch (error) {
+    window.prompt("Copy this Audubon link:", shareData.url);
+  }
+}
+
+function wireShareButtons() {
+  document.querySelectorAll("[data-share-app]").forEach(button => {
+    button.addEventListener("click", shareAudubon);
+  });
 }
 
 async function registerAndRefreshServiceWorker() {
@@ -194,5 +237,6 @@ window.addEventListener("appinstalled", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   wireInstallButtons();
+  wireShareButtons();
   registerAndRefreshServiceWorker();
 });
