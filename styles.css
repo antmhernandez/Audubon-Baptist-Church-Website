@@ -2329,3 +2329,44 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   .trim-control-card .button{min-height:46px}
   .media-draft-row{grid-template-columns:1fr}
 }
+
+
+/* Media Studio ready-check and install controls */
+.studio-hero-tools{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:12px;
+}
+.workflow-check-card{
+  background:#fffdf9;
+}
+.workflow-checklist{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--audubon-rule);
+}
+.workflow-checklist li{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid var(--audubon-rule);
+  color:var(--audubon-muted);
+  font-size:.82rem;
+}
+.workflow-checklist li span{
+  width:22px;
+  color:var(--audubon-red);
+  font-weight:800;
+}
+.workflow-checklist li.ready{
+  color:var(--audubon-green-deep);
+}
+.workflow-checklist li.ready span{
+  color:var(--audubon-green-deep);
+}
+@media (max-width:760px){
+  .studio-hero-tools{align-items:flex-start;width:100%}
+}
