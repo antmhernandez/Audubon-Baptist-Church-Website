@@ -12,6 +12,8 @@ Home-specific member summary behavior is in `app.js`.
 
 The sermon archive has its own `sermons.js`.
 
+`archive.html` is a static historical-resource page for selected newsletters and older sermon-series links. It must keep historical material clearly distinguished from current church information.
+
 ## Private/member pages
 
 - `member.html` / `member.js`
