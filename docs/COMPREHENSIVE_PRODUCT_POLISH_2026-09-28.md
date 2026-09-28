@@ -281,3 +281,16 @@ The largest remaining quality gains are content confirmations rather than interf
 8. current 2026 sermon recording source.
 
 Once those are confirmed, the remaining placeholder notices can be removed cleanly.
+
+
+## Church Archive / newsletters
+
+### Problem found
+Audubon’s old public site contains a meaningful newsletter archive, but the new prototype only linked away to it. That left one of the old site’s primary content categories outside the new information architecture.
+
+### Improvement implemented
+- Added `archive.html` under the About menu.
+- Selected newsletter entries are presented as short historical summaries with direct links to the original church-published articles.
+- The archive page clearly warns that dates, staff assignments, events, and schedules inside historical newsletters are not current information.
+- Added sermon-series links so older material remains reachable without crowding the main Sermons page.
+- Added the archive to the public PWA shell for offline fallback.
