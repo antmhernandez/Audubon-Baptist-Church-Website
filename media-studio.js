@@ -208,8 +208,36 @@ function currentSettings() {
   };
 }
 
+function renderWorkflowChecklist(settings) {
+  const card=document.getElementById("workflowCheckCard");
+  if(!sourceFile){
+    card.classList.add("hidden");
+    return;
+  }
+
+  card.classList.remove("hidden");
+
+  const checks=[
+    { ok:!!sourceFile, label:"Video selected" },
+    { ok:settings.trimEnd>settings.trimStart, label:"Valid sermon start and end" },
+    { ok:!!settings.title, label:"Sermon title entered" },
+    { ok:!!settings.scripture, label:"Scripture reference entered" },
+    { ok:!!settings.speaker, label:"Speaker entered" }
+  ];
+
+  document.getElementById("workflowChecklist").innerHTML=checks.map(item =>
+    "<li class=\""+(item.ok?"ready":"not-ready")+"\"><span>"+(item.ok?"✓":"○")+"</span>"+escapeHtml(item.label)+"</li>"
+  ).join("");
+
+  const ready=checks.every(item=>item.ok);
+  const status=document.getElementById("readyStatus");
+  status.textContent=ready ? "Ready to review" : "Needs review";
+  status.classList.toggle("ready",ready);
+}
+
 function renderPublishSummary() {
   const s=currentSettings();
+  renderWorkflowChecklist(s);
   document.getElementById("publishSummary").innerHTML=`
     <div><span>Source</span><strong>${escapeHtml(s.fileName || "Select a video first")}</strong></div>
     <div><span>Clip</span><strong>${formatTime(s.trimStart)} → ${formatTime(s.trimEnd)} (${formatTime(Math.max(0,s.trimEnd-s.trimStart))})</strong></div>
