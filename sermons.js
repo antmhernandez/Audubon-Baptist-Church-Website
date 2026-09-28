@@ -1,3 +1,9 @@
+/**
+ * Sermons page behavior.
+ * EDIT HERE for prototype archive entries, search/filter behavior, and featured-sermon preview.
+ * Production sermon records will later come from the church database/media workflow.
+ */
+
 const ARCHIVE=[
 {id:1,title:"How to Be Great for God – Beyond Yourself",reference:"Ezra 8:1–15",speaker:"Pastor Jeff Akin",date:"February 12, 2023",group:"ezra",tags:["Ezra","Mission"]},
 {id:2,title:"The Inclusivity of God",reference:"Ezra 6:16–22",speaker:"Pastor Jeff Akin",date:"January 22, 2023",group:"ezra",tags:["Ezra","Worship"]},
