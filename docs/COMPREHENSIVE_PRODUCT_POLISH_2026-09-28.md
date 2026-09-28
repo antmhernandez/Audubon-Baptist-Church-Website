@@ -207,6 +207,7 @@ Audubon adaptation:
 ### Improvements implemented
 - Added a launch-readiness / leadership-confirmation checklist for:
   - current schedule;
+  - current public email/contact preference;
   - parking/entrance;
   - children/nursery;
   - accessibility;
@@ -272,13 +273,14 @@ Historical phrases are labeled as historical where current status is not establi
 The largest remaining quality gains are content confirmations rather than interface invention:
 
 1. current weekly gathering schedule;
-2. parking / best entrance;
-3. nursery / children arrangements;
-4. accessibility details;
-5. current staff and ministry list;
-6. current giving method/provider;
-7. current livestream/Facebook practice;
-8. current 2026 sermon recording source.
+2. current public email/contact preference;
+3. parking / best entrance;
+4. nursery / children arrangements;
+5. accessibility details;
+6. current staff and ministry list;
+7. current giving method/provider;
+8. current livestream/Facebook practice;
+9. current 2026 sermon recording source.
 
 Once those are confirmed, the remaining placeholder notices can be removed cleanly.
 
