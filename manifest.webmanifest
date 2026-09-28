@@ -1,18 +1,31 @@
 {
-  "name": "Audubon Sermon Studio",
-  "short_name": "Sermon Studio",
-  "description": "Audubon Baptist Church sermon trimming and publishing prototype.",
-  "start_url": "./media-studio.html",
+  "id": "./",
+  "name": "Audubon Baptist Church",
+  "short_name": "Audubon Church",
+  "description": "Audubon Baptist Church — A Church in the Park.",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f5f0e7",
   "theme_color": "#7f2d32",
+  "prefer_related_applications": false,
   "icons": [
     {
-      "src": "audubon-app-icon.svg",
-      "sizes": "any",
+      "src": "audubon-app-icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "audubon-app-icon-512.svg",
+      "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any"
     }
+  ],
+  "shortcuts": [
+    {"name":"Sermons","short_name":"Sermons","url":"./sermons.html"},
+    {"name":"Member Home","short_name":"Members","url":"./member.html"},
+    {"name":"Calendar","short_name":"Calendar","url":"./calendar.html"}
   ]
 }
