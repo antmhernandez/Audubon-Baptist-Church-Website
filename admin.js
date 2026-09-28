@@ -2,11 +2,11 @@
  * Site Administration prototype.
  * ------------------------------------------------------------
  * Browser-local only. Production writes must use authenticated APIs.
- * Featured-sermon edits preserve any videoUrl/audioUrl already attached
- * by the future media-publishing workflow.
+ * Featured-sermon edits preserve media URLs attached by the media workflow.
  */
 
 const STORAGE_KEY = "abcDemoV3";
+const CHURCH_LOCATION = "1046 Hess Lane, Louisville, KY 40217";
 
 function ymd(date) {
   return [
@@ -28,7 +28,8 @@ function loadData() {
       videoUrl: "",
       audioUrl: ""
     },
-    announcement: ""
+    announcement: "",
+    contentConfirmations: {}
   };
 
   try {
@@ -40,7 +41,8 @@ function loadData() {
       sermon: {
         ...fallback.sermon,
         ...(stored.sermon || {})
-      }
+      },
+      contentConfirmations: stored.contentConfirmations || {}
     };
   } catch (error) {
     return fallback;
@@ -65,6 +67,26 @@ function showToast(message) {
   }, 2800);
 }
 
+function renderConfirmationChecklist() {
+  const boxes = Array.from(
+    document.querySelectorAll("[data-content-confirmation]")
+  );
+
+  boxes.forEach(function (box) {
+    box.checked = Boolean(
+      data.contentConfirmations[box.dataset.contentConfirmation]
+    );
+  });
+
+  const reviewed = boxes.filter(function (box) {
+    return box.checked;
+  }).length;
+
+  const status = document.getElementById("adminConfirmationCount");
+  status.textContent = reviewed + " of " + boxes.length + " reviewed";
+  status.classList.toggle("ready", reviewed === boxes.length);
+}
+
 function render() {
   const isAdmin = data.role === "admin";
 
@@ -75,10 +97,14 @@ function render() {
 
   if (!isAdmin) return;
 
-  document.getElementById("adminAnnouncement").value = data.announcement || "";
-  document.getElementById("adminSermonTitle").value = data.sermon.title || "";
-  document.getElementById("adminSermonReference").value = data.sermon.reference || "";
-  document.getElementById("adminSermonSpeaker").value = data.sermon.speaker || "";
+  document.getElementById("adminAnnouncement").value =
+    data.announcement || "";
+  document.getElementById("adminSermonTitle").value =
+    data.sermon.title || "";
+  document.getElementById("adminSermonReference").value =
+    data.sermon.reference || "";
+  document.getElementById("adminSermonSpeaker").value =
+    data.sermon.speaker || "";
   document.getElementById("adminSermonTags").value =
     (data.sermon.tags || []).join(", ");
 
@@ -89,6 +115,8 @@ function render() {
 
   document.getElementById("adminEventCount").textContent =
     upcoming.length + " upcoming";
+
+  renderConfirmationChecklist();
 }
 
 document.getElementById("adminPreviewButton").addEventListener("click", function () {
@@ -98,10 +126,19 @@ document.getElementById("adminPreviewButton").addEventListener("click", function
   showToast("Administrator preview opened.");
 });
 
+document.querySelectorAll("[data-content-confirmation]").forEach(function (box) {
+  box.addEventListener("change", function () {
+    data.contentConfirmations[box.dataset.contentConfirmation] = box.checked;
+    saveData();
+    renderConfirmationChecklist();
+  });
+});
+
 document.getElementById("adminAnnouncementForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  data.announcement = document.getElementById("adminAnnouncement").value.trim();
+  data.announcement =
+    document.getElementById("adminAnnouncement").value.trim();
 
   saveData();
   showToast("Homepage announcement saved in this browser.");
@@ -116,8 +153,12 @@ document.getElementById("adminEventForm").addEventListener("submit", function (e
     dateISO: document.getElementById("adminEventDate").value,
     time: document.getElementById("adminEventTime").value,
     title: document.getElementById("adminEventTitle").value.trim(),
+    location:
+      document.getElementById("adminEventLocation").value.trim()
+      || CHURCH_LOCATION,
     audience: document.getElementById("adminEventAudience").value,
-    description: document.getElementById("adminEventDescription").value.trim(),
+    description:
+      document.getElementById("adminEventDescription").value.trim(),
     source: "admin-demo"
   });
 
@@ -125,6 +166,7 @@ document.getElementById("adminEventForm").addEventListener("submit", function (e
 
   event.target.reset();
   document.getElementById("adminEventTime").value = "18:30";
+  document.getElementById("adminEventLocation").value = CHURCH_LOCATION;
 
   render();
   showToast("Calendar event added.");
@@ -136,8 +178,10 @@ document.getElementById("adminSermonForm").addEventListener("submit", function (
   data.sermon = {
     ...data.sermon,
     title: document.getElementById("adminSermonTitle").value.trim(),
-    reference: document.getElementById("adminSermonReference").value.trim(),
-    speaker: document.getElementById("adminSermonSpeaker").value.trim(),
+    reference:
+      document.getElementById("adminSermonReference").value.trim(),
+    speaker:
+      document.getElementById("adminSermonSpeaker").value.trim(),
     tags: document.getElementById("adminSermonTags")
       .value
       .split(",")
