@@ -22,7 +22,9 @@ The current prototype demonstrates a typography-led, editorial public site plus 
 - a giving-provider handoff concept;
 - role-based views for Public Visitor, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
 - browser-based administration for announcements, events, and sermon metadata;
-- a dedicated installable Sermon Studio with local video selection, ±5/±30-second seeking, keyboard shortcuts, start/end trim markers, clip preview, metadata, audio options, restoreable browser drafts, a publication ready-check, and downloadable NAS/FFmpeg processing-job JSON;
+- a whole-site installable PWA with a prominent cross-platform “Get the App!” flow and network-first update behavior;
+- sermon playback designed for either video or lower-data audio-only listening;
+- a dedicated Sermon Studio with local video selection, ±5/±30-second seeking, keyboard shortcuts, start/end trim markers, clip preview, metadata, audio options, restoreable browser drafts, a publication ready-check, and downloadable NAS/FFmpeg processing-job JSON;
 - a responsive interface designed to remain comfortable on phones and for less-technical users.
 
 > **Important:** this is a public design prototype. The role switcher and "member sign in" flow are demonstrations, not secure authentication. Browser edits are not shared with other users. Do not place real private prayer requests, member data, financial information, pastoral information, credentials, or confidential church records into this version.
@@ -33,6 +35,7 @@ Start with:
 
 - `docs/EDITING_GUIDE.md` — “where do I edit this?” reference;
 - `docs/CODE_MAP.md` — how the repository is organized;
+- `docs/HUMAN_MAINTAINABILITY_STANDARD.md` — governing standard for readable, hand-maintainable software;
 - `CONTRIBUTING.md` — editing and validation habits;
 - `.editorconfig` — shared two-space formatting defaults.
 
@@ -78,7 +81,8 @@ All demo changes remain only in the current browser.
 - `admin.html` + `admin.js` — dedicated site administration workspace
 - `calendar.html` + `calendar.js` — member-only three-month calendar prototype
 - `media-studio.html` + `media-studio.js` — administrator sermon upload/trim/publish workflow prototype
-- `manifest.webmanifest` + `pwa.js` + `sw.js` — installable Sermon Studio web-app shell
+- `app.html` — installation/help page for the Audubon web app
+- `manifest.webmanifest` + `pwa.js` + `sw.js` — whole-site installable PWA and update/offline shell
 - `styles.css` — responsive visual and interaction system
 - `app.js` — interactive demo behavior and browser-local sample data
 - `AGENTS.md` — governing development instructions
