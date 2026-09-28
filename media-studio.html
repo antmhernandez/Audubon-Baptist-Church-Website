@@ -52,8 +52,11 @@
           <h1>Upload. Find the sermon. Trim. Publish.</h1>
           <p>The aim is a weekly workflow simple enough for a volunteer: select the recording, move through it quickly, mark the beginning and end, add details, and hand the job to the publishing system.</p>
         </div>
-        <div class="studio-steps" aria-label="Media workflow">
-          <span class="active" data-studio-step="1">1 Upload</span><span data-studio-step="2">2 Trim</span><span data-studio-step="3">3 Details</span><span data-studio-step="4">4 Review</span>
+        <div class="studio-hero-tools">
+          <div class="studio-steps" aria-label="Media workflow">
+            <span class="active" data-studio-step="1">1 Upload</span><span data-studio-step="2">2 Trim</span><span data-studio-step="3">3 Details</span><span data-studio-step="4">4 Review</span>
+          </div>
+          <button class="button secondary small hidden" id="pwaInstallButton" type="button">Install Sermon Studio</button>
         </div>
       </div>
 
@@ -152,6 +155,14 @@
             <label><input id="mediaAudioOnly" type="checkbox" checked> Create audio-only copy</label>
           </div>
         </div>
+      </section>
+
+      <section class="studio-card workflow-check-card hidden" id="workflowCheckCard">
+        <div class="studio-card-heading">
+          <div><span class="step-number">✓</span><div><h2>Ready-check</h2><p>A short checklist catches common Sunday publishing mistakes.</p></div></div>
+          <span class="status-pill" id="readyStatus">Needs review</span>
+        </div>
+        <ul class="workflow-checklist" id="workflowChecklist"></ul>
       </section>
 
       <section class="studio-card hidden" id="reviewCard">
