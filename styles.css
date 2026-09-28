@@ -1,3 +1,17 @@
+/*
+ * AUDUBON BAPTIST CHURCH — SHARED STYLES
+ * ------------------------------------------------------------
+ * HUMAN EDITING MAP
+ * - Brand variables: search for "Editorial redesign"
+ * - Public multi-page layout: search for "Multi-page information architecture"
+ * - Member application: search for "Member application shell"
+ * - Calendar: search for "Calendar refinements"
+ * - Media Studio: search for "Media Studio refinements"
+ *
+ * This file contains several prototype-era layers. Later rules intentionally
+ * override earlier ones. See docs/EDITING_GUIDE.md before major restructuring.
+ */
+
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap");
 
 :root{
@@ -2266,4 +2280,52 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   .member-overview-actions>a,.member-overview-actions>button{border-right:0;border-bottom:1px solid var(--audubon-rule)}
   .member-overview-actions>*:last-child{border-bottom:0}
   .member-list article,.conversation-list article{grid-template-columns:1fr}
+}
+
+
+/* Sermon Studio usability additions */
+.shortcut-help{
+  margin:8px 0 18px;
+  padding:10px 12px;
+  border-top:1px solid var(--audubon-rule);
+  border-bottom:1px solid var(--audubon-rule);
+}
+.shortcut-help summary{
+  cursor:pointer;
+  color:var(--audubon-red);
+  font-size:.74rem;
+  font-weight:800;
+}
+.shortcut-help p{margin:9px 0 0;color:var(--audubon-muted);font-size:.76rem}
+.shortcut-help kbd{
+  display:inline-block;
+  min-width:24px;
+  padding:2px 5px;
+  border:1px solid var(--audubon-rule);
+  border-bottom-width:2px;
+  border-radius:4px;
+  background:white;
+  color:var(--audubon-ink);
+  font:700 .7rem var(--sans);
+  text-align:center;
+}
+.trim-and-jump{display:block;margin-top:10px}
+.draft-card{background:#fbf8f2}
+.draft-list{border-top:1px solid var(--audubon-rule)}
+.media-draft-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center;
+  padding:14px 0;
+  border-bottom:1px solid var(--audubon-rule);
+}
+.media-draft-row strong{display:block;color:var(--audubon-ink)}
+.media-draft-row span{display:block;color:var(--audubon-muted);font-size:.74rem;margin-top:3px}
+@media (max-width:700px){
+  .transport-row{display:grid;grid-template-columns:repeat(5,1fr)}
+  .transport-row .time-readout{grid-column:1/-1}
+  .transport-button{min-height:48px;padding:9px 6px}
+  .trim-control-card .button{min-height:46px}
+  .media-draft-row{grid-template-columns:1fr}
 }
