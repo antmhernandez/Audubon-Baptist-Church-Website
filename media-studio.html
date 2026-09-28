@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#8f2f35">
   <title>Sermon Media Studio | Audubon Baptist Church</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.webmanifest">
 </head>
 <body class="app-page media-page">
   <a class="skip-link" href="#mediaMain">Skip to media studio</a>
@@ -56,6 +57,14 @@
         </div>
       </div>
 
+      <section class="studio-card draft-card" id="draftCard">
+        <div class="studio-card-heading">
+          <div><span class="step-number">↺</span><div><h2>Resume a recent draft</h2><p>Drafts save trim points and sermon details in this browser. Re-select the matching video file, then restore its settings.</p></div></div>
+          <span class="status-pill" id="draftCount">No drafts</span>
+        </div>
+        <div class="draft-list" id="draftList"></div>
+      </section>
+
       <section class="studio-card upload-card">
         <div class="studio-card-heading">
           <div><span class="step-number">1</span><div><h2>Choose the service recording</h2><p>The file stays on this computer in the static prototype.</p></div></div>
@@ -81,11 +90,17 @@
         </div>
 
         <div class="transport-row">
-          <button class="transport-button" id="jumpBack" type="button">−5 sec</button>
+          <button class="transport-button" id="jumpBack30" type="button" aria-label="Jump back 30 seconds">−30</button>
+          <button class="transport-button" id="jumpBack" type="button" aria-label="Jump back 5 seconds">−5</button>
           <button class="transport-button primary-transport" id="playPause" type="button">Play / pause</button>
-          <button class="transport-button" id="jumpForward" type="button">+5 sec</button>
+          <button class="transport-button" id="jumpForward" type="button" aria-label="Jump forward 5 seconds">+5</button>
+          <button class="transport-button" id="jumpForward30" type="button" aria-label="Jump forward 30 seconds">+30</button>
           <span class="time-readout"><strong id="playheadTime">00:00</strong> / <span id="durationTime">00:00</span></span>
         </div>
+        <details class="shortcut-help">
+          <summary>Keyboard shortcuts</summary>
+          <p><kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> 5 sec · <kbd>Shift</kbd> + arrows 30 sec · <kbd>I</kbd> set start · <kbd>O</kbd> set end</p>
+        </details>
 
         <label class="scrubber-label" for="playheadSlider">Move through recording</label>
         <input class="media-scrubber" id="playheadSlider" type="range" min="0" max="100" value="0" step="0.1">
@@ -100,12 +115,14 @@
             <span class="trim-label">Start</span>
             <strong id="trimStartDisplay">00:00</strong>
             <button class="button secondary small" id="setStartHere" type="button">Set start here</button>
+            <button class="text-button trim-and-jump" id="setStartContinue" type="button">Set start & jump ahead →</button>
             <input id="trimStartSlider" type="range" min="0" max="100" value="0" step="0.1" aria-label="Trim start">
           </div>
           <div class="trim-control-card">
             <span class="trim-label">End</span>
             <strong id="trimEndDisplay">00:00</strong>
             <button class="button secondary small" id="setEndHere" type="button">Set end here</button>
+            <button class="text-button trim-and-jump" id="setEndContinue" type="button">Set end & review →</button>
             <input id="trimEndSlider" type="range" min="0" max="100" value="100" step="0.1" aria-label="Trim end">
           </div>
         </div>
@@ -154,5 +171,6 @@
 
   <div class="toast hidden" id="mediaToast" role="status" aria-live="polite"></div>
   <script src="media-studio.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
