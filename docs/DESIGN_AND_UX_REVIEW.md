@@ -209,3 +209,25 @@ Member Home is organized as a private application with one content area visible 
 - Administrator links when appropriate
 
 This keeps detailed calendar interaction on the dedicated Calendar page while Home and Member Home provide brief summaries and clear handoffs.
+
+
+## Comprehensive product polish — 2026-09-28
+
+A subsequent full-site pass compared Audubon’s public/member/application flows with mature church-site patterns and, more importantly, recovered additional language and media from Audubon’s own published archive.
+
+The governing implementation record is:
+
+`docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md`
+
+Key direction from this pass:
+
+- prefer Audubon’s own historical/public language over generic church-site copy;
+- label historical material as historical when its 2026 status is not established;
+- make Visit practical rather than aspirational;
+- make Sermons a real playable library rather than a visual placeholder;
+- keep the public Home a doorway with four clear routes: Visit, Sermons, Our Story, Church Family;
+- use administrative tools to surface missing leadership confirmations instead of hiding uncertainty in public copy;
+- keep the PWA integrated with the website and preserve the public/private cache boundary;
+- refine application tools for usefulness without making the public site feel like a dashboard.
+
+The benchmark set included Church of the Highlands, The Village Church, Capitol Hill Baptist Church, and Redeemer Presbyterian Church. Their useful patterns were adapted selectively; Audubon’s own language, history, scale, and ministry needs remain the source of identity.
