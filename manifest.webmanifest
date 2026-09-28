@@ -11,9 +11,15 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "audubon-app-icon-192.svg",
+      "src": "audubon-app-icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "audubon-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any"
     },
     {
@@ -24,8 +30,20 @@
     }
   ],
   "shortcuts": [
-    {"name":"Sermons","short_name":"Sermons","url":"./sermons.html"},
-    {"name":"Member Home","short_name":"Members","url":"./member.html"},
-    {"name":"Calendar","short_name":"Calendar","url":"./calendar.html"}
+    {
+      "name": "Sermons",
+      "short_name": "Sermons",
+      "url": "./sermons.html"
+    },
+    {
+      "name": "Member Home",
+      "short_name": "Members",
+      "url": "./member.html"
+    },
+    {
+      "name": "Calendar",
+      "short_name": "Calendar",
+      "url": "./calendar.html"
+    }
   ]
 }
