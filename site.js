@@ -146,13 +146,33 @@
       const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
       const defaults = defaultData();
 
+      const mergedSermon = {
+        ...defaults.sermon,
+        ...(stored.sermon || {})
+      };
+
+      // Migrate the earlier browser-local featured sermon, which predated
+      // real archive audio/source fields. Do not overwrite a different sermon.
+      const isDefaultArchiveSermon =
+        mergedSermon.title === defaults.sermon.title
+        && mergedSermon.reference === defaults.sermon.reference;
+
+      if (isDefaultArchiveSermon) {
+        if (!mergedSermon.audioUrl) {
+          mergedSermon.audioUrl = defaults.sermon.audioUrl;
+        }
+        if (!mergedSermon.sourceUrl) {
+          mergedSermon.sourceUrl = defaults.sermon.sourceUrl;
+        }
+        if (!mergedSermon.archiveDate) {
+          mergedSermon.archiveDate = defaults.sermon.archiveDate;
+        }
+      }
+
       return {
         ...defaults,
         ...stored,
-        sermon: {
-          ...defaults.sermon,
-          ...(stored.sermon || {})
-        },
+        sermon: mergedSermon,
         events: Array.isArray(stored.events)
           && stored.events.some(event => event.dateISO)
           ? stored.events
