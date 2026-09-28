@@ -104,3 +104,27 @@ When the NAS worker exists:
 9. worker verifies remote availability;
 10. worker updates the recent-sermons manifest;
 11. worker removes the fifth-oldest remote derivative only after success.
+
+
+## Whole-site PWA test
+
+1. Open the main website over HTTPS.
+2. Confirm **Get the App!** is visible in the top-right/header area.
+3. On Chromium where the native prompt is available, confirm the button opens the install prompt.
+4. On iPhone/iPad, confirm the button shows Share → Add to Home Screen guidance.
+5. Install the app.
+6. Launch it from the home screen/app launcher.
+7. Confirm it opens the Audubon Home page in standalone/app-like mode where supported.
+8. Visit Sermons, Member Home, and Calendar from the installed app.
+9. Deploy a visible text change, reopen/reload the installed app while online, and confirm the current network version is shown.
+10. Go offline and confirm previously cached application-shell pages provide a reasonable fallback.
+
+The service worker must not cache selected/uploaded sermon video or future private API responses.
+
+## Public sermon playback test
+
+1. Open `sermons.html`.
+2. Toggle **Watch video** / **Listen only**.
+3. Confirm switching modes does not start both players simultaneously.
+4. With no media URLs configured, confirm the prototype explains that publication will supply the files.
+5. When test `videoUrl` and `audioUrl` values are available, verify both players work and that the audio-only file is materially smaller than the video derivative.
