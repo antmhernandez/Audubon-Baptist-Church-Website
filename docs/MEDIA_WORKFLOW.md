@@ -142,3 +142,83 @@ browser upload
 ```
 
 This preserves the simple user experience while keeping large-file processing away from the main web request and away from GitHub.
+
+
+## Current enhanced prototype
+
+The Sermon Studio now supports a more realistic weekly editing workflow:
+
+- local video selection / drag-and-drop;
+- inline video playback on supported mobile browsers;
+- ±5-second and ±30-second seeking;
+- keyboard shortcuts:
+  - Space = play/pause;
+  - Left / Right = 5 seconds;
+  - Shift + Left / Right = 30 seconds;
+  - I = set sermon start;
+  - O = set sermon end;
+- “Set start & jump ahead” and “Set end & review” helper actions;
+- visual trim start/end sliders;
+- selected-clip preview;
+- title / Scripture / speaker / series / tags;
+- speech normalization / gain / fades / audio-only choices;
+- publication ready-check;
+- browser-local draft save and restore;
+- downloadable processing-job JSON;
+- installable PWA shell for supported browsers.
+
+### Processing-job JSON
+
+The browser can export a small job file instead of trying to encode the sermon itself.
+
+Example shape:
+
+```json
+{
+  "schemaVersion": 1,
+  "source": {
+    "fileName": "Sunday-Service.mp4",
+    "fileSize": 1234567890,
+    "durationSeconds": 4510
+  },
+  "edit": {
+    "trimStartSeconds": 1080.25,
+    "trimEndSeconds": 3422.5,
+    "normalizeSpeech": true,
+    "gainDb": 0,
+    "shortFade": true,
+    "createAudioOnly": true
+  },
+  "sermon": {
+    "title": "Example",
+    "scripture": "John 10:1–18",
+    "speaker": "Pastor Jeff Akin",
+    "series": "",
+    "tags": ["John"]
+  },
+  "publish": {
+    "keepRecentOnline": 4,
+    "retainMasterOnNas": true,
+    "status": "ready-for-worker"
+  }
+}
+```
+
+This job file is intentionally small, human-readable, and easy to validate.
+
+The future NAS worker can consume this job beside the original service recording.
+
+### PWA / mobile testing
+
+The Media Studio now includes:
+
+- `manifest.webmanifest`;
+- `pwa.js`;
+- `sw.js`;
+- a simple Audubon app icon.
+
+The service worker caches only the application shell.
+
+It must never cache selected sermon videos or private uploaded media.
+
+See `docs/SERMON_STUDIO_TEST_PLAN.md` for the current desktop and mobile test procedure.
