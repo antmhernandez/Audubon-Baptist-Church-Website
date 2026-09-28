@@ -1,3 +1,9 @@
+/**
+ * Member three-month calendar behavior.
+ * Handles event visibility, quarter rendering, RSVPs, and .ics downloads.
+ * Keep private-event authorization server-side in production.
+ */
+
 const ROLE_LEVEL = { public: 0, member: 1, group: 2, leadership: 3, admin: 4 };
 const ROLE_LABELS = { public: "Public visitor", member: "Church member", group: "Ministry / group member", leadership: "Church leadership", admin: "Administrator" };
 const STORAGE_KEY = "abcDemoV3";
