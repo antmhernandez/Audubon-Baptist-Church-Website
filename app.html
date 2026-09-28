@@ -1,16 +1,18 @@
 <!doctype html>
 <!--
   MAINTAINER NOTE
-  APP INSTALL PAGE. Keep installation guidance broadly compatible and avoid
-  promising one-click installation on browsers that do not expose it.
-  Shared install behavior lives in pwa.js.
+  APP INSTALL PAGE. Shared install/share behavior lives in pwa.js. The PWA is
+  the same website, not a separate iOS/Android fork.
 -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Install the Audubon Baptist Church web app on your phone, tablet, or computer.">
+  <meta name="description" content="Install the Audubon Baptist Church web app on a phone, tablet, or computer for quick home-screen access to the church website.">
   <meta name="theme-color" content="#7f2d32">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Get the App | Audubon Baptist Church">
+  <meta property="og:description" content="Install the Audubon Baptist Church web app on a phone, tablet, or computer for quick home-screen access to the church website.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Audubon Church">
   <title>Get the App | Audubon Baptist Church</title>
@@ -20,26 +22,45 @@
 </head>
 <body class="public-page public-subpage" data-page="app">
   <a class="skip-link" href="#mainContent">Skip to main content</a>
-
   <header class="site-header editorial-header multi-page-header">
     <a class="brand" href="index.html" aria-label="Audubon Baptist Church home">
       <span class="brand-mark" aria-hidden="true">A</span>
-      <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
+      <span class="brand-copy">
+        <strong>Audubon Baptist Church</strong>
+        <small>A Church in the Park</small>
+      </span>
     </a>
-    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
+
+    <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">
+      Menu
+    </button>
+
     <nav class="main-nav public-main-nav" id="mainNav" aria-label="Main navigation">
       <a href="index.html" data-nav-page="home">Home</a>
       <a href="visit.html" data-nav-page="visit">Visit</a>
       <a href="sermons.html" data-nav-page="sermons">Sermons</a>
+
       <details class="nav-dropdown">
         <summary>About</summary>
         <div class="nav-dropdown-menu">
-          <a href="beliefs.html" data-nav-page="beliefs"><span>Beliefs</span><small>What we believe</small></a>
-          <a href="about.html" data-nav-page="about"><span>Our Story & Mission</span><small>Who we are</small></a>
+          <a href="beliefs.html" data-nav-page="beliefs">
+            <span>Beliefs</span>
+            <small>What we believe</small>
+          </a>
+          <a href="about.html" data-nav-page="about">
+            <span>Our Story & Mission</span>
+            <small>Who we are</small>
+          </a>
+          <a href="https://www.achurchinthepark.org/newsletters/" target="_blank" rel="noopener">
+            <span>Newsletter Archive ↗</span>
+            <small>Audubon’s published archive</small>
+          </a>
         </div>
       </details>
+
       <a href="give.html" data-nav-page="give">Give</a>
     </nav>
+
     <div class="header-actions">
       <button class="get-app-button" type="button" data-install-app>Get the App!</button>
       <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
@@ -50,9 +71,23 @@
     <section class="page-hero app-install-hero">
       <p class="editorial-kicker">Audubon on your phone</p>
       <h1>The website,<br><em>ready like an app.</em></h1>
-      <p class="page-hero-lead">Install Audubon on a phone, tablet, or computer for a home-screen icon, an app-like window, quick access to sermons and the calendar, and offline fallback for the application shell.</p>
-      <button class="button primary app-install-primary" type="button" data-install-app>Install Audubon App</button>
-      <p class="microcopy">Installation steps vary by operating system and browser. This button will use the browser’s native installer when available and show the correct manual steps when it is not.</p>
+      <p class="page-hero-lead">
+        Install Audubon for a home-screen icon, an app-like window, fast access to sermons and member
+        tools, and a public offline fallback when a connection drops.
+      </p>
+
+      <div class="app-hero-actions">
+        <button class="button primary app-install-primary" type="button" data-install-app>
+          Install Audubon App
+        </button>
+        <button class="button secondary" type="button" data-share-app>
+          Share Audubon
+        </button>
+      </div>
+
+      <p class="app-install-status" data-install-status aria-live="polite">
+        The app uses the same website and checks for current deployed files whenever it opens online.
+      </p>
     </section>
 
     <section class="focused-section app-benefits">
@@ -60,44 +95,90 @@
         <span class="section-index">01</span>
         <h2>One site.<br>One app.</h2>
       </div>
+
       <div class="prose-stack">
-        <p class="lead-prose">There is no separate app to keep in sync. The installed version opens the same Audubon website and prefers the newest online files whenever a connection is available.</p>
+        <p class="lead-prose">
+          There is no second app to keep in sync. The installed version opens the same Audubon
+          website, so improvements to the site flow into the installed app too.
+        </p>
+
         <div class="app-feature-list">
-          <article><strong>Current</strong><p>The installed app checks the live website and service worker for updates when it opens.</p></article>
-          <article><strong>Quick</strong><p>Open Audubon from the home screen or app launcher without first finding a browser bookmark.</p></article>
-          <article><strong>Flexible</strong><p>Public pages, Sermons, Member Home, Calendar, and future notifications can share the same application shell.</p></article>
+          <article>
+            <strong>Current</strong>
+            <p>When online, the app prefers the live deployed site and asks its service worker to check for updates.</p>
+          </article>
+          <article>
+            <strong>Quick</strong>
+            <p>Open Audubon from the Home Screen or app launcher without hunting for a browser bookmark.</p>
+          </article>
+          <article>
+            <strong>Private by design</strong>
+            <p>Only the public/static app shell is kept for offline fallback; private member/admin routes are excluded.</p>
+          </article>
         </div>
       </div>
     </section>
 
+    <section class="app-test-band">
+      <div>
+        <p class="editorial-kicker">Try the installed app</p>
+        <h2>Three good places to test.</h2>
+      </div>
+
+      <nav class="app-test-links" aria-label="App test links">
+        <a href="sermons.html?mode=audio"><span>01</span><strong>Sermons</strong><b>→</b></a>
+        <a href="member.html" data-member-entry><span>02</span><strong>Member Home</strong><b>→</b></a>
+        <a href="calendar.html"><span>03</span><strong>Calendar</strong><b>→</b></a>
+      </nav>
+    </section>
+
     <section class="quiet-band app-install-help">
       <div>
-        <p class="editorial-kicker">If your browser asks you to install</p>
-        <h2>Choose Install.</h2>
+        <p class="editorial-kicker">Installation help</p>
+        <h2>Use the browser’s own installer.</h2>
       </div>
+
       <div class="prose-stack">
-        <p>On browsers with a native PWA installer, the button above opens it directly.</p>
-        <p>On iPhone and iPad, use the browser Share menu and choose <strong>Add to Home Screen</strong>, then enable <strong>Open as Web App</strong> when that option is shown.</p>
-        <p>On browsers without native PWA installation, the same button provides a short fallback guide rather than failing silently.</p>
+        <p>
+          Where the browser exposes a native PWA install prompt, <strong>Get the App!</strong> opens it directly.
+        </p>
+        <p>
+          On iPhone and iPad, use the browser Share menu and choose <strong>Add to Home Screen</strong>,
+          then enable <strong>Open as Web App</strong> when that option is shown.
+        </p>
+        <p>
+          If a browser does not expose a PWA installer, the same button shows platform-appropriate
+          fallback instructions instead of silently failing.
+        </p>
       </div>
     </section>
   </main>
 
   <footer class="editorial-footer compact-public-footer">
     <div class="footer-main">
-      <div><span class="brand-mark footer-mark" aria-hidden="true">A</span><p><strong>Audubon Baptist Church</strong><br>A Church in the Park</p></div>
-      <address>1046 Hess Lane<br>Louisville, KY 40217<br><a href="tel:+15026352100">(502) 635-2100</a></address>
-      <nav>
+      <div>
+        <span class="brand-mark footer-mark" aria-hidden="true">A</span>
+        <p><strong>Audubon Baptist Church</strong><br>A Church in the Park</p>
+      </div>
+
+      <address>
+        1046 Hess Lane<br>
+        Louisville, KY 40217<br>
+        <a href="tel:+15026352100">(502) 635-2100</a>
+      </address>
+
+      <nav aria-label="Footer">
         <a href="visit.html">Visit</a>
         <a href="sermons.html">Sermons</a>
         <a href="beliefs.html">Beliefs</a>
         <a href="about.html">Our Story</a>
         <a href="give.html">Give</a>
-        <button class="footer-app-button" type="button" data-install-app>Get the App</button>
+        <a href="app.html">Get the App</a>
+        <a href="https://www.achurchinthepark.org/newsletters/" target="_blank" rel="noopener">Newsletters ↗</a>
+        <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook ↗</a>
       </nav>
     </div>
   </footer>
-
   <script src="site.js"></script>
   <script src="pwa.js"></script>
 </body>
