@@ -6,7 +6,7 @@
  * Never cache uploaded sermon video or future private API responses here.
  */
 
-const CACHE_NAME = "audubon-church-shell-v2";
+const CACHE_NAME = "audubon-church-shell-v3";
 
 const APP_SHELL = [
   "./index.html",
@@ -32,7 +32,9 @@ const APP_SHELL = [
   "./manifest.webmanifest",
   "./audubon-app-icon.svg",
   "./audubon-app-icon-192.svg",
-  "./audubon-app-icon-512.svg"
+  "./audubon-app-icon-512.svg",
+  "./audubon-app-icon-192.png",
+  "./audubon-app-icon-512.png"
 ];
 
 const CACHEABLE_PATHS = new Set(
