@@ -72,7 +72,7 @@
         </div>
         <div class="calendar-actions">
           <button class="button secondary small" id="previousQuarter" type="button">← Previous 3 months</button>
-          <button class="button secondary small" id="todayQuarter" type="button">Current quarter</button>
+          <button class="button secondary small" id="todayQuarter" type="button">Current 3 months</button>
           <button class="button secondary small" id="nextQuarter" type="button">Next 3 months →</button>
         </div>
       </div>
@@ -134,7 +134,7 @@
 
       <section class="calendar-note">
         <strong>Prototype note</strong>
-        <p>The recurring Sunday and Wednesday schedule shown here is based on previously published Audubon materials and should be confirmed before production. Other clearly labeled items are demonstration events.</p>
+        <p>The recurring Sunday and Wednesday schedule shown here is based on previously published Audubon materials and should be confirmed before production. Calendar downloads now use Louisville local time. Other clearly labeled items are demonstration events.</p>
       </section>
     </section>
   </main>
@@ -169,6 +169,8 @@
         <div><label for="calendarEventDate">Date</label><input id="calendarEventDate" type="date" required></div>
         <div><label for="calendarEventTime">Time</label><input id="calendarEventTime" type="time" value="18:30"></div>
       </div>
+      <label for="calendarEventLocation">Location</label>
+      <input id="calendarEventLocation" value="1046 Hess Lane, Louisville, KY 40217">
       <label for="calendarEventAudience">Audience</label>
       <select id="calendarEventAudience">
         <option value="churchwide">Churchwide</option>
