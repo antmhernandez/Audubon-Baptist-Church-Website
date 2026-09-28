@@ -13,6 +13,8 @@
   <title>Sermon Media Studio | Audubon Baptist Church</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Audubon Church">
 </head>
 <body class="app-page media-page">
   <a class="skip-link" href="#mediaMain">Skip to media studio</a>
@@ -35,7 +37,10 @@
       <a href="admin.html">Site Admin</a>
       <a class="active" href="media-studio.html">Media Studio</a>
     </nav>
-    <a class="member-button link-button" href="index.html">Public site</a>
+    <div class="header-actions">
+      <button class="get-app-button" type="button" data-install-app>Get the App!</button>
+      <a class="member-button link-button" href="index.html">Public site</a>
+    </div>
   </header>
 
   <main id="mediaMain">
@@ -61,7 +66,7 @@
           <div class="studio-steps" aria-label="Media workflow">
             <span class="active" data-studio-step="1">1 Upload</span><span data-studio-step="2">2 Trim</span><span data-studio-step="3">3 Details</span><span data-studio-step="4">4 Review</span>
           </div>
-          <button class="button secondary small hidden" id="pwaInstallButton" type="button">Install Sermon Studio</button>
+          <button class="button secondary small" type="button" data-install-app>Install Audubon App</button>
         </div>
       </div>
 
