@@ -89,7 +89,7 @@
         </div>
 
         <div class="video-stage">
-          <video id="videoPreview" controls preload="metadata"></video>
+          <video id="videoPreview" controls playsinline preload="metadata"></video>
         </div>
 
         <div class="transport-row">
@@ -173,6 +173,7 @@
         <div class="button-row">
           <button class="button secondary" id="saveMediaDraft" type="button">Save draft settings</button>
           <button class="button primary" id="preparePublish" type="button">Prepare & post (prototype)</button>
+          <button class="button secondary hidden" id="downloadMediaJob" type="button">Download job JSON</button>
         </div>
         <div class="publish-job hidden" id="publishJob"></div>
         <p class="microcopy">The prototype does not upload or re-encode your recording. In production, this final action will create a processing job, clip the selected range, normalize audio, create derivatives, upload them, and publish the sermon record.</p>
