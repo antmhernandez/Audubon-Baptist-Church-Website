@@ -1,6 +1,6 @@
 # Source Content Notes
 
-Last reviewed: 2026-09-27
+Last reviewed: 2026-09-28
 
 This file records which public church facts were used to populate the leadership prototype and which items still need direct confirmation from church leadership.
 
@@ -115,3 +115,46 @@ Before replacing the current church website, confirm:
 Archived Audubon newsletter material exposes a **red cross-like church mark**. The refined prototype therefore uses a deep red as its primary accent, warm cream/paper neutrals, charcoal typography, and a restrained park green secondary accent. This is an interpreted prototype palette rather than a claim that exact historical brand color values have been recovered.
 
 Before production, leadership should confirm whether an original logo/vector file and exact brand colors are available.
+
+
+## Archived pastoral language recovered in the polish pass
+
+The newsletter archive supplies several useful Audubon-specific phrases and historical facts that can replace generic prototype language when context is preserved.
+
+### “Simple. Missional. Stewarding.”
+
+Source:
+
+- https://www.achurchinthepark.org/simple-missional-stewarding/
+
+The September 2021 pastoral newsletter says these three words gave purpose and shape to Pastor Jeff’s ministry emphasis and that members would increasingly encounter them in Audubon’s communication and life together.
+
+The new site uses the phrase with an explicit historical/archive qualifier rather than silently treating it as a newly confirmed 2026 slogan.
+
+### Missional emphasis
+
+Source:
+
+- https://www.achurchinthepark.org/august-2021/
+
+The August 2021 newsletter describes a missional emphasis beginning with people in closest proximity and moving outward. It also describes a missions-wall concept beginning with Audubon Park and extending toward wider mission settings.
+
+This is valuable historical language but should not be used to claim that every named 2021 partner/ministry remains active in 2026 without confirmation.
+
+### Founding year and cooperation
+
+Source:
+
+- https://www.achurchinthepark.org/june-2021/
+
+The June 2021 newsletter explicitly identifies **1944** as Audubon’s founding year and describes the congregation’s long-standing Southern Baptist cooperation.
+
+## Historical sermon media now connected
+
+The new Sermons page uses church-published audio files from the existing Audubon archive, including:
+
+- Ezra series: https://www.achurchinthepark.org/sermons/ezra/
+- Habakkuk series: https://www.achurchinthepark.org/sermons/habakkuk/
+- Main archive: https://www.achurchinthepark.org/sermons/
+
+The local prototype stores only the public media URLs and metadata. The media files themselves remain outside GitHub.
