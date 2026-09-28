@@ -11,6 +11,9 @@
   <meta name="description" content="Audubon Baptist Church website administration prototype">
   <meta name="theme-color" content="#8f2f35">
   <title>Site Administration | Audubon Baptist Church</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Audubon Church">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="app-page admin-page">
@@ -32,7 +35,10 @@
       <a class="active" href="admin.html">Site Admin</a>
       <a href="media-studio.html">Media Studio</a>
     </nav>
-    <a class="member-button link-button" href="index.html">Public site</a>
+    <div class="header-actions">
+      <button class="get-app-button" type="button" data-install-app>Get the App!</button>
+      <a class="member-button link-button" href="index.html">Public site</a>
+    </div>
   </header>
 
   <main id="adminMain">
@@ -116,5 +122,6 @@
 
   <div class="toast hidden" id="adminToast" role="status" aria-live="polite"></div>
   <script src="admin.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
