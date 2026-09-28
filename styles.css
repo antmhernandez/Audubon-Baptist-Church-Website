@@ -3214,3 +3214,173 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   color:var(--audubon-muted);
   font-size:.76rem;
 }
+
+
+/* =========================================================
+   Church archive page — 2026-09-28
+   ========================================================= */
+.archive-page-hero{
+  background:
+    linear-gradient(115deg,rgba(127,45,50,.96),rgba(93,29,34,.93)),
+    var(--audubon-red);
+  color:white;
+}
+
+.archive-page-hero h1,
+.archive-page-hero .page-hero-lead{
+  color:white;
+}
+
+.archive-page-hero .editorial-kicker{
+  color:#f3d9d9;
+}
+
+.archive-intro-strip{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:18px 0;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:26px;
+  border-bottom:1px solid var(--audubon-rule);
+}
+
+.archive-intro-strip span{
+  color:var(--audubon-red);
+  font-size:.66rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.archive-intro-strip p{
+  margin:0;
+  color:var(--audubon-muted);
+  font-size:.78rem;
+}
+
+.archive-editorial-section{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:80px 0;
+}
+
+.newsletter-archive-list{
+  margin:36px 0;
+  border-top:1px solid var(--audubon-rule);
+}
+
+.newsletter-archive-list article{
+  display:grid;
+  grid-template-columns:150px 1fr 130px;
+  gap:34px;
+  align-items:start;
+  padding:26px 0;
+  border-bottom:1px solid var(--audubon-rule);
+}
+
+.newsletter-date{
+  color:var(--audubon-red);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.newsletter-archive-list h3{
+  margin:0 0 8px;
+  font-size:1.65rem;
+}
+
+.newsletter-archive-list p{
+  max-width:730px;
+  margin:0;
+  color:var(--audubon-muted);
+}
+
+.newsletter-archive-list a{
+  justify-self:end;
+  color:var(--audubon-ink);
+  font-size:.72rem;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.newsletter-archive-list a:hover{
+  color:var(--audubon-red);
+  text-decoration:underline;
+}
+
+.archive-series-band{
+  padding:clamp(65px,8vw,100px) max(24px,calc((100vw - var(--max))/2));
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:70px;
+  background:var(--audubon-green-deep);
+  color:white;
+}
+
+.archive-series-band h2{
+  margin:0;
+  color:white;
+  font-size:clamp(2.8rem,5vw,4.9rem);
+  line-height:.94;
+}
+
+.archive-series-links{
+  border-top:1px solid rgba(255,255,255,.2);
+}
+
+.archive-series-links a{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:15px 0;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  color:white;
+  text-decoration:none;
+  font-family:var(--display);
+  font-size:1.25rem;
+}
+
+.archive-series-links a span{
+  color:#bfcbc5;
+  font-family:var(--sans);
+  font-size:.66rem;
+  font-weight:700;
+}
+
+.archive-series-links a:hover span{
+  color:white;
+}
+
+@media (max-width:820px){
+  .archive-intro-strip,
+  .archive-editorial-section{
+    margin-left:24px;
+    margin-right:24px;
+  }
+
+  .archive-intro-strip,
+  .archive-series-band{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .newsletter-archive-list article{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .newsletter-archive-list a{
+    justify-self:start;
+  }
+}
+
+@media (max-width:600px){
+  .archive-intro-strip,
+  .archive-editorial-section{
+    margin-left:18px;
+    margin-right:18px;
+  }
+}
