@@ -22,10 +22,21 @@ The current prototype demonstrates a typography-led, editorial public site plus 
 - a giving-provider handoff concept;
 - role-based views for Public Visitor, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
 - browser-based administration for announcements, events, and sermon metadata;
-- a dedicated sermon Media Studio with local video selection, scrubbing, ±5-second navigation, start/end trim markers, clip preview, metadata, audio options, saved draft settings, and a production-job preview;
+- a dedicated installable Sermon Studio with local video selection, ±5/±30-second seeking, keyboard shortcuts, start/end trim markers, clip preview, metadata, audio options, restoreable browser drafts, a publication ready-check, and downloadable NAS/FFmpeg processing-job JSON;
 - a responsive interface designed to remain comfortable on phones and for less-technical users.
 
 > **Important:** this is a public design prototype. The role switcher and "member sign in" flow are demonstrations, not secure authentication. Browser edits are not shared with other users. Do not place real private prayer requests, member data, financial information, pastoral information, credentials, or confidential church records into this version.
+
+## For human maintainers
+
+Start with:
+
+- `docs/EDITING_GUIDE.md` — “where do I edit this?” reference;
+- `docs/CODE_MAP.md` — how the repository is organized;
+- `CONTRIBUTING.md` — editing and validation habits;
+- `.editorconfig` — shared two-space formatting defaults.
+
+The source files now include maintainer notes and section comments. Keep those comments focused on intent, privacy boundaries, and safe modification points.
 
 ## View it on the web
 
@@ -67,6 +78,7 @@ All demo changes remain only in the current browser.
 - `admin.html` + `admin.js` — dedicated site administration workspace
 - `calendar.html` + `calendar.js` — member-only three-month calendar prototype
 - `media-studio.html` + `media-studio.js` — administrator sermon upload/trim/publish workflow prototype
+- `manifest.webmanifest` + `pwa.js` + `sw.js` — installable Sermon Studio web-app shell
 - `styles.css` — responsive visual and interaction system
 - `app.js` — interactive demo behavior and browser-local sample data
 - `AGENTS.md` — governing development instructions
@@ -76,6 +88,7 @@ All demo changes remain only in the current browser.
 - `docs/ROADMAP.md` — phased development plan
 - `docs/SECURITY_AND_PRIVACY.md` — privacy and security boundaries
 - `docs/MEDIA_WORKFLOW.md` — sermon/video workflow
+- `docs/SERMON_STUDIO_TEST_PLAN.md` — desktop/mobile test checklist and NAS job handoff
 - `docs/DEPLOYMENT.md` — GitHub Pages instructions and future hosting
 - `docs/PASTOR_DEMO_GUIDE.md` — suggested walkthrough for church leadership
 - `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md` — calendar/member interaction model
