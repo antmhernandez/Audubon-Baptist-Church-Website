@@ -1,5 +1,22 @@
+/**
+ * Audubon Baptist Church — Sermon Media Studio
+ * ------------------------------------------------------------
+ * Human-maintainer notes:
+ * - Small/large seek jumps are configured below.
+ * - Browser drafts are stored under STORAGE_KEY.
+ * - The final "prepare publish" action is still a prototype; the future
+ *   NAS/FFmpeg worker will replace that final processing step.
+ * - See docs/EDITING_GUIDE.md and docs/MEDIA_WORKFLOW.md before changing
+ *   the production workflow.
+ */
+
 const STORAGE_KEY = "abcDemoV3";
 const ROLE_LEVEL = { public:0, member:1, group:2, leadership:3, admin:4 };
+
+// EDIT HERE: quick-seek distances used by buttons and keyboard shortcuts.
+const JUMP_SMALL_SECONDS = 5;
+const JUMP_LARGE_SECONDS = 30;
+const MAX_SAVED_DRAFTS = 10;
 let data = loadData();
 let objectUrl = "";
 let sourceFile = null;
@@ -103,16 +120,51 @@ video.addEventListener("timeupdate",()=>{
 });
 playhead.addEventListener("input",()=>{ video.currentTime=Number(playhead.value); });
 document.getElementById("playPause").addEventListener("click",()=> video.paused ? video.play() : video.pause());
-document.getElementById("jumpBack").addEventListener("click",()=>{ video.currentTime=Math.max(0,video.currentTime-5); });
-document.getElementById("jumpForward").addEventListener("click",()=>{ video.currentTime=Math.min(duration,video.currentTime+5); });
+function seekBy(seconds) {
+  if (!duration) return;
+  video.currentTime = Math.max(0, Math.min(duration, video.currentTime + seconds));
+}
+
+document.getElementById("jumpBack").addEventListener("click",()=>seekBy(-JUMP_SMALL_SECONDS));
+document.getElementById("jumpForward").addEventListener("click",()=>seekBy(JUMP_SMALL_SECONDS));
+document.getElementById("jumpBack30").addEventListener("click",()=>seekBy(-JUMP_LARGE_SECONDS));
+document.getElementById("jumpForward30").addEventListener("click",()=>seekBy(JUMP_LARGE_SECONDS));
 document.getElementById("setStartHere").addEventListener("click",()=>{ trimStart=Math.min(video.currentTime,trimEnd-.1); document.getElementById("trimStartSlider").value=trimStart; renderTrim(); });
 document.getElementById("setEndHere").addEventListener("click",()=>{ trimEnd=Math.max(video.currentTime,trimStart+.1); document.getElementById("trimEndSlider").value=trimEnd; renderTrim(); });
+
+document.getElementById("setStartContinue").addEventListener("click",()=>{
+  trimStart=Math.min(video.currentTime,trimEnd-.1);
+  document.getElementById("trimStartSlider").value=trimStart;
+  renderTrim();
+  seekBy(60);
+  showToast("Start saved. Jumped ahead one minute.");
+});
+
+document.getElementById("setEndContinue").addEventListener("click",()=>{
+  trimEnd=Math.max(video.currentTime,trimStart+.1);
+  document.getElementById("trimEndSlider").value=trimEnd;
+  renderTrim();
+  setStudioStep(3);
+  document.getElementById("detailsCard").scrollIntoView({behavior:"smooth",block:"start"});
+});
 document.getElementById("trimStartSlider").addEventListener("input",e=>{ trimStart=Math.min(Number(e.target.value),trimEnd-.1); e.target.value=trimStart; renderTrim(); });
 document.getElementById("trimEndSlider").addEventListener("input",e=>{ trimEnd=Math.max(Number(e.target.value),trimStart+.1); e.target.value=trimEnd; renderTrim(); });
 document.getElementById("resetTrim").addEventListener("click",()=>{ trimStart=0; trimEnd=duration; document.getElementById("trimStartSlider").value=0; document.getElementById("trimEndSlider").value=duration; renderTrim(); });
 document.getElementById("previewSelection").addEventListener("click",()=>{
   video.currentTime=trimStart; previewingSelection=true; video.play();
   document.getElementById("previewSelection").textContent="Playing selected clip…";
+});
+
+// Keyboard shortcuts speed up long service recordings. They are disabled
+// while typing in metadata fields so normal form editing is unaffected.
+document.addEventListener("keydown",event=>{
+  const tag=event.target && event.target.tagName;
+  if(!sourceFile || ["INPUT","TEXTAREA","SELECT"].includes(tag)) return;
+  if(event.code==="Space"){ event.preventDefault(); video.paused ? video.play() : video.pause(); }
+  else if(event.key==="ArrowLeft"){ event.preventDefault(); seekBy(event.shiftKey ? -JUMP_LARGE_SECONDS : -JUMP_SMALL_SECONDS); }
+  else if(event.key==="ArrowRight"){ event.preventDefault(); seekBy(event.shiftKey ? JUMP_LARGE_SECONDS : JUMP_SMALL_SECONDS); }
+  else if(event.key.toLowerCase()==="i"){ trimStart=Math.min(video.currentTime,trimEnd-.1); document.getElementById("trimStartSlider").value=trimStart; renderTrim(); }
+  else if(event.key.toLowerCase()==="o"){ trimEnd=Math.max(video.currentTime,trimStart+.1); document.getElementById("trimEndSlider").value=trimEnd; renderTrim(); }
 });
 
 function renderTimelineOnly() {
@@ -165,13 +217,43 @@ function renderPublishSummary() {
     <div><span>Audio</span><strong>${s.normalize ? "Normalize speech" : "No normalization"}${s.gain ? ` · ${s.gain>0?"+":""}${s.gain} dB` : ""}</strong><small>${s.audioOnly ? "Audio-only derivative included" : "Video only"}</small></div>`;
 }
 
+function renderDrafts(){
+  const drafts=Array.isArray(data.mediaDrafts)?data.mediaDrafts:[];
+  document.getElementById("draftCount").textContent=drafts.length ? drafts.length+" saved" : "No drafts";
+  document.getElementById("draftList").innerHTML=drafts.length ? drafts.map(draft=>"<article class=\"media-draft-row\"><div><strong>"+escapeHtml(draft.title||"Untitled sermon")+"</strong><span>"+escapeHtml(draft.fileName||"No source filename")+" · "+escapeHtml(draft.scripture||"No Scripture")+"</span></div><button class=\"mini-action\" type=\"button\" data-restore-draft=\""+escapeHtml(draft.id)+"\">Restore settings</button></article>").join("") : "<p class=\"empty-state\">No media drafts have been saved in this browser.</p>";
+  document.querySelectorAll("[data-restore-draft]").forEach(button=>button.addEventListener("click",()=>{
+    const draft=drafts.find(item=>item.id===button.dataset.restoreDraft);
+    if(!draft) return;
+    document.getElementById("mediaTitle").value=draft.title||"";
+    document.getElementById("mediaScripture").value=draft.scripture||"";
+    document.getElementById("mediaSpeaker").value=draft.speaker||"Pastor Jeff Akin";
+    document.getElementById("mediaSeries").value=draft.series||"";
+    document.getElementById("mediaTags").value=(draft.tags||[]).join(", ");
+    document.getElementById("mediaGain").value=String(draft.gain||0);
+    document.getElementById("mediaNormalize").checked=draft.normalize!==false;
+    document.getElementById("mediaFade").checked=draft.fade!==false;
+    document.getElementById("mediaAudioOnly").checked=draft.audioOnly!==false;
+    if(sourceFile && duration){
+      trimStart=Math.max(0,Math.min(duration,Number(draft.trimStart||0)));
+      trimEnd=Math.max(trimStart+.1,Math.min(duration,Number(draft.trimEnd||duration)));
+      document.getElementById("trimStartSlider").value=trimStart;
+      document.getElementById("trimEndSlider").value=trimEnd;
+      renderTrim();
+    }
+    renderPublishSummary();
+    setStudioStep(sourceFile?3:1);
+    showToast(sourceFile ? "Draft settings restored." : "Draft restored. Re-select the original video to restore trim points.");
+  }));
+}
+
 document.getElementById("saveMediaDraft").addEventListener("click",()=>{
   if(!sourceFile){showToast("Choose a video before saving the media draft.");return;}
   const draft={...currentSettings(),id:`draft-${Date.now()}`,savedAt:new Date().toISOString()};
   data.mediaDrafts=Array.isArray(data.mediaDrafts)?data.mediaDrafts:[];
   data.mediaDrafts.unshift(draft);
-  data.mediaDrafts=data.mediaDrafts.slice(0,10);
+  data.mediaDrafts=data.mediaDrafts.slice(0,MAX_SAVED_DRAFTS);
   saveData();
+  renderDrafts();
   showToast("Trim and sermon settings saved in this browser.");
 });
 
@@ -189,4 +271,5 @@ document.getElementById("preparePublish").addEventListener("click",()=>{
 
 renderAccess();
 setStudioStep(1);
+renderDrafts();
 renderPublishSummary();
