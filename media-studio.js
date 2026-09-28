@@ -8,7 +8,9 @@
  *   NAS/FFmpeg worker will replace that final processing step.
  * - See docs/EDITING_GUIDE.md and docs/MEDIA_WORKFLOW.md before changing
  *   the production workflow.
- */ const STORAGE_KEY = "abcDemoV3";
+ */
+
+const STORAGE_KEY = "abcDemoV3";
 const ROLE_LEVEL = {
   public:0, member:1, group:2, leadership:3, admin:4
 };
@@ -120,7 +122,13 @@ function loadVideo(file) {
   };
 }
 function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp; ","<":"&lt; ",">":"&gt; ",'"':"&quot;","'":"&#039; "}[ch]));
+  return String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[character]));
 }
 
 const video=document.getElementById("videoPreview");
@@ -217,7 +225,7 @@ function currentSettings() {
     scripture:document.getElementById("mediaScripture").value.trim(),
     speaker:document.getElementById("mediaSpeaker").value.trim(),
     series:document.getElementById("mediaSeries").value.trim(),
-    tags:document.getElementById("mediaTags").value.split(", ").map(x=>x.trim()).filter(Boolean),
+    tags:document.getElementById("mediaTags").value.split(",").map(x=>x.trim()).filter(Boolean),
     gain:Number(document.getElementById("mediaGain").value),
     normalize:document.getElementById("mediaNormalize").checked,
     fade:document.getElementById("mediaFade").checked,
@@ -250,20 +258,39 @@ function renderWorkflowChecklist(settings) {
   status.classList.toggle("ready", ready);
 }
 function renderPublishSummary() {
-  const s=currentSettings();
-  renderWorkflowChecklist(s);
-  document.getElementById("publishSummary").innerHTML=`
-    <div><span>Source</span><strong>${escapeHtml(s.fileName || "Select a video first")}</strong></div>
-    <div><span>Clip</span><strong>${formatTime(s.trimStart)} → ${formatTime(s.trimEnd)} (${formatTime(Math.max(0,s.trimEnd-s.trimStart))})</strong></div>
-    <div><span>Sermon</span><strong>${escapeHtml(s.title || "Title not entered")}</strong><small>${escapeHtml(s.scripture || "Scripture not entered")} · ${escapeHtml(s.speaker || "Speaker not entered")}</small></div>
-    <div><span>Audio</span><strong>${s.normalize ? "Normalize speech" : "No normalization"}${s.gain ? ` · $ {
-    s.gain>0?"+":""
-  }
-  $ {
-    s.gain
-  }
-  dB` : ""}</strong><small>${s.audioOnly ? "Audio-only derivative included" : "Video only"}</small></div>`;
+  const settings = currentSettings();
+  renderWorkflowChecklist(settings);
+
+  const gainText = settings.gain
+    ? " · " + (settings.gain > 0 ? "+" : "") + settings.gain + " dB"
+    : "";
+
+  document.getElementById("publishSummary").innerHTML =
+    "<div><span>Source</span><strong>"
+    + escapeHtml(settings.fileName || "Select a video first")
+    + "</strong></div>"
+    + "<div><span>Clip</span><strong>"
+    + formatTime(settings.trimStart)
+    + " → "
+    + formatTime(settings.trimEnd)
+    + " ("
+    + formatTime(Math.max(0, settings.trimEnd - settings.trimStart))
+    + ")</strong></div>"
+    + "<div><span>Sermon</span><strong>"
+    + escapeHtml(settings.title || "Title not entered")
+    + "</strong><small>"
+    + escapeHtml(settings.scripture || "Scripture not entered")
+    + " · "
+    + escapeHtml(settings.speaker || "Speaker not entered")
+    + "</small></div>"
+    + "<div><span>Audio</span><strong>"
+    + (settings.normalize ? "Normalize speech" : "No normalization")
+    + gainText
+    + "</strong><small>"
+    + (settings.audioOnly ? "Audio-only derivative included" : "Video only")
+    + "</small></div>";
 }
+
 function renderDrafts() {
   const drafts=Array.isArray(data.mediaDrafts)?data.mediaDrafts:[];
   document.getElementById("draftCount").textContent=drafts.length ? drafts.length+" saved" : "No drafts";
