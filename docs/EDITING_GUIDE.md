@@ -20,6 +20,7 @@ For most changes, use this map:
 | Sermon archive metadata, historical audio URLs, search/sort behavior | `sermons.js` |
 | Beliefs copy | `beliefs.html` |
 | Church history / mission | `about.html` |
+| Historical newsletter/resource archive | `archive.html` |
 | Giving explanation | `give.html` |
 | Shared public navigation / member button | `site.js` |
 | Home member-only weekly summary | `app.js` |
@@ -60,6 +61,7 @@ The public pages are:
 - `sermons.html` — Sermons
 - `beliefs.html` — Beliefs
 - `about.html` — Our Story & Mission
+- `archive.html` — Church Archive
 - `give.html` — Give
 
 ### Member application
