@@ -91,6 +91,15 @@
           <input id="videoFileInput" type="file" accept="video/*">
         </label>
         <div class="file-summary hidden" id="fileSummary"></div>
+
+        <div class="media-source-note">
+          <strong>Preferred source: Audubon’s original service recording.</strong>
+          <p>
+            A future optional source may import a church-owned Facebook service video through an
+            authenticated Meta integration. It should use the same trim/publish workflow—not scrape
+            a public Facebook page.
+          </p>
+        </div>
       </section>
 
       <section class="studio-card hidden" id="editorCard">
@@ -187,7 +196,8 @@
           <button class="button secondary hidden" id="downloadMediaJob" type="button">Download job JSON</button>
         </div>
         <div class="publish-job hidden" id="publishJob"></div>
-        <p class="microcopy">The prototype does not upload or re-encode your recording. In production, this final action will create a processing job, clip the selected range, normalize audio, create derivatives, upload them, and publish the sermon record.</p>
+        <p class="microcopy">The prototype does not upload or re-encode your recording. In production, this final action will create a processing job, clip the selected range, normalize audio, create video and audio derivatives, upload them, and publish the sermon record.</p>
+        <a class="text-link-dark" href="sermons.html?mode=audio">Preview the public sermon library →</a>
       </section>
     </section>
   </main>
