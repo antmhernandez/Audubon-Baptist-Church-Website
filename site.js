@@ -121,10 +121,13 @@
         reference: "Ezra 8:1–15",
         speaker: "Pastor Jeff Akin",
         tags: ["Ezra", "Beyond Yourself", "Mission"],
+        archiveDate: "February 12, 2023",
+        sourceUrl: "https://www.achurchinthepark.org/sermons/ezra/",
 
-        // EDIT HERE LATER: production publishing will populate these URLs.
+        // The existing Audubon archive already provides this audio file.
+        // Production publishing will eventually populate current video/audio URLs.
         videoUrl: "",
-        audioUrl: ""
+        audioUrl: "https://www.achurchinthepark.org/wp-content/uploads/2023/02/DR0000_0336-AudioTrimmer.com_.mp3"
       },
       events: buildEvents(),
       rsvps: {},
@@ -296,7 +299,11 @@
     const page = document.body.dataset.page;
 
     document.querySelectorAll("[data-nav-page]").forEach(element => {
-      element.classList.toggle("active-page", element.dataset.navPage === page);
+      const isCurrent = element.dataset.navPage === page;
+      element.classList.toggle("active-page", isCurrent);
+
+      if (isCurrent) element.setAttribute("aria-current", "page");
+      else element.removeAttribute("aria-current");
     });
 
     if (page === "beliefs" || page === "about") {
