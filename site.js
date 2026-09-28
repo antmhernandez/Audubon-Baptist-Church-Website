@@ -2,54 +2,70 @@
  * Shared public-site behavior.
  * Handles navigation, About menu, role preview, and Member entry.
  * See docs/EDITING_GUIDE.md before changing shared navigation behavior.
- */
-
-(function(){
-  const STORAGE_KEY="abcDemoV3";
-  const ROLE_LEVEL={public:0,member:1,group:2,leadership:3,admin:4};
-  const ROLE_LABELS={public:"Public visitor",member:"Church member",group:"Ministry / group member",leadership:"Church leadership",admin:"Administrator"};
-
-  function ymd(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");}
-  function nextWeekday(start,weekday,offsetWeeks){offsetWeeks=offsetWeeks||0;const d=new Date(start.getFullYear(),start.getMonth(),start.getDate());d.setDate(d.getDate()+((weekday-d.getDay()+7)%7)+(offsetWeeks*7));return d;}
-  function addDays(start,count){const d=new Date(start);d.setDate(d.getDate()+count);return d;}
-  function buildEvents(){
-    const today=new Date(),events=[];
-    for(let week=0;week<14;week+=1){
-      const sunday=nextWeekday(today,0,week),wednesday=nextWeekday(today,3,week);
-      events.push({id:"worship-"+ymd(sunday),dateISO:ymd(sunday),time:"10:30",title:"Sunday Worship",audience:"churchwide",description:"Published Audubon materials list Sunday worship at 10:30 AM; please confirm the current schedule before production.",source:"published"});
-      events.push({id:"midweek-"+ymd(wednesday),dateISO:ymd(wednesday),time:"18:30",title:"Midweek Service",audience:"churchwide",description:"Published Audubon materials list the Midweek Service at 6:30 PM; please confirm the current schedule before production.",source:"published"});
-    }
-    events.push({id:"sample-work-day",dateISO:ymd(addDays(today,12)),time:"09:00",title:"Sample: Church Work Day",audience:"member",description:"Demonstration event showing member RSVP and volunteer planning.",source:"sample"});
-    events.push({id:"sample-ministry-meeting",dateISO:ymd(addDays(today,31)),time:"18:00",title:"Sample: Ministry Team Meeting",audience:"group",description:"Demonstration group-only event.",source:"sample"});
-    return events;
+ */ (function() {
+  const STORAGE_KEY="abcDemoV3"; const ROLE_LEVEL= {
+    public:0, member:1, group:2, leadership:3, admin:4
+  }; const ROLE_LABELS= {
+    public:"Public visitor", member:"Church member", group:"Ministry / group member", leadership:"Church leadership", admin:"Administrator"
+  }; function ymd(date) {
+    return [date.getFullYear(), String(date.getMonth()+1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
   }
-  function defaults(){return{
-    role:"public",
-    announcement:"Welcome to Audubon Baptist Church — A Church in the Park.",
-    sermon:{title:"How to Be Great for God – Beyond Yourself",reference:"Ezra 8:1–15",speaker:"Pastor Jeff Akin",tags:["Ezra","Beyond Yourself","Mission"]},
-    events:buildEvents(),rsvps:{},prayers:[],mediaDrafts:[]
-  };}
-  function load(){
-    try{
-      const stored=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"),base=defaults();
-      return Object.assign({},base,stored,{
-        sermon:Object.assign({},base.sermon,stored.sermon||{}),
-        events:Array.isArray(stored.events)&&stored.events.some(function(e){return e.dateISO;})?stored.events:base.events,
-        rsvps:stored.rsvps||{},
-        prayers:Array.isArray(stored.prayers)?stored.prayers:[]
+  function nextWeekday(start, weekday, offsetWeeks) {
+    offsetWeeks=offsetWeeks||0; const d=new Date(start.getFullYear(), start.getMonth(), start.getDate()); d.setDate(d.getDate()+((weekday-d.getDay()+7)%7)+(offsetWeeks*7)); return d;
+  }
+  function addDays(start, count) {
+    const d=new Date(start); d.setDate(d.getDate()+count); return d;
+  }
+  function buildEvents() {
+    const today=new Date(), events=[]; for(let week=0; week<14; week+=1) {
+      const sunday=nextWeekday(today, 0, week), wednesday=nextWeekday(today, 3, week); events.push({
+        id:"worship-"+ymd(sunday), dateISO:ymd(sunday), time:"10:30", title:"Sunday Worship", audience:"churchwide", description:"Published Audubon materials list Sunday worship at 10:30 AM; please confirm the current schedule before production.", source:"published"
+      }); events.push({
+        id:"midweek-"+ymd(wednesday), dateISO:ymd(wednesday), time:"18:30", title:"Midweek Service", audience:"churchwide", description:"Published Audubon materials list the Midweek Service at 6:30 PM; please confirm the current schedule before production.", source:"published"
       });
-    }catch(error){return defaults();}
+    }
+    events.push({
+      id:"sample-work-day", dateISO:ymd(addDays(today, 12)), time:"09:00", title:"Sample: Church Work Day", audience:"member", description:"Demonstration event showing member RSVP and volunteer planning.", source:"sample"
+    }); events.push({
+      id:"sample-ministry-meeting", dateISO:ymd(addDays(today, 31)), time:"18:00", title:"Sample: Ministry Team Meeting", audience:"group", description:"Demonstration group-only event.", source:"sample"
+    }); return events;
   }
-  function save(data){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));}
-  function formatEvent(event){
-    const p=event.dateISO.split("-").map(Number),date=new Date(p[0],p[1]-1,p[2]);
-    const day=new Intl.DateTimeFormat("en-US",{weekday:"short",month:"short",day:"numeric"}).format(date);
-    if(!event.time)return day;
-    const t=event.time.split(":").map(Number);
-    const time=new Intl.DateTimeFormat("en-US",{hour:"numeric",minute:"2-digit"}).format(new Date(2000,0,1,t[0],t[1]));
-    return day+" · "+time;
+  function defaults() {
+    return {
+      role:"public", announcement:"Welcome to Audubon Baptist Church — A Church in the Park.", sermon: {
+        title:"How to Be Great for God – Beyond Yourself", reference:"Ezra 8:1–15", speaker:"Pastor Jeff Akin", tags:["Ezra", "Beyond Yourself", "Mission"]
+      }, events:buildEvents(), rsvps: {
+      }, prayers:[], mediaDrafts:[]
+    };
   }
-  function escapeHtml(value){return String(value).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c];});}
+  function load() {
+    try {
+      const stored=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"), base=defaults(); return Object.assign({
+      }, base, stored, {
+        sermon:Object.assign({
+        }, base.sermon, stored.sermon|| {
+        }), events:Array.isArray(stored.events)&&stored.events.some(function(e) {
+          return e.dateISO;
+        })?stored.events:base.events, rsvps:stored.rsvps|| {
+        }, prayers:Array.isArray(stored.prayers)?stored.prayers:[]
+      });
+    }
+    catch(error) {
+      return defaults();
+    }
+  }
+  function save(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+  function formatEvent(event) {
+    const p=event.dateISO.split("-").map(Number), date=new Date(p[0], p[1]-1, p[2]); const day=new Intl.DateTimeFormat("en-US", {
+      weekday:"short", month:"short", day:"numeric"
+    }).format(date); if(!event.time)return day; const t=event.time.split(":").map(Number); const time=new Intl.DateTimeFormat("en-US", {
+      hour:"numeric", minute:"2-digit"
+    }).format(new Date(2000, 0, 1, t[0], t[1])); return day+" · "+time;
+  }
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g,function(c){return {"&":"&amp; ","<":"&lt; ",">":"&gt; ",'"':"&quot;","'":"&#039; "}[c];});}
   function ensureDialog(){
     let dialog=document.getElementById("siteSignInDialog");
     if(dialog)return dialog;
@@ -101,7 +117,7 @@
     });
   }
   function initMemberButton(){
-    document.querySelectorAll("[data-member-entry],#memberSignInButton").forEach(function(button){
+    document.querySelectorAll("[data-member-entry], #memberSignInButton").forEach(function(button){
       button.addEventListener("click",function(e){
         if(button.tagName==="A")e.preventDefault();
         const data=load();
