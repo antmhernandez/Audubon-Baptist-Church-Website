@@ -11,6 +11,9 @@
   <meta name="description" content="Audubon Baptist Church member home prototype">
   <meta name="theme-color" content="#7f2d32">
   <title>Member Home | Audubon Baptist Church</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Audubon Church">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="app-page member-page">
@@ -43,7 +46,10 @@
       <a class="admin-tool-link hidden" href="admin.html">Site Admin</a>
       <a class="admin-tool-link hidden" href="media-studio.html">Media Studio</a>
     </nav>
-    <a class="member-button link-button" href="index.html">Public site</a>
+    <div class="header-actions">
+      <button class="get-app-button" type="button" data-install-app>Get the App!</button>
+      <a class="member-button link-button" href="index.html">Public site</a>
+    </div>
   </header>
 
   <main id="memberMain">
@@ -173,5 +179,6 @@
 
   <div class="toast hidden" id="memberToast" role="status" aria-live="polite"></div>
   <script src="member.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
