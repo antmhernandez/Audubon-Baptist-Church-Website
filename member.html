@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Audubon Baptist Church member home prototype">
-  <meta name="theme-color" content="#8f2f35">
+  <meta name="theme-color" content="#7f2d32">
   <title>Member Home | Audubon Baptist Church</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="app-page member-page">
-  <a class="skip-link" href="#memberMain">Skip to member home</a>
+  <a class="skip-link" href="#memberMain">Skip to member content</a>
 
   <div class="prototype-bar">
     <div><strong>Leadership prototype</strong><span>Private-area demonstration only</span></div>
@@ -31,11 +31,12 @@
       <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
     </a>
     <nav class="app-nav" aria-label="Member tools">
-      <a class="active" href="member.html">Member home</a>
+      <a class="active" href="member.html">Member Home</a>
       <a href="calendar.html">Calendar</a>
-      <a href="index.html#sermons">Sermons</a>
-      <a href="index.html#give">Give</a>
-      <a class="admin-tool-link hidden" href="admin.html">Site Admin</a><a class="admin-tool-link hidden" href="media-studio.html">Media Studio</a>
+      <a href="sermons.html">Sermons</a>
+      <a href="give.html">Give</a>
+      <a class="admin-tool-link hidden" href="admin.html">Site Admin</a>
+      <a class="admin-tool-link hidden" href="media-studio.html">Media Studio</a>
     </nav>
     <a class="member-button link-button" href="index.html">Public site</a>
   </header>
@@ -57,105 +58,97 @@
         <div>
           <p class="eyebrow">Church family</p>
           <h1>Good to see you.</h1>
-          <p>One calm place for the week ahead: gatherings, prayer, service, sermons, and church communication.</p>
+          <p>One quiet place for the week ahead, prayer, groups, conversations, service, and the details you need.</p>
         </div>
         <span class="access-badge" id="memberAccessLabel">Church member</span>
       </div>
 
-      <section class="member-announcement" aria-label="Weekly church announcement">
-        <span>Weekly note</span>
-        <p id="memberAnnouncement">Welcome to Audubon Baptist Church — A Church in the Park.</p>
-      </section>
+      <div class="member-app-shell">
+        <aside class="member-sidebar" aria-label="Member area">
+          <p>Member area</p>
+          <button class="member-nav-button active" type="button" data-member-view="overview">Overview</button>
+          <a class="member-nav-link" href="calendar.html">Calendar <span>↗</span></a>
+          <button class="member-nav-button" type="button" data-member-view="prayer">Prayer</button>
+          <button class="member-nav-button" type="button" data-member-view="groups">Groups</button>
+          <button class="member-nav-button" type="button" data-member-view="conversations">Conversations</button>
+          <button class="member-nav-button" type="button" data-member-view="lists">Lists & signups</button>
+          <button class="member-nav-button" type="button" data-member-view="serve">Serve</button>
+          <div class="member-sidebar-admin admin-tool-link hidden">
+            <span>Administration</span>
+            <a href="admin.html">Site Admin</a>
+            <a href="media-studio.html">Media Studio</a>
+          </div>
+        </aside>
 
-      <section class="member-next" aria-labelledby="weekAheadHeading">
-        <div class="section-mini-heading">
-          <p class="eyebrow">This week</p>
-          <h2 id="weekAheadHeading">What’s coming up</h2>
-        </div>
-        <div class="member-event-row" id="memberUpcoming"></div>
-        <a class="button primary" href="calendar.html">Open 3-month calendar</a>
-      </section>
+        <div class="member-content">
+          <section class="member-view active" data-member-panel="overview">
+            <div class="member-view-heading">
+              <p class="eyebrow">Overview</p>
+              <h2>This week at Audubon</h2>
+            </div>
 
-      <section class="member-tool-grid" aria-label="Member tools">
-        <a class="member-tool-card" href="calendar.html">
-          <span class="tool-symbol">▦</span>
-          <div><h3>Calendar</h3><p>See three months, RSVP, and add events to your own calendar.</p></div>
-          <span class="tool-arrow">→</span>
-        </a>
-        <button class="member-tool-card" type="button" data-member-panel="prayer">
-          <span class="tool-symbol">♡</span>
-          <div><h3>Prayer</h3><p>View requests appropriate to your account and submit a request.</p></div>
-          <span class="tool-arrow">→</span>
-        </button>
-        <button class="member-tool-card" type="button" data-member-panel="serve">
-          <span class="tool-symbol">✓</span>
-          <div><h3>Serve</h3><p>See practical needs and ministry opportunities.</p></div>
-          <span class="tool-arrow">→</span>
-        </button>
-        <a class="member-tool-card" href="index.html#sermons">
-          <span class="tool-symbol">▶</span>
-          <div><h3>Sermons</h3><p>Watch or listen to the latest teaching.</p></div>
-          <span class="tool-arrow">→</span>
-        </a>
-        <button class="member-tool-card" type="button" data-member-panel="discussion">
-          <span class="tool-symbol">…</span>
-          <div><h3>Discussion</h3><p>Keep church questions and planning organized by subject.</p></div>
-          <span class="tool-arrow">→</span>
-        </button>
-        <a class="member-tool-card admin-tool-link hidden" href="media-studio.html">
-          <span class="tool-symbol">↑</span>
-          <div><h3>Media Studio</h3><p>Prepare and publish the newest sermon recording.</p></div>
-          <span class="tool-arrow">→</span>
-        </a>
-      </section>
+            <div class="member-announcement">
+              <span>Weekly note</span>
+              <p id="memberAnnouncement">Welcome to Audubon Baptist Church — A Church in the Park.</p>
+            </div>
 
-      <section class="member-panel hidden" id="prayerPanel">
-        <div class="panel-heading">
-          <div><p class="eyebrow">Prayer</p><h2>Pray for one another</h2></div>
-          <button class="panel-close" type="button" data-close-panel>Close</button>
-        </div>
-        <div class="split-panel">
-          <div class="prayer-list" id="memberPrayerList"></div>
-          <form class="member-form" id="memberPrayerForm">
-            <h3>Submit a sample request</h3>
-            <label for="memberPrayerTitle">Short title</label>
-            <input id="memberPrayerTitle" required maxlength="80">
-            <label for="memberPrayerText">Request</label>
-            <textarea id="memberPrayerText" rows="4" required></textarea>
-            <label for="memberPrayerVisibility">Who may see it?</label>
-            <select id="memberPrayerVisibility">
-              <option value="member">Church members</option>
-              <option value="group">My ministry / group</option>
-              <option value="leadership">Church leadership</option>
-            </select>
-            <button class="button primary small" type="submit">Add sample request</button>
-            <p class="microcopy">Prototype only; do not enter real private information yet.</p>
-          </form>
-        </div>
-      </section>
+            <div class="member-overview-events" id="memberUpcoming"></div>
 
-      <section class="member-panel hidden" id="servePanel">
-        <div class="panel-heading">
-          <div><p class="eyebrow">Serve</p><h2>Ways to help</h2></div>
-          <button class="panel-close" type="button" data-close-panel>Close</button>
-        </div>
-        <div class="feature-grid three">
-          <article class="dashboard-card"><span class="tag">Sample need</span><h3>Church Work Day</h3><p>Landscaping and lunch helpers are still needed.</p><button class="text-button" type="button" id="memberVolunteerButton">I can help →</button></article>
-          <article class="dashboard-card group-only"><span class="tag">Your ministry</span><h3>Ministry Team</h3><p>Group-specific needs and assignments appear here.</p></article>
-          <article class="dashboard-card leadership-only"><span class="tag">Leadership</span><h3>Planning needs</h3><p>Restricted ministry coordination can remain visible only to leaders.</p></article>
-        </div>
-      </section>
+            <div class="member-overview-actions">
+              <a href="calendar.html"><span>Calendar</span><strong>See three months at a glance</strong><b>→</b></a>
+              <button type="button" data-jump-view="prayer"><span>Prayer</span><strong>Read or share a request</strong><b>→</b></button>
+              <button type="button" data-jump-view="lists"><span>My lists</span><strong>See RSVPs and signups</strong><b>→</b></button>
+            </div>
+          </section>
 
-      <section class="member-panel hidden" id="discussionPanel">
-        <div class="panel-heading">
-          <div><p class="eyebrow">Discussion</p><h2>Church conversations</h2></div>
-          <button class="panel-close" type="button" data-close-panel>Close</button>
+          <section class="member-view" data-member-panel="prayer">
+            <div class="member-view-heading"><p class="eyebrow">Prayer</p><h2>Pray for one another.</h2><p>Requests appear according to the visibility chosen by the person submitting them.</p></div>
+            <div class="split-panel member-prayer-layout">
+              <div class="prayer-list" id="memberPrayerList"></div>
+              <form class="member-form" id="memberPrayerForm">
+                <h3>Submit a sample request</h3>
+                <label for="memberPrayerTitle">Short title</label><input id="memberPrayerTitle" required maxlength="80">
+                <label for="memberPrayerText">Request</label><textarea id="memberPrayerText" rows="4" required></textarea>
+                <label for="memberPrayerVisibility">Who may see it?</label>
+                <select id="memberPrayerVisibility"><option value="member">Church members</option><option value="group">My ministry / group</option><option value="leadership">Church leadership</option></select>
+                <button class="button primary small" type="submit">Add sample request</button>
+                <p class="microcopy">Prototype only; do not enter real private information yet.</p>
+              </form>
+            </div>
+          </section>
+
+          <section class="member-view" data-member-panel="groups">
+            <div class="member-view-heading"><p class="eyebrow">Groups</p><h2>Your smaller circles within the church.</h2><p>Production groups can gather their calendar items, prayer requests, documents, conversations, and service needs without exposing them churchwide.</p></div>
+            <div class="member-list">
+              <article class="group-only"><div><span class="list-kicker">Sample group</span><h3>Ministry Team</h3><p>Group-specific events and conversations would collect here.</p></div><button type="button" class="text-button">Open group →</button></article>
+              <article><div><span class="list-kicker">Churchwide</span><h3>Audubon Baptist Church</h3><p>Announcements and information intended for every member.</p></div><span class="muted-status">All members</span></article>
+            </div>
+          </section>
+
+          <section class="member-view" data-member-panel="conversations">
+            <div class="member-view-heading"><p class="eyebrow">Conversations</p><h2>Keep discussion attached to its subject.</h2><p>Structured topics should be easier to follow than a single endless message stream.</p></div>
+            <div class="conversation-list">
+              <article><div><span class="list-kicker">Announcement · sample</span><h3>Fall ministry calendar</h3><p>Planning notes and replies stay with the calendar topic.</p></div><span>3 replies</span></article>
+              <article><div><span class="list-kicker">Question · sample</span><h3>What should I bring to the work day?</h3><p>Practical answers remain easy to find later.</p></div><span>2 replies</span></article>
+              <article class="group-only"><div><span class="list-kicker">Ministry group · sample</span><h3>Next team meeting</h3><p>Private group discussion appears only for assigned members.</p></div><span>1 reply</span></article>
+            </div>
+            <button class="button secondary small" id="newConversationButton" type="button">New conversation (prototype)</button>
+          </section>
+
+          <section class="member-view" data-member-panel="lists">
+            <div class="member-view-heading"><p class="eyebrow">Lists & signups</p><h2>Your commitments in one place.</h2><p>RSVPs, volunteer signups, and future assignments can collect here rather than disappearing inside old messages.</p></div>
+            <div class="member-list" id="memberLists"></div>
+          </section>
+
+          <section class="member-view" data-member-panel="serve">
+            <div class="member-view-heading"><p class="eyebrow">Serve</p><h2>See where help is needed.</h2><p>Service needs can eventually connect directly to events, ministries, and volunteer schedules.</p></div>
+            <div class="member-list">
+              <article><div><span class="list-kicker">Sample need</span><h3>Church Work Day</h3><p>Landscaping and lunch helpers are still needed in this demonstration.</p></div><button class="text-button" type="button" id="memberVolunteerButton">I can help →</button></article>
+              <article class="group-only"><div><span class="list-kicker">Your ministry · sample</span><h3>Ministry Team</h3><p>Group-specific service needs can be assigned here.</p></div><span class="muted-status">Group only</span></article>
+            </div>
+          </section>
         </div>
-        <div class="discussion-list">
-          <article><span class="tag">Announcement</span><h4>Sample: Fall ministry calendar</h4><p>Keep replies and decisions attached to the right subject.</p><small>3 sample replies</small></article>
-          <article><span class="tag">Question</span><h4>What should I bring to the work day?</h4><p>Practical answers remain easy to find later.</p><small>2 sample replies</small></article>
-        </div>
-      </section>
+      </div>
 
       <section class="member-note">
         <strong>Prototype privacy note</strong>
@@ -166,17 +159,9 @@
 
   <dialog class="signin-dialog" id="memberAccessDialog">
     <form method="dialog" class="dialog-card">
-      <div class="dialog-heading">
-        <div><p class="eyebrow">Member access preview</p><h2>Choose an account type.</h2></div>
-        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
-      </div>
+      <div class="dialog-heading"><div><p class="eyebrow">Member access preview</p><h2>Choose an account type.</h2></div><button class="dialog-close" value="cancel" aria-label="Close">×</button></div>
       <label for="memberDialogRole">Preview account</label>
-      <select id="memberDialogRole">
-        <option value="member">Church member</option>
-        <option value="group">Ministry / group member</option>
-        <option value="leadership">Church leadership</option>
-        <option value="admin">Administrator</option>
-      </select>
+      <select id="memberDialogRole"><option value="member">Church member</option><option value="group">Ministry / group member</option><option value="leadership">Church leadership</option><option value="admin">Administrator</option></select>
       <button class="button primary full" id="memberDialogContinue" type="button">Open member home</button>
     </form>
   </dialog>
