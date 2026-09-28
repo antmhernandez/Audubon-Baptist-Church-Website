@@ -61,3 +61,27 @@ Comments should explain:
 - prototype-vs-production differences.
 
 Avoid comments that merely repeat the code.
+
+
+## Progressive Web App
+
+The PWA is the entire church website, not a separate Sermon Studio application.
+
+- `app.html` — installation/help page
+- `manifest.webmanifest` — app identity, start URL, icons, shortcuts
+- `pwa.js` — install button, platform-aware fallback instructions, service-worker registration/update check
+- `sw.js` — network-first app-shell/offline fallback
+- `audubon-app-icon-192.png` / `audubon-app-icon-512.png` — broad-compatibility install icons
+
+All pages may expose a `data-install-app` button. Do not create separate install logic per page.
+
+## Sermon media model
+
+The featured sermon record reserves:
+
+- `videoUrl`
+- `audioUrl`
+
+The public Sermons page can switch between video and lower-data audio playback.
+
+The Media Studio describes how these derivatives will be generated. The future NAS/FFmpeg worker—not browser JavaScript—will create the actual media files.
