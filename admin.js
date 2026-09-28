@@ -75,14 +75,10 @@ function render() {
 
   if (!isAdmin) return;
 
-  document.getElementById("adminAnnouncement").value =
-    data.announcement || "";
-  document.getElementById("adminSermonTitle").value =
-    data.sermon.title || "";
-  document.getElementById("adminSermonReference").value =
-    data.sermon.reference || "";
-  document.getElementById("adminSermonSpeaker").value =
-    data.sermon.speaker || "";
+  document.getElementById("adminAnnouncement").value = data.announcement || "";
+  document.getElementById("adminSermonTitle").value = data.sermon.title || "";
+  document.getElementById("adminSermonReference").value = data.sermon.reference || "";
+  document.getElementById("adminSermonSpeaker").value = data.sermon.speaker || "";
   document.getElementById("adminSermonTags").value =
     (data.sermon.tags || []).join(", ");
 
