@@ -2639,3 +2639,557 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
   .sermon-mode-button{border-right:0;border-bottom:1px solid rgba(255,255,255,.2)}
   .sermon-mode-button:last-child{border-bottom:0}
 }
+
+
+/* =========================================================
+   Comprehensive product polish — 2026-09-28
+   Public storytelling, archive utilities, member/admin cues
+   ========================================================= */
+
+/* Home: source-based heritage language */
+.home-heritage-line{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:58px 0 64px;
+  border-top:1px solid var(--audubon-rule);
+  border-bottom:1px solid var(--audubon-rule);
+  display:grid;
+  grid-template-columns:.48fr 1.15fr .9fr;
+  gap:42px;
+  align-items:center;
+}
+
+.home-heritage-line .editorial-kicker{
+  margin:0;
+}
+
+.home-heritage-line h2{
+  margin:0;
+  font-size:clamp(2.8rem,5vw,5.2rem);
+  line-height:.9;
+}
+
+.home-heritage-line h2 em{
+  color:var(--audubon-red);
+  font-weight:400;
+}
+
+.home-heritage-line>p{
+  margin:0;
+  color:var(--audubon-muted);
+}
+
+.home-heritage-line .text-link-dark{
+  grid-column:3;
+  justify-self:start;
+}
+
+.home-destinations{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.home-destinations a{
+  min-width:0;
+}
+
+/* Visit: simple practical first-visit actions */
+.visit-action-band{
+  max-width:var(--max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--audubon-rule);
+  border-bottom:1px solid var(--audubon-rule);
+}
+
+.visit-action-band a{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:7px 18px;
+  min-height:145px;
+  padding:26px 28px;
+  border-right:1px solid var(--audubon-rule);
+  text-decoration:none;
+  color:inherit;
+}
+
+.visit-action-band a:last-child{
+  border-right:0;
+}
+
+.visit-action-band a:hover{
+  background:#f2ece3;
+}
+
+.visit-action-band span{
+  grid-column:1/-1;
+  color:var(--audubon-red);
+  font-size:.64rem;
+  font-weight:800;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.visit-action-band strong{
+  align-self:end;
+  font-family:var(--display);
+  font-size:1.45rem;
+  font-weight:500;
+  line-height:1.15;
+}
+
+.visit-action-band b{
+  align-self:end;
+  color:var(--audubon-red);
+  font-size:1.25rem;
+  font-weight:400;
+}
+
+/* Story: use dates and biographies instead of generic profile cards */
+.story-timeline{
+  max-width:var(--max);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--audubon-rule);
+  border-bottom:1px solid var(--audubon-rule);
+}
+
+.story-timeline article{
+  min-height:255px;
+  padding:30px;
+  border-right:1px solid var(--audubon-rule);
+}
+
+.story-timeline article:last-child{
+  border-right:0;
+}
+
+.story-timeline span{
+  display:block;
+  color:var(--audubon-red);
+  font-family:var(--display);
+  font-size:2.4rem;
+}
+
+.story-timeline h2{
+  margin:42px 0 10px;
+  font-size:1.65rem;
+}
+
+.story-timeline p{
+  margin:0;
+  color:var(--audubon-muted);
+  font-size:.84rem;
+}
+
+.pastor-bio-list{
+  border-top:1px solid var(--audubon-rule);
+  margin-bottom:26px;
+}
+
+.pastor-bio-list article{
+  display:grid;
+  grid-template-columns:.58fr 1.42fr;
+  gap:50px;
+  padding:28px 0;
+  border-bottom:1px solid var(--audubon-rule);
+}
+
+.pastor-bio-list span{
+  color:var(--audubon-red);
+  font-size:.64rem;
+  font-weight:800;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.pastor-bio-list h3{
+  margin:6px 0 0;
+  font-size:2rem;
+}
+
+.pastor-bio-list p{
+  margin:0;
+  color:var(--audubon-muted);
+}
+
+.ministry-emphasis{
+  border-bottom:0;
+}
+
+/* Beliefs / giving */
+.belief-source-section .button-row{
+  align-items:center;
+  gap:28px;
+}
+
+.giving-safety-band{
+  max-width:none;
+  padding:clamp(75px,8vw,110px) max(24px,calc((100vw - var(--max))/2));
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:80px;
+  align-items:end;
+  background:var(--audubon-green-deep);
+  color:white;
+}
+
+.giving-safety-band h2{
+  margin:0;
+  color:white;
+  font-size:clamp(2.8rem,5vw,4.8rem);
+  line-height:.95;
+}
+
+.giving-safety-band>p{
+  margin:0;
+  color:#d8e2dc;
+  font-size:1rem;
+}
+
+/* Sermon archive: real audio library controls */
+.sermon-archive-date{
+  margin:5px 0 0;
+  color:#b9c4bf;
+  font-size:.75rem;
+}
+
+.sermon-library-toolbar{
+  align-items:flex-end;
+}
+
+.archive-sort{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  min-width:155px;
+}
+
+.archive-sort span{
+  color:var(--audubon-ink);
+  font-size:.75rem;
+  font-weight:800;
+}
+
+.archive-sort select{
+  min-height:46px;
+  padding:10px 34px 10px 12px;
+  border:1px solid var(--audubon-rule);
+  border-radius:10px;
+  background:white;
+  color:var(--audubon-ink);
+}
+
+.archive-result-count{
+  display:block;
+  margin-top:7px;
+  color:var(--audubon-muted);
+  font-size:.76rem;
+}
+
+.archive-sermon-card{
+  min-height:235px;
+}
+
+.sermon-card-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  align-items:start;
+}
+
+.sermon-card-meta>span:last-child{
+  color:var(--audubon-muted);
+  font-size:.68rem;
+  text-align:right;
+}
+
+.archive-card-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:center;
+  margin-top:auto;
+  padding-top:12px;
+}
+
+.archive-card-actions .text-button{
+  margin:0;
+}
+
+.archive-source-link{
+  color:var(--audubon-muted);
+  font-size:.72rem;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.archive-source-link:hover{
+  color:var(--audubon-red);
+  text-decoration:underline;
+}
+
+.archive-source-note{
+  max-width:760px;
+  margin:28px 0 0;
+  color:var(--audubon-muted);
+  font-size:.78rem;
+}
+
+/* PWA install/share page */
+.app-hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.app-install-status{
+  max-width:650px;
+  margin:16px 0 0;
+  color:var(--audubon-muted);
+  font-size:.8rem;
+}
+
+.app-test-band{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:75px 0;
+  border-top:1px solid var(--audubon-rule);
+  display:grid;
+  grid-template-columns:.7fr 1.3fr;
+  gap:70px;
+  align-items:start;
+}
+
+.app-test-band h2{
+  margin:0;
+  font-size:clamp(2.6rem,4vw,4.2rem);
+}
+
+.app-test-links{
+  border-top:1px solid var(--audubon-rule);
+}
+
+.app-test-links a{
+  display:grid;
+  grid-template-columns:60px 1fr auto;
+  gap:18px;
+  align-items:center;
+  padding:18px 0;
+  border-bottom:1px solid var(--audubon-rule);
+  color:inherit;
+  text-decoration:none;
+}
+
+.app-test-links span{
+  color:var(--audubon-red);
+  font-size:.65rem;
+  font-weight:800;
+}
+
+.app-test-links strong{
+  font-family:var(--display);
+  font-size:1.35rem;
+  font-weight:500;
+}
+
+.app-test-links b{
+  color:var(--audubon-red);
+  font-weight:400;
+}
+
+/* Member Home */
+.member-overview-actions{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.privacy-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:-12px 0 28px;
+}
+
+.privacy-legend span{
+  display:inline-flex;
+  gap:6px;
+  align-items:center;
+  padding:7px 10px;
+  border:1px solid var(--audubon-rule);
+  border-radius:999px;
+  color:var(--audubon-muted);
+  font-size:.68rem;
+}
+
+.privacy-legend strong{
+  color:var(--audubon-ink);
+}
+
+/* Site Admin launch-readiness checklist */
+.content-review-card{
+  max-width:var(--max);
+  margin:30px auto;
+  padding:28px;
+  border:1px solid var(--audubon-rule);
+  background:#fffdfa;
+}
+
+.content-confirmation-list{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 28px;
+  margin-top:18px;
+  border-top:1px solid var(--audubon-rule);
+}
+
+.content-confirmation-list label{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:13px 0;
+  border-bottom:1px solid var(--audubon-rule);
+  color:var(--audubon-ink);
+  font-size:.82rem;
+  cursor:pointer;
+}
+
+.content-confirmation-list input{
+  margin-top:3px;
+  accent-color:var(--audubon-red);
+}
+
+.status-pill.ready{
+  background:#e5efe9;
+  color:var(--audubon-green-deep);
+}
+
+/* Calendar detail polish */
+.agenda-location{
+  margin:3px 0 8px!important;
+  color:var(--audubon-red)!important;
+  font-size:.72rem!important;
+  font-weight:750;
+}
+
+/* Responsive refinements for the new sections */
+@media (max-width:1000px){
+  .home-heritage-line,
+  .visit-action-band,
+  .story-timeline,
+  .app-test-band{
+    margin-left:24px;
+    margin-right:24px;
+  }
+
+  .home-heritage-line{
+    grid-template-columns:.55fr 1fr;
+  }
+
+  .home-heritage-line>p,
+  .home-heritage-line .text-link-dark{
+    grid-column:2;
+  }
+
+  .home-destinations{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .home-destinations a:nth-child(2){
+    border-right:0;
+  }
+
+  .home-destinations a:nth-child(-n+2){
+    border-bottom:1px solid var(--audubon-rule);
+  }
+}
+
+@media (max-width:820px){
+  .visit-action-band,
+  .story-timeline,
+  .giving-safety-band,
+  .app-test-band{
+    grid-template-columns:1fr;
+  }
+
+  .visit-action-band a,
+  .story-timeline article{
+    border-right:0;
+    border-bottom:1px solid var(--audubon-rule);
+  }
+
+  .visit-action-band a:last-child,
+  .story-timeline article:last-child{
+    border-bottom:0;
+  }
+
+  .pastor-bio-list article{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .member-overview-actions{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .member-overview-actions>*:nth-child(2n){
+    border-right:0;
+  }
+
+  .content-confirmation-list{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:600px){
+  .home-heritage-line,
+  .visit-action-band,
+  .story-timeline,
+  .app-test-band{
+    margin-left:18px;
+    margin-right:18px;
+  }
+
+  .home-heritage-line{
+    display:block;
+  }
+
+  .home-heritage-line h2{
+    margin:20px 0;
+  }
+
+  .home-heritage-line .text-link-dark{
+    display:inline-block;
+    margin-top:12px;
+  }
+
+  .home-destinations{
+    grid-template-columns:1fr;
+  }
+
+  .home-destinations a{
+    border-right:0!important;
+    border-bottom:1px solid var(--audubon-rule)!important;
+  }
+
+  .home-destinations a:last-child{
+    border-bottom:0!important;
+  }
+
+  .member-overview-actions{
+    grid-template-columns:1fr;
+  }
+
+  .member-overview-actions>*{
+    border-right:0!important;
+  }
+
+  .sermon-library-toolbar{
+    align-items:stretch;
+  }
+
+  .archive-sort{
+    width:100%;
+  }
+}
