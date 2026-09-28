@@ -12,7 +12,7 @@ The current prototype demonstrates a typography-led, editorial public site plus 
 - dedicated Visit, Sermons, Beliefs, Our Story & Mission, and Give pages;
 - consistent top navigation with a compact About menu;
 - a member-only upcoming-activity summary on Home;
-- featured sermon presentation plus a searchable sample sermon library;
+- featured sermon presentation plus a searchable, sortable library using real audio from Audubon’s existing public sermon archive;
 - a dedicated member-only three-month calendar with day details, filters, RSVPs, and personal-calendar downloads;
 - a public upcoming-events summary with a prominent member-calendar pathway;
 - a member sign-in experience for demonstrating private features;
@@ -21,7 +21,7 @@ The current prototype demonstrates a typography-led, editorial public site plus 
 - structured church discussion concepts;
 - a giving-provider handoff concept;
 - role-based views for Public Visitor, Church Member, Ministry/Group Member, Church Leadership, and Administrator;
-- browser-based administration for announcements, events, and sermon metadata;
+- browser-based administration for announcements, location-aware events, sermon metadata, and a leadership content-confirmation checklist;
 - a whole-site installable PWA with a prominent cross-platform “Get the App!” flow and network-first update behavior;
 - sermon playback designed for either video or lower-data audio-only listening;
 - a dedicated Sermon Studio with local video selection, ±5/±30-second seeking, keyboard shortcuts, start/end trim markers, clip preview, metadata, audio options, restoreable browser drafts, a publication ready-check, and downloadable NAS/FFmpeg processing-job JSON;
@@ -61,9 +61,9 @@ GitHub Pages may take a short time to rebuild after a new commit. See [docs/DEPL
    - Ministry / group member
    - Church leadership
    - Administrator
-4. Try sermon search and filtering.
+4. Try the real historical sermon audio, search, series filtering, and newest/oldest sorting.
 5. As a member, RSVP to an event and add a sample prayer request.
-6. As Administrator, edit the homepage announcement, add an event, edit featured sermon metadata, and preview a future media-processing job.
+6. As Administrator, review launch-readiness confirmations, edit the homepage announcement, add an event with a location, edit featured sermon metadata, and preview a future media-processing job.
 7. Use **Copy share link** in the prototype bar to copy the public URL.
 
 All demo changes remain only in the current browser.
@@ -98,6 +98,7 @@ All demo changes remain only in the current browser.
 - `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md` — calendar/member interaction model
 - `docs/SOURCE_CONTENT_NOTES.md` — public church facts, sources, and items still needing confirmation
 - `docs/DESIGN_AND_UX_REVIEW.md` — church-site research, editorial design direction, and information architecture
+- `docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md` — feature-by-feature benchmark review, implemented improvements, and remaining leadership confirmations
 
 ## Development philosophy
 
