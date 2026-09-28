@@ -70,7 +70,7 @@
         <div>
           <p class="eyebrow">Church family</p>
           <h1>Good to see you.</h1>
-          <p>One quiet place for the week ahead, prayer, groups, conversations, service, and the details you need.</p>
+          <p>One place for the week ahead—so the church family can pray, gather, serve, and care for one another without hunting through old messages.</p>
         </div>
         <span class="access-badge" id="memberAccessLabel">Church member</span>
       </div>
@@ -110,11 +110,21 @@
               <a href="calendar.html"><span>Calendar</span><strong>See three months at a glance</strong><b>→</b></a>
               <button type="button" data-jump-view="prayer"><span>Prayer</span><strong>Read or share a request</strong><b>→</b></button>
               <button type="button" data-jump-view="lists"><span>My lists</span><strong>See RSVPs and signups</strong><b>→</b></button>
+              <a href="sermons.html?mode=audio"><span>Sermons</span><strong>Listen without loading video</strong><b>→</b></a>
             </div>
           </section>
 
           <section class="member-view" data-member-panel="prayer">
-            <div class="member-view-heading"><p class="eyebrow">Prayer</p><h2>Pray for one another.</h2><p>Requests appear according to the visibility chosen by the person submitting them.</p></div>
+            <div class="member-view-heading">
+              <p class="eyebrow">Prayer</p>
+              <h2>Pray for one another.</h2>
+              <p>Requests appear according to the visibility chosen by the person submitting them.</p>
+            </div>
+            <div class="privacy-legend" aria-label="Prayer visibility levels">
+              <span><strong>Members</strong> whole church family</span>
+              <span><strong>Ministry</strong> assigned group only</span>
+              <span><strong>Leadership</strong> leaders only</span>
+            </div>
             <div class="split-panel member-prayer-layout">
               <div class="prayer-list" id="memberPrayerList"></div>
               <form class="member-form" id="memberPrayerForm">
@@ -124,7 +134,7 @@
                 <label for="memberPrayerVisibility">Who may see it?</label>
                 <select id="memberPrayerVisibility"><option value="member">Church members</option><option value="group">My ministry / group</option><option value="leadership">Church leadership</option></select>
                 <button class="button primary small" type="submit">Add sample request</button>
-                <p class="microcopy">Prototype only; do not enter real private information yet.</p>
+                <p class="microcopy">Leadership prototype: do not enter a real private prayer request until production authentication and database permissions are in place.</p>
               </form>
             </div>
           </section>
@@ -144,7 +154,7 @@
               <article><div><span class="list-kicker">Question · sample</span><h3>What should I bring to the work day?</h3><p>Practical answers remain easy to find later.</p></div><span>2 replies</span></article>
               <article class="group-only"><div><span class="list-kicker">Ministry group · sample</span><h3>Next team meeting</h3><p>Private group discussion appears only for assigned members.</p></div><span>1 reply</span></article>
             </div>
-            <button class="button secondary small" id="newConversationButton" type="button">New conversation (prototype)</button>
+            <button class="button secondary small" id="newConversationButton" type="button">New conversation</button>
           </section>
 
           <section class="member-view" data-member-panel="lists">
