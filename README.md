@@ -9,7 +9,7 @@ This repository contains a **leadership / pastor prototype** designed to run dir
 The current prototype demonstrates a typography-led, editorial public site plus a connected set of practical member and administrator tools:
 
 - a short public landing page that routes visitors to focused pages;
-- dedicated Visit, Sermons, Beliefs, Our Story & Mission, and Give pages;
+- dedicated Visit, Sermons, Beliefs, Our Story & Mission, Church Archive, and Give pages;
 - consistent top navigation with a compact About menu;
 - a member-only upcoming-activity summary on Home;
 - featured sermon presentation plus a searchable, sortable library using real audio from Audubon’s existing public sermon archive;
@@ -75,6 +75,7 @@ All demo changes remain only in the current browser.
 - `sermons.html` + `sermons.js` — featured sermon and searchable archive
 - `beliefs.html` — focused beliefs page
 - `about.html` — church story, pastoral leadership, and mission
+- `archive.html` — selected newsletter themes and links to Audubon’s older public archive
 - `give.html` — focused giving handoff page
 - `site.js` — shared public navigation, role preview, and member-entry behavior
 - `member.html` + `member.js` — dedicated member home
