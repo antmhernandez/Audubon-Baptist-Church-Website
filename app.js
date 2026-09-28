@@ -1,3 +1,9 @@
+/**
+ * Home-page behavior only.
+ * Renders the featured sermon teaser and member-only weekly summary.
+ * Shared public navigation lives in site.js.
+ */
+
 function visibleMemberEvents(data,limit){
   const level=AudubonSite.ROLE_LEVEL[data.role]||0;
   const today=AudubonSite.ymd(new Date());
