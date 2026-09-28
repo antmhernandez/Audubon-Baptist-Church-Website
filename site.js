@@ -1,3 +1,9 @@
+/**
+ * Shared public-site behavior.
+ * Handles navigation, About menu, role preview, and Member entry.
+ * See docs/EDITING_GUIDE.md before changing shared navigation behavior.
+ */
+
 (function(){
   const STORAGE_KEY="abcDemoV3";
   const ROLE_LEVEL={public:0,member:1,group:2,leadership:3,admin:4};
