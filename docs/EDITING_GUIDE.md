@@ -6,6 +6,8 @@ This repository is intentionally plain HTML, CSS, and JavaScript so that a reaso
 
 The governing readability policy is `docs/HUMAN_MAINTAINABILITY_STANDARD.md`.
 
+For the current feature-by-feature design/content rationale, also read `docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md`.
+
 ## Start here
 
 For most changes, use this map:
@@ -15,7 +17,7 @@ For most changes, use this map:
 | Home page layout | `index.html` |
 | Plan Your Visit content | `visit.html` |
 | Sermon page layout | `sermons.html` |
-| Sermon archive sample data/behavior | `sermons.js` |
+| Sermon archive metadata, historical audio URLs, search/sort behavior | `sermons.js` |
 | Beliefs copy | `beliefs.html` |
 | Church history / mission | `about.html` |
 | Giving explanation | `give.html` |
