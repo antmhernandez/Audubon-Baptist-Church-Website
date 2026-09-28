@@ -171,3 +171,41 @@ Implemented patterns:
 - a Media Studio step indicator that now advances as the administrator uploads, trims, enters metadata, and prepares publication.
 
 The goal remains variety through typography, proportion, pacing, rules, and color fields—not through visual clutter.
+
+
+## Multi-page simplification
+
+The landing page should be a doorway, not a directory.
+
+Implemented public structure:
+
+- **Home** — identity, Sunday essentials, three primary destinations, latest-sermon teaser;
+- **Visit** — location, published schedule information, contact, and future first-visit details;
+- **Sermons** — featured sermon and searchable archive;
+- **Beliefs** — focused doctrinal summary and link to the existing approved material;
+- **Our Story & Mission** — 2017 revitalization story, pastors, and “Going Beyond Ourselves with the Gospel”;
+- **Give** — focused secure-giving handoff concept.
+
+The shared public header is:
+
+**Home · Visit · Sermons · About ▾ · Give · Member**
+
+The About menu contains only:
+
+- Beliefs
+- Our Story & Mission
+
+Public guests do not see an events list on Home. A member, group member, leader, or administrator preview receives a compact **Your week at Audubon** section with only the next two relevant items plus links to Member Home and the full Calendar.
+
+Member Home is organized as a private application with one content area visible at a time:
+
+- Overview
+- Calendar
+- Prayer
+- Groups
+- Conversations
+- Lists & signups
+- Serve
+- Administrator links when appropriate
+
+This keeps detailed calendar interaction on the dedicated Calendar page while Home and Member Home provide brief summaries and clear handoffs.
