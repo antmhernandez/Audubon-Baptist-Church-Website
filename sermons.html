@@ -27,12 +27,35 @@
   </header><main id="mainContent">
 <section class="page-hero sermon-page-hero"><p class="editorial-kicker">Sermons</p><h1>Hear the Word.<br>Carry it into the week.</h1><p class="page-hero-lead">The newest published sermon can remain immediately available online, while Audubon retains the full archive locally.</p></section>
 <section class="sermons-page-feature">
-  <div class="sermon-media-panel subpage-media"><div class="sermon-media-placeholder"><button type="button" id="watchSermonButton" aria-label="Play featured sermon"><span>▶</span></button><p>Featured sermon video</p></div></div>
+  <div class="sermon-media-panel subpage-media">
+    <div class="sermon-media-mode" id="videoSermonPanel">
+      <video class="featured-sermon-video hidden" id="featuredVideoPlayer" controls playsinline preload="metadata"></video>
+      <div class="sermon-media-placeholder" id="videoSermonPlaceholder">
+        <button type="button" id="watchSermonButton" aria-label="Play featured sermon"><span>▶</span></button>
+        <p>Featured sermon video</p>
+        <small>Video playback will connect to the published sermon file.</small>
+      </div>
+    </div>
+    <div class="sermon-audio-mode hidden" id="audioSermonPanel">
+      <span class="audio-mode-mark" aria-hidden="true">♪</span>
+      <p class="editorial-kicker light-kicker">Audio only</p>
+      <h2>Listen with less data.</h2>
+      <p>Audio-only playback is intended for slower connections, driving, or anyone who does not need the video.</p>
+      <audio class="featured-sermon-audio hidden" id="featuredAudioPlayer" controls preload="none"></audio>
+      <p class="audio-availability" id="audioAvailability">The production media workflow will generate this audio copy automatically when the sermon is published.</p>
+    </div>
+  </div>
   <div class="sermon-copy-panel">
     <p class="editorial-kicker light-kicker">Featured</p><p class="sermon-scripture" id="sermonReference">Ezra 8:1–15</p>
     <h2 id="sermonTitle">How to Be Great for God – Beyond Yourself</h2><p class="sermon-speaker" id="sermonSpeaker">Pastor Jeff Akin</p>
     <div class="chip-row editorial-tags" id="sermonTags"></div>
-    <div class="sermon-actions"><button class="editorial-cta inverted" id="audioSermonButton" type="button">Listen to audio <span>→</span></button><a class="editorial-cta inverted admin-sermon-link hidden" href="media-studio.html">Media Studio <span>→</span></a></div>
+    <div class="sermon-mode-switch" role="group" aria-label="Choose sermon playback">
+      <button class="sermon-mode-button active" id="videoModeButton" type="button">Watch video</button>
+      <button class="sermon-mode-button" id="audioSermonButton" type="button">Listen only <small>lower data</small></button>
+    </div>
+    <div class="sermon-actions">
+      <a class="editorial-cta inverted admin-sermon-link hidden" href="media-studio.html">Media Studio <span>→</span></a>
+    </div>
   </div>
 </section>
 <section class="archive-page-section"><div class="archive-heading"><p class="editorial-kicker">Existing archive</p><h2>Browse by title, Scripture, or topic.</h2></div><div class="library-toolbar"><label class="search-box" for="sermonSearch"><span>Search sermons</span><input id="sermonSearch" type="search" placeholder="Title, Scripture, topic, speaker"></label><div class="filter-row"><button class="filter-chip active" data-filter="all" type="button">All</button><button class="filter-chip" data-filter="ezra" type="button">Ezra</button><button class="filter-chip" data-filter="habakkuk" type="button">Habakkuk</button></div></div><div class="sermon-grid archive-page-grid" id="sermonGrid"></div><p class="empty-state hidden" id="sermonEmpty">No archive sermons match that search.</p></section>
