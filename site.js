@@ -331,7 +331,7 @@
       else element.removeAttribute("aria-current");
     });
 
-    if (page === "beliefs" || page === "about") {
+    if (page === "beliefs" || page === "about" || page === "archive") {
       const aboutMenu = document.querySelector(".nav-dropdown");
       if (aboutMenu) aboutMenu.classList.add("active-page");
     }
