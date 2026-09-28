@@ -260,3 +260,17 @@ Preferred future approach:
 Meta permissions and video-access fields have changed over time. Re-verify the current Meta Graph API and Page permissions immediately before implementing this integration.
 
 The preferred source remains Audubon's original local service recording whenever it is available: it is more reliable, higher quality, and independent of a social-media platform.
+
+
+## Existing Audubon audio now used in the prototype
+
+The public Sermons page is no longer limited to placeholder playback. It now uses public audio URLs already published in Audubon’s existing archive for selected Ezra and Habakkuk sermons.
+
+This serves two purposes:
+
+1. leadership can evaluate the listening experience with real church content now;
+2. the future media worker has a concrete public playback contract to target: a sermon record supplies metadata plus `videoUrl` and/or `audioUrl`.
+
+The historical source files remain on Audubon’s existing web host; they are not copied into GitHub.
+
+The current archive is historical, not a claim about the latest 2026 sermon. When the new weekly media workflow is connected, current sermon records should replace the historical featured default while preserving the same public player interface.
