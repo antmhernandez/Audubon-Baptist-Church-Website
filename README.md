@@ -8,9 +8,10 @@ This repository contains a **leadership / pastor prototype** designed to run dir
 
 The current prototype demonstrates a typography-led, editorial public site plus a connected set of practical member and administrator tools:
 
-- a welcoming public church website;
-- a clearer "New here?" / visit pathway;
-- beliefs and Southern Baptist affiliation content;
+- a short public landing page that routes visitors to focused pages;
+- dedicated Visit, Sermons, Beliefs, Our Story & Mission, and Give pages;
+- consistent top navigation with a compact About menu;
+- a member-only upcoming-activity summary on Home;
 - featured sermon presentation plus a searchable sample sermon library;
 - a dedicated member-only three-month calendar with day details, filters, RSVPs, and personal-calendar downloads;
 - a public upcoming-events summary with a prominent member-calendar pathway;
@@ -55,7 +56,13 @@ All demo changes remain only in the current browser.
 
 ## Repository map
 
-- `index.html` — focused public church website prototype
+- `index.html` — concise public landing page / doorway
+- `visit.html` — focused visitor information
+- `sermons.html` + `sermons.js` — featured sermon and searchable archive
+- `beliefs.html` — focused beliefs page
+- `about.html` — church story, pastoral leadership, and mission
+- `give.html` — focused giving handoff page
+- `site.js` — shared public navigation, role preview, and member-entry behavior
 - `member.html` + `member.js` — dedicated member home
 - `admin.html` + `admin.js` — dedicated site administration workspace
 - `calendar.html` + `calendar.js` — member-only three-month calendar prototype
