@@ -1,4 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Online giving information for Audubon Baptist Church."><meta name="theme-color" content="#7f2d32"><title>Give | Audubon Baptist Church</title><link rel="stylesheet" href="styles.css"></head><body class="public-page public-subpage" data-page="give"><a class="skip-link" href="#mainContent">Skip to main content</a><header class="site-header editorial-header multi-page-header">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Online giving information for Audubon Baptist Church."><meta name="theme-color" content="#7f2d32"><title>Give | Audubon Baptist Church</title><link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Audubon Church">
+  <link rel="stylesheet" href="styles.css"></head><body class="public-page public-subpage" data-page="give"><a class="skip-link" href="#mainContent">Skip to main content</a><header class="site-header editorial-header multi-page-header">
     <a class="brand" href="index.html" aria-label="Audubon Baptist Church home">
       <span class="brand-mark" aria-hidden="true">A</span>
       <span class="brand-copy"><strong>Audubon Baptist Church</strong><small>A Church in the Park</small></span>
@@ -17,7 +20,10 @@
       </details>
       <a href="give.html" data-nav-page="give">Give</a>
     </nav>
-    <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
+    <div class="header-actions">
+      <button class="get-app-button" type="button" data-install-app>Get the App!</button>
+      <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
+    </div>
   </header><main id="mainContent">
 <section class="page-hero give-page-hero"><p class="editorial-kicker">Generosity</p><h1>Give simply.<br><em>Serve faithfully.</em></h1><p class="page-hero-lead">The production site can make online giving straightforward while keeping card and bank credentials with a trusted payment provider rather than on Audubon’s own server.</p></section>
 <section class="focused-section give-focus">
@@ -34,4 +40,5 @@
         <a href="https://www.facebook.com/audubonbaptistchurch/" target="_blank" rel="noopener">Facebook ↗</a>
       </nav>
     </div>
-  </footer><script src="site.js"></script><script>document.getElementById("givingPreview").addEventListener("click",function(){const t=document.getElementById("givingToast");t.textContent="A secure giving form from Audubon’s approved provider will open here.";t.classList.remove("hidden");setTimeout(function(){t.classList.add("hidden");},3000);});</script></body></html>
+  </footer><script src="site.js"></script><script>document.getElementById("givingPreview").addEventListener("click",function(){const t=document.getElementById("givingToast");t.textContent="A secure giving form from Audubon’s approved provider will open here.";t.classList.remove("hidden");setTimeout(function(){t.classList.add("hidden");},3000);});</script>  <script src="pwa.js"></script>
+</body></html>
