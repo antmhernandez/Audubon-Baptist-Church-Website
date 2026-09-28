@@ -4,6 +4,8 @@ Last reviewed: 2026-09-28
 
 This repository is intentionally plain HTML, CSS, and JavaScript so that a reasonably technical church volunteer can understand and modify it without a framework.
 
+The governing readability policy is `docs/HUMAN_MAINTAINABILITY_STANDARD.md`.
+
 ## Start here
 
 For most changes, use this map:
@@ -25,7 +27,7 @@ For most changes, use this map:
 | Site administration | `admin.html` + `admin.js` |
 | Sermon upload / trim tool | `media-studio.html` + `media-studio.js` |
 | Colors, spacing, typography, responsive layout | `styles.css` |
-| Installable Sermon Studio behavior | `manifest.webmanifest`, `pwa.js`, `sw.js` |
+| Whole-site app install/update behavior | `app.html`, `manifest.webmanifest`, `pwa.js`, `sw.js` |
 
 ## Safe editing habits
 
@@ -150,15 +152,25 @@ They do **not** store the selected video file.
 
 When restoring a draft, re-select the original video file and then restore the saved settings.
 
-## Installable phone/tablet prototype
+## Installable phone/tablet app
 
-`media-studio.html` now has a web-app manifest and service worker.
+The entire Audubon site is one installable PWA.
 
-On a supported browser, the Sermon Studio can be installed to a home screen / app launcher and opened in standalone mode.
+The prominent **Get the App!** control appears in the site/application headers. It uses a native browser install prompt when available and otherwise shows short manual instructions.
 
-The service worker caches only the application shell.
+`app.html` is the dedicated installation/help page.
 
-It deliberately does **not** cache uploaded sermon video.
+`manifest.webmanifest` identifies the installed application as **Audubon Baptist Church** and opens at `index.html`.
+
+`pwa.js`:
+- wires install buttons;
+- detects standalone mode;
+- provides platform-aware fallback instructions;
+- asks the service worker to check for updates when a page opens.
+
+`sw.js` uses **network first** for known app-shell pages/assets. When online, the deployed website is preferred; the cache is used as an offline fallback.
+
+Never add uploaded sermon video or future authenticated/private API responses to the general service-worker cache.
 
 ## Where production work will change things
 
