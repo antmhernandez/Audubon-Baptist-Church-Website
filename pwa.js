@@ -1,10 +1,13 @@
 /**
- * Audubon Sermon Studio — PWA registration
+ * Audubon Sermon Studio — PWA registration / install helper
  *
- * This tiny file makes the Media Studio installable on supported phones,
- * tablets, and desktop browsers. The service worker caches only the
- * application shell; selected sermon videos remain local and are NOT cached.
+ * The selected sermon video is never cached by this code.
+ * Only the app shell is handled by the service worker.
  */
+
+let deferredInstallPrompt = null;
+const installButton = document.getElementById("pwaInstallButton");
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch(error => {
@@ -12,3 +15,27 @@ if ("serviceWorker" in navigator) {
     });
   });
 }
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+
+  if (installButton) installButton.classList.remove("hidden");
+});
+
+if (installButton) {
+  installButton.addEventListener("click", async () => {
+    if (!deferredInstallPrompt) return;
+
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+
+    deferredInstallPrompt = null;
+    installButton.classList.add("hidden");
+  });
+}
+
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  if (installButton) installButton.classList.add("hidden");
+});
