@@ -71,6 +71,34 @@
         <a href="index.html"><span>Public site</span><strong>Review current presentation</strong></a>
       </div>
 
+      <section class="content-review-card" aria-labelledby="contentReviewHeading">
+        <div class="admin-card-heading">
+          <div>
+            <span class="admin-kicker">Launch readiness</span>
+            <h2 id="contentReviewHeading">Leadership confirmations</h2>
+            <p>Track the church facts that should be confirmed before this prototype becomes the public production site.</p>
+          </div>
+          <span class="status-pill" id="adminConfirmationCount">0 of 7 reviewed</span>
+        </div>
+
+        <div class="content-confirmation-list">
+          <label><input type="checkbox" data-content-confirmation="schedule"> Current Sunday / Wednesday schedule</label>
+          <label><input type="checkbox" data-content-confirmation="arrival"> Parking and primary entrance</label>
+          <label><input type="checkbox" data-content-confirmation="children"> Nursery / children’s ministry details</label>
+          <label><input type="checkbox" data-content-confirmation="accessibility"> Accessibility information</label>
+          <label><input type="checkbox" data-content-confirmation="giving"> Giving provider and funds</label>
+          <label><input type="checkbox" data-content-confirmation="staff"> Current staff / ministry list</label>
+          <label><input type="checkbox" data-content-confirmation="livestream"> Current livestream / Facebook strategy</label>
+        </div>
+
+        <div class="button-row">
+          <a class="button secondary small" href="visit.html">Review Visit page</a>
+          <a class="button secondary small" href="about.html">Review Story &amp; Mission</a>
+          <a class="button secondary small" href="beliefs.html">Review Beliefs</a>
+        </div>
+        <p class="microcopy">These checkmarks are browser-local planning aids, not production approvals or audit records.</p>
+      </section>
+
       <div class="admin-edit-grid">
         <form class="clean-admin-card" id="adminAnnouncementForm">
           <span class="admin-kicker">Homepage</span>
@@ -90,6 +118,8 @@
           </div>
           <label for="adminEventTitle">Title</label>
           <input id="adminEventTitle" required>
+          <label for="adminEventLocation">Location</label>
+          <input id="adminEventLocation" value="1046 Hess Lane, Louisville, KY 40217">
           <label for="adminEventAudience">Audience</label>
           <select id="adminEventAudience">
             <option value="churchwide">Everyone</option>
