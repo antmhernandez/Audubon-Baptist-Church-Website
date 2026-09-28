@@ -11,6 +11,9 @@
   <meta name="description" content="Audubon Baptist Church — A Church in the Park, Louisville, Kentucky">
   <meta name="theme-color" content="#7f2d32">
   <title>Audubon Baptist Church | A Church in the Park</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Audubon Church">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="public-page public-home" data-page="home">
@@ -51,7 +54,10 @@
       </details>
       <a href="give.html" data-nav-page="give">Give</a>
     </nav>
-    <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
+    <div class="header-actions">
+      <button class="get-app-button" type="button" data-install-app>Get the App!</button>
+      <button class="member-button" id="memberSignInButton" type="button">Member sign in</button>
+    </div>
   </header>
 
   <div class="role-tools hidden" id="roleTools" aria-label="Member preview shortcuts">
@@ -144,5 +150,6 @@
 
   <script src="site.js"></script>
   <script src="app.js"></script>
+  <script src="pwa.js"></script>
 </body>
 </html>
