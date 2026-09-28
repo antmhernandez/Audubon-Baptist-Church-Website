@@ -22,7 +22,7 @@ Members can:
 
 - see three month grids together;
 - move backward or forward three months;
-- return to the current quarter;
+- return to the current three-month range;
 - click a day to see event details;
 - filter churchwide, member, and ministry events;
 - RSVP Going / Maybe;
@@ -58,7 +58,6 @@ Prototype event shape:
 Production should add:
 
 - recurrence rules;
-- location;
 - ministry/group ID;
 - RSVP capacity;
 - volunteer-task relationships;
@@ -73,3 +72,17 @@ Production should add:
 The current page reads browser-local prototype data. It is not a private calendar merely because the interface is gated.
 
 Production must enforce event visibility and RSVP access on the server/database layer.
+
+
+## Personal-calendar export
+
+The prototype now generates `.ics` event files with:
+
+- explicit `America/Kentucky/Louisville` local time;
+- start and end time;
+- a default one-hour duration when no duration is stored;
+- event location;
+- creation timestamp;
+- escaped title/description/location values.
+
+Production events should store explicit duration/end time rather than relying on the prototype default.
