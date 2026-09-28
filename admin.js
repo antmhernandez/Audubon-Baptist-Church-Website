@@ -1,3 +1,9 @@
+/**
+ * Site Administration prototype.
+ * Lets an administrator edit announcement, events, and featured-sermon metadata in browser-local storage.
+ * Production writes will move to the authenticated church database/API.
+ */
+
 const STORAGE_KEY="abcDemoV3";
 function ymd(date){return [date.getFullYear(),String(date.getMonth()+1).padStart(2,"0"),String(date.getDate()).padStart(2,"0")].join("-");}
 function loadData(){try{return {role:"public",events:[],sermon:{title:"",reference:"",speaker:"",tags:[]},announcement:"",...JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")};}catch{return {role:"public",events:[],sermon:{title:"",reference:"",speaker:"",tags:[]},announcement:""};}}
