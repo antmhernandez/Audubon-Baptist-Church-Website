@@ -163,7 +163,8 @@ Therefore:
 - the website remains the source of truth;
 - the PWA uses the same URLs and code;
 - when online, app-shell requests use a network-first strategy so the current deployment is preferred;
-- cached files are an offline fallback;
+- cached public/static files are an offline fallback;
+- member, administrator, and Media Studio routes are not part of the general offline cache;
 - private API responses, uploaded sermon video, and other sensitive media must never be added to the general service-worker cache;
 - installation UI must degrade gracefully when a browser does not expose a one-click install API.
 
