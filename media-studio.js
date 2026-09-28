@@ -24,6 +24,7 @@ let duration = 0;
 let trimStart = 0;
 let trimEnd = 0;
 let previewingSelection = false;
+let lastPreparedJob = null;
 
 function loadData() {
   try {
@@ -285,16 +286,73 @@ document.getElementById("saveMediaDraft").addEventListener("click",()=>{
   showToast("Trim and sermon settings saved in this browser.");
 });
 
+function buildProcessingJob(settings){
+  return {
+    schemaVersion:1,
+    createdAt:new Date().toISOString(),
+    source:{
+      fileName:settings.fileName,
+      fileSize:settings.fileSize,
+      durationSeconds:settings.sourceDuration
+    },
+    edit:{
+      trimStartSeconds:Number(settings.trimStart.toFixed(3)),
+      trimEndSeconds:Number(settings.trimEnd.toFixed(3)),
+      normalizeSpeech:settings.normalize,
+      gainDb:settings.gain,
+      shortFade:settings.fade,
+      createAudioOnly:settings.audioOnly
+    },
+    sermon:{
+      title:settings.title,
+      scripture:settings.scripture,
+      speaker:settings.speaker,
+      series:settings.series,
+      tags:settings.tags
+    },
+    publish:{
+      keepRecentOnline:4,
+      retainMasterOnNas:true,
+      status:"ready-for-worker"
+    }
+  };
+}
+
+function downloadJsonFile(filename,value){
+  const blob=new Blob([JSON.stringify(value,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const link=document.createElement("a");
+  link.href=url;
+  link.download=filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
 document.getElementById("preparePublish").addEventListener("click",()=>{
   if(!sourceFile){showToast("Choose a video first.");return;}
   const s=currentSettings();
   if(!s.title || !s.scripture){showToast("Add a sermon title and Scripture reference before preparing publication.");return;}
   setStudioStep(4);
+  lastPreparedJob=buildProcessingJob(s);
+  document.getElementById("downloadMediaJob").classList.remove("hidden");
   const job=document.getElementById("publishJob");
   job.classList.remove("hidden");
   job.innerHTML=`<span class="status-pill ready">Ready for production worker</span><h3>${escapeHtml(s.title)}</h3><p>Trim <strong>${formatTime(s.trimStart)}</strong> to <strong>${formatTime(s.trimEnd)}</strong>, ${s.normalize?"normalize speech":"leave loudness unchanged"}${s.fade?", add short fades":""}, create the web video${s.audioOnly?" and audio-only copy":""}, upload to the configured provider, and publish the sermon metadata.</p><code>ffmpeg -ss ${s.trimStart.toFixed(2)} -to ${s.trimEnd.toFixed(2)} -i INPUT ... OUTPUT</code>`;
   job.scrollIntoView({behavior:"smooth",block:"nearest"});
   showToast("Prototype publish job prepared.");
+});
+
+document.getElementById("downloadMediaJob").addEventListener("click",()=>{
+  if(!lastPreparedJob){
+    showToast("Prepare the publication job first.");
+    return;
+  }
+  const safeTitle=(lastPreparedJob.sermon.title||"sermon")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g,"-")
+    .replace(/^-|-$/g,"");
+  downloadJsonFile((safeTitle||"sermon")+"-job.json",lastPreparedJob);
+  showToast("Processing-job JSON downloaded.");
 });
 
 renderAccess();
