@@ -12,6 +12,7 @@
 
 (function () {
   const STORAGE_KEY = "abcDemoV3";
+  const CHURCH_LOCATION = "1046 Hess Lane, Louisville, KY 40217";
 
   const ROLE_LEVEL = {
     public: 0,
@@ -74,6 +75,7 @@
         time: "10:30",
         title: "Sunday Worship",
         audience: "churchwide",
+        location: CHURCH_LOCATION,
         description: "Published Audubon materials list Sunday worship at 10:30 AM; please confirm the current schedule before production.",
         source: "published"
       });
@@ -84,6 +86,7 @@
         time: "18:30",
         title: "Midweek Service",
         audience: "churchwide",
+        location: CHURCH_LOCATION,
         description: "Published Audubon materials list the Midweek Service at 6:30 PM; please confirm the current schedule before production.",
         source: "published"
       });
@@ -95,6 +98,7 @@
       time: "09:00",
       title: "Sample: Church Work Day",
       audience: "member",
+      location: CHURCH_LOCATION,
       description: "Demonstration event showing member RSVP and volunteer planning.",
       source: "sample"
     });
@@ -105,6 +109,7 @@
       time: "18:00",
       title: "Sample: Ministry Team Meeting",
       audience: "group",
+      location: CHURCH_LOCATION,
       description: "Demonstration group-only event.",
       source: "sample"
     });
