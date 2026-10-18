@@ -9,7 +9,7 @@
  *   prayer data, giving data, or future personalized server responses.
  */
 
-const CACHE_NAME = "audubon-church-shell-v7";
+const CACHE_NAME = "audubon-church-shell-v8";
 
 const PUBLIC_APP_SHELL = [
   "./index.html",
@@ -23,7 +23,9 @@ const PUBLIC_APP_SHELL = [
   "./styles.css",
   "./site.js",
   "./app.js",
+  "./live-status.js",
   "./sermons.js",
+  "./sermon-catalog.js",
   "./pwa.js",
   "./manifest.webmanifest",
   "./audubon-app-icon.svg",
