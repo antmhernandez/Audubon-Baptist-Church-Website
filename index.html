@@ -126,6 +126,32 @@
       </aside>
     </section>
 
+    <!--
+      PUBLIC LIVESTREAM
+      Always link to Audubon's official Facebook Page. When the optional
+      Cloudflare Pages Function /api/live is configured, live-status.js checks
+      broadcast status without exposing Meta credentials to the browser.
+    -->
+    <section class="home-facebook-live" id="facebookLive" aria-labelledby="facebookLiveHeading">
+      <div class="home-facebook-live-copy">
+        <div class="live-status-line">
+          <span class="live-status-dot" id="facebookLiveDot" aria-hidden="true"></span>
+          <span id="facebookLiveStatus" role="status" aria-live="polite">Facebook livestream</span>
+        </div>
+        <h2 id="facebookLiveHeading">Join us <em>live.</em></h2>
+        <p id="facebookLiveDescription">
+          Live status is not verified here yet. Open Audubon's Facebook Page.
+        </p>
+      </div>
+      <a class="facebook-live-link"
+         id="facebookLiveLink"
+         href="https://www.facebook.com/audubonbaptistchurch/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Open Audubon on Facebook <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
     <section class="home-intro">
       <p class="home-intro-mark" aria-hidden="true">+</p>
       <div>
@@ -256,6 +282,7 @@
   </script>
   <script src="site.js"></script>
   <script src="app.js"></script>
+  <script src="live-status.js"></script>
   <script src="pwa.js"></script>
 </body>
 </html>
