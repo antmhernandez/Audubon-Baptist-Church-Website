@@ -132,6 +132,27 @@
       </div>
     </section>
 
+    <!--
+      CURRENT SERMON CATALOG
+      Populated from sermon-catalog.json only after publishing succeeds.
+      Empty catalog sections remain hidden. Existing historical audio is below.
+    -->
+    <section class="sermon-catalog-section hidden" id="currentSermonCatalog" aria-labelledby="currentSermonHeading">
+      <div class="archive-heading">
+        <div><p class="editorial-kicker">Recently published</p></div>
+        <h2 id="currentSermonHeading">Recent sermons</h2>
+      </div>
+      <div class="sermon-catalog-grid" id="currentSermonList"></div>
+    </section>
+
+    <section class="sermon-catalog-section hidden" id="additionalSermonArchive" aria-labelledby="additionalArchiveHeading">
+      <div class="archive-heading">
+        <div><p class="editorial-kicker">Earlier recordings</p></div>
+        <h2 id="additionalArchiveHeading">More sermon recordings</h2>
+      </div>
+      <div class="sermon-catalog-grid" id="additionalArchiveList"></div>
+    </section>
+
     <section class="archive-page-section">
       <div class="archive-heading">
         <div>
@@ -201,6 +222,7 @@
   </footer>
   <script src="site.js"></script>
   <script src="sermons.js"></script>
+  <script src="sermon-catalog.js"></script>
   <script src="pwa.js"></script>
 </body>
 </html>
