@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": null,
+  "notes": "Publish up to four recently processed sermons here. Older entries move to archive with a verified archiveUrl. No church NAS is connected yet.",
+  "recent": [],
+  "archive": []
+}
