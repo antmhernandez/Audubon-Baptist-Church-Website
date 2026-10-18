@@ -53,6 +53,14 @@ Those require the later database/application phase.
 
 When leadership is ready, a domain such as `audubonbaptist.org` can point to the web application. Do not add a `CNAME` file until the church confirms the actual domain and DNS ownership.
 
+## Planned November 2026 Cloudflare deployment
+
+See [CLOUDFLARE_PRODUCTION_SETUP.md](CLOUDFLARE_PRODUCTION_SETUP.md) for the tested static-site configuration, R2 recent-sermon approach, Facebook live-status Pages Function setup, domain migration cautions, and production launch checklist.
+
+The two live hosts differ: GitHub Pages does **not** run Cloudflare's `functions/api/live.js` and will show an unverified Facebook status while still providing the working official Page link.
+
+Changing DNS for the old `achurchinthepark.org` domain requires preserving the existing WordPress sermon audio and newsletter URLs.
+
 ## Future production deployment
 
 When secure member/admin functionality is implemented, GitHub remains the code repository but GitHub Pages should no longer be the only runtime.
