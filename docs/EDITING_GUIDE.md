@@ -14,10 +14,13 @@ For most changes, use this map:
 
 | What you want to change | File |
 | --- | --- |
-| Home page layout | `index.html` |
+| Home page layout and livestream headline/link | `index.html` |
 | Plan Your Visit content | `visit.html` |
 | Sermon page layout | `sermons.html` |
 | Sermon archive metadata, historical audio URLs, search/sort behavior | `sermons.js` |
+| New recent/archived media links (no large video in Git) | `sermon-catalog.json` |
+| Facebook live-check display | `live-status.js` |
+| Server-side Facebook live-check API | `functions/api/live.js` |
 | Beliefs copy | `beliefs.html` |
 | Church history / mission | `about.html` |
 | Historical newsletter/resource archive | `archive.html` |
@@ -31,6 +34,8 @@ For most changes, use this map:
 | Sermon upload / trim tool | `media-studio.html` + `media-studio.js` |
 | Colors, spacing, typography, responsive layout | `styles.css` |
 | Whole-site app install/update behavior | `app.html`, `manifest.webmanifest`, `pwa.js`, `sw.js` |
+
+For Pastor Jeff's quick-start and collaboration instructions, use `docs/PASTOR_GITHUB_EDITING.md`. For the November Cloudflare launch, use `docs/CLOUDFLARE_PRODUCTION_SETUP.md`.
 
 ## Safe editing habits
 
