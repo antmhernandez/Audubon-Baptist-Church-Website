@@ -70,6 +70,30 @@ Docs: https://developers.cloudflare.com/pages/configuration/custom-domains/
 
 `sermon-catalog.json` schema: `schemaVersion:1` with `recent` and `archive` arrays. Each record may have `title`, `date`, `scripture`, `speaker`, `videoUrl`, `audioUrl`, `archiveUrl`.
 
+### Example catalog entry after the first real upload
+
+After testing actual delivery URLs, edit `sermon-catalog.json` and add an entry to `recent`:
+
+```json
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-01",
+  "recent": [
+    {
+      "title": "Approved sermon title",
+      "date": "2026-11-01",
+      "scripture": "Approved passage",
+      "speaker": "Pastor Jeff Akin",
+      "videoUrl": "https://YOUR-REAL-MEDIA-DOMAIN/sermons/2026-11-01/video.mp4",
+      "audioUrl": "https://YOUR-REAL-MEDIA-DOMAIN/sermons/2026-11-01/audio.mp3"
+    }
+  ],
+  "archive": []
+}
+```
+
+**The URLs above are illustrations, not configured destinations.** Do not paste placeholders into the live catalog. The public page hides empty catalog sections.
+
 ### Media limitations
 
 R2 serves files; it does **not automatically transcode** large uploads into adaptive streams. Start with FFmpeg-generated H.264/AAC 720p MP4 with fast-start plus a smaller audio file. Cloudflare's R2 CDN cacheable-object limit on Free/Pro/Business plans is **512 MB per file**, so longer videos may not be cached at edge (though delivery still works). Segmenting HLS or upgrading to Cloudflare Stream is an optional later improvement.
