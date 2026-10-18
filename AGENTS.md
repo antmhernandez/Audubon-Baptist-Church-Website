@@ -17,6 +17,8 @@ Before making substantial changes, read:
 11. `docs/DESIGN_AND_UX_REVIEW.md` when changing public-site layout, navigation, or visual design.
 12. `docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md` when extending or revisiting the current feature set.
 
+For October–November production planning also read `docs/HANDOFF_2026-10-18.md` and `docs/CLOUDFLARE_PRODUCTION_SETUP.md`. The current repo includes a Facebook Live link + optional Cloudflare Pages Function and an empty recent-sermon catalog; no external provider accounts have been configured by source-code changes alone.
+
 For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also read `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md`.
 
 ## Governing principles
@@ -33,6 +35,10 @@ For media work also read `docs/MEDIA_WORKFLOW.md`. For calendar/member work also
 - Prefer replaceable integrations and financially modest infrastructure.
 - Keep the whole application installable as one PWA before considering separate native apps.
 - The PWA app shell must prefer current network files when online and must never cache uploaded sermon video or future private API responses.
+
+## Production launch guardrail
+
+Do not expose or collect confidential member/prayer/finance data until the user has set up proper authentication, server-side permissions, and storage. Preserve the legacy WordPress archive before changing the church's existing domain. Never show an unverified Facebook livestream status as live or offline.
 
 ## Current prototype status
 
