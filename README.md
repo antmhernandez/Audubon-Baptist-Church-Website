@@ -4,6 +4,9 @@ A public website and emerging member platform for Audubon Baptist Church.
 
 ## Current status
 
+**October 2026 update:** The November launch plan is documented in [Cloudflare production setup](docs/CLOUDFLARE_PRODUCTION_SETUP.md). The homepage now has a Facebook livestream entry and an optional Cloudflare server-side live checker. [Pastor GitHub editing](docs/PASTOR_GITHUB_EDITING.md) and the [project handoff](docs/HANDOFF_2026-10-18.md) are ready. Cloudflare, Meta, and the Linux media workstation have **not** yet been configured in their external accounts.
+
+
 This repository contains a **leadership / pastor prototype** designed to run directly on GitHub Pages with no paid infrastructure.
 
 The current prototype demonstrates a typography-led, editorial public site plus a connected set of practical member and administrator tools:
@@ -78,6 +81,8 @@ All demo changes remain only in the current browser.
 - `archive.html` — selected newsletter themes and links to Audubon’s older public archive
 - `give.html` — focused giving handoff page
 - `site.js` — shared public navigation, role preview, and member-entry behavior
+- `live-status.js` + `functions/api/live.js` — official Facebook Live link and optional authenticated status check
+- `sermon-catalog.json` + `sermon-catalog.js` — current R2 and archive media publishing slots
 - `member.html` + `member.js` — dedicated member home
 - `admin.html` + `admin.js` — dedicated site administration workspace
 - `calendar.html` + `calendar.js` — member-only three-month calendar prototype
@@ -99,7 +104,11 @@ All demo changes remain only in the current browser.
 - `docs/CALENDAR_AND_MEMBER_EXPERIENCE.md` — calendar/member interaction model
 - `docs/SOURCE_CONTENT_NOTES.md` — public church facts, sources, and items still needing confirmation
 - `docs/DESIGN_AND_UX_REVIEW.md` — church-site research, editorial design direction, and information architecture
-- `docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md` — feature-by-feature benchmark review, implemented improvements, and remaining leadership confirmations
+- `docs/COMPREHENSIVE_PRODUCT_POLISH_2026-09-28.md` — previous full feature review
+- `docs/PASTOR_GITHUB_EDITING.md` — invitation and safe copy-editing guide
+- `docs/CLOUDFLARE_PRODUCTION_SETUP.md` — GitHub → Cloudflare Pages, R2, domain, live checker
+- `docs/LINUX_MEDIA_ARCHIVE_PLAN.md` — laptop, archival processing and backup
+- `docs/HANDOFF_2026-10-18.md` — next-conversation continuity and launch priorities
 
 ## Development philosophy
 
