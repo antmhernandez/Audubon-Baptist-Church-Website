@@ -32,6 +32,14 @@ The current prototype demonstrates a typography-led, editorial public site plus 
 
 > **Important:** this is a public design prototype. The role switcher and "member sign in" flow are demonstrations, not secure authentication. Browser edits are not shared with other users. Do not place real private prayer requests, member data, financial information, pastoral information, credentials, or confidential church records into this version.
 
+## GitHub Pages + Cloudflare R2 + Linux workstation pilot
+
+For the November launch, **keep GitHub Pages as the public website host** until a specific server-side feature requires a hosting change. Configure R2 separately for the latest sermon delivery copies, and use the church's Linux laptop for processing, master storage, and backups. There is no second website build to maintain.
+
+The new [GitHub Pages/R2/Linux quickstart](docs/GITHUB_PAGES_R2_LINUX_QUICKSTART.md) explains bucket permissions, Linux inspection, FFmpeg processing, rclone uploads/downloads, and manual publication. The executable `scripts/sermon-worker.py` now consumes the Media Studio's JSON edit jobs; it does not perform authenticated browser uploads or automatic deletions.
+
+**Important:** `functions/api/live.js` is a Cloudflare Pages Function. It is not active on GitHub Pages. The Facebook Page link remains the safe fallback until a separate authorized API is deployed.
+
 ## For human maintainers
 
 Start with:
