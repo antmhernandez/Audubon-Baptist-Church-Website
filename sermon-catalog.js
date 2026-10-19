@@ -50,7 +50,25 @@
     actions.className = "catalog-actions";
 
     if (videoUrl) {
-      const link = textNode("a", "Watch video ↗");
+      // Do not download all sermon videos when the page first opens.
+      const disclosure = document.createElement("details");
+      disclosure.className = "catalog-video-disclosure";
+      disclosure.appendChild(textNode("summary", "Watch video on this page"));
+
+      const player = document.createElement("video");
+      player.className = "catalog-inline-video";
+      player.controls = true;
+      player.preload = "none";
+      player.playsInline = true;
+      player.src = videoUrl;
+      player.setAttribute("aria-label", "Sermon video: " + (item.title || "Sermon"));
+      disclosure.appendChild(player);
+      disclosure.addEventListener("toggle", () => {
+        if (!disclosure.open) player.pause();
+      });
+      card.appendChild(disclosure);
+
+      const link = textNode("a", "Open video separately ↗");
       link.href = videoUrl;
       link.target = "_blank";
       link.rel = "noopener noreferrer";

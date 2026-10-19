@@ -1,5 +1,8 @@
 # Recommended Architecture
 
+> **Current October 2026 decision:** Keep the existing HTML/CSS/JavaScript PWA on GitHub Pages for the public November pilot. Cloudflare R2 can serve the latest sermon derivatives without deploying the website to Cloudflare Pages. The Next.js/managed app design below is an earlier *future* option for authenticated church data, not a prerequisite for the public launch. See `docs/GITHUB_PAGES_R2_LINUX_QUICKSTART.md`.
+
+
 ## Current demo
 
 The first version is intentionally simple:

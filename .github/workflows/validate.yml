@@ -16,3 +16,10 @@ jobs:
           node-version: "22"
       - name: Validate website source
         run: node scripts/validate-site.mjs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate media worker source
+        run: |
+          python -m py_compile scripts/sermon-worker.py
+          python scripts/sermon-worker.py --help
