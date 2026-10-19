@@ -3527,3 +3527,34 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:500;letter-spacing:-.035em}
 @media(max-width: 600px) {
  .sermon-catalog-section { margin-left: 18px; margin-right: 18px; }
 }
+
+
+/* --------------------------------------------------------------------------
+   Recent sermon catalog — on-demand in-page video
+   -------------------------------------------------------------------------- */
+.catalog-video-disclosure {
+  margin-block: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  background: var(--paper);
+}
+
+.catalog-video-disclosure summary {
+  cursor: pointer;
+  font-weight: 750;
+}
+
+.catalog-video-disclosure summary:focus-visible {
+  outline: 3px solid #e0b763;
+  outline-offset: 4px;
+}
+
+.catalog-inline-video {
+  display: block;
+  width: 100%;
+  max-width: 850px;
+  margin-top: 12px;
+  border-radius: 8px;
+  background: #10131a;
+}
