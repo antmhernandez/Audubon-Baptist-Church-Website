@@ -1,5 +1,8 @@
 # Cloudflare Production Deployment — Audubon Baptist Church
 
+> **October 18 hosting adjustment:** Cloudflare Pages is **optional**. The active low-cost pilot keeps the public website on **GitHub Pages** and uses only Cloudflare R2 for media. Read [the Pages + R2 + Linux quickstart](GITHUB_PAGES_R2_LINUX_QUICKSTART.md) before following the Cloudflare Pages-only instructions below. In particular, `functions/api/live.js` will not execute on GitHub Pages; a separate Worker would be needed for that API.
+
+
 Prepared October 18, 2026. Target: a reviewed public launch in November 2026.
 
 ## Recommended architecture
